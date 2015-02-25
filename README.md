@@ -3,7 +3,7 @@ Our software solution for Khan Academy's Myanmar Community translation system.
 
 Iteration 0 Deliverables:
 1) Public Repo
-2) Youtube video:
+2) Youtube video: http://youtu.be/dkM_W5IS0P4
 3) Sketches/Lo fi mockups
 4) Simple description of first couple user stories
 
