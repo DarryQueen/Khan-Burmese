@@ -1,6 +1,8 @@
 # Khan-Burmese
 Our software solution for Khan Academy's Myanmar Community translation system.
 
+PT: https://www.pivotaltracker.com/n/projects/1286520
+
 Iteration 0 Deliverables:
 1) Public Repo
 2) Youtube video: http://youtu.be/dkM_W5IS0P4
