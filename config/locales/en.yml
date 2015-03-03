@@ -3,3 +3,19 @@
 
 en:
   hello: "Hello world"
+  errors:
+    format: "%{message}"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Email cannot be blank."
+              taken: "Email has already been taken."
+              invalid: "Please use a valid email."
+            password:
+              blank: "Password cannot be blank."
+              confirmation: "Passwords do not match."
+            password_confirmation:
+              blank: "Password Confirmation cannot be blank."
