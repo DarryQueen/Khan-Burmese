@@ -1,32 +1,38 @@
 <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal", role: "form" }) do |f| %>
-  <div class="form-group">
-    <%= f.label :email, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-    </div>
-  </div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Sign Up</small></h3>
+      </div>
+      <div class="panel-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: 'form' }) do |f| %>
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email Address' %>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :password, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-    </div>
-  </div>
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <%= f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: 'Password' %>
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control', placeholder: 'Confirm Password' %>
+              </div>
+            </div>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :password_confirmation, 'Password Confirmation', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+          <%= f.submit 'Sign Up', class: 'btn btn-info center-block' %>
+        <% end %>
+      </div>
     </div>
+    <%- if controller_name != 'sessions' %>
+      <div class="text-center">
+        Already have an account? <%= link_to "Log in!", new_session_path(resource_name) %><br />
+      </div>
+    <% end %>
   </div>
-
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit "Sign Up", class: 'btn btn-default' %>
-    </div>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
