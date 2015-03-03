@@ -35,7 +35,7 @@ KhanBurmese::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-	# devise set uup
+	# Devise setup:
 	config.action_mailer.default_url_options = { host: 'localhost', post: 3000 }	
 
 end
