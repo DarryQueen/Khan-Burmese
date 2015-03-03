@@ -17,6 +17,8 @@ en:
             password:
               blank: "Password cannot be blank."
               confirmation: "Passwords do not match."
-              too_short: "Password must contain at least 8 characters."
+              too_short:
+                one: "Password must contain at least 1 character."
+                other: "Password must contain at least %{count} characters."
             password_confirmation:
               blank: "Password Confirmation cannot be blank."
