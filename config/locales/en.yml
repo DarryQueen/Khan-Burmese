@@ -7,6 +7,8 @@ en:
     format: "%{message}"
   activerecord:
     errors:
+      messages:
+        not_found: "%{model} not found."
       models:
         user:
           attributes:
