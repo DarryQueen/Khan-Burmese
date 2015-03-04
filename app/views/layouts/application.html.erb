@@ -42,7 +42,9 @@
 
   <%= yield %>
 </div>
+
 <%= link_to('Login with facebook', user_omniauth_authorize_path(:facebook))%>
+<%= link_to('Login with google', user_omniauth_authorize_path(:google_oauth2))%>
 
 </body>
 </html>
