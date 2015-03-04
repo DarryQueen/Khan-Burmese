@@ -8,6 +8,8 @@ gem 'rails', '3.2.16'
 # Use SQLite locally only:
 group :development, :test do
   gem 'sqlite3'
+  gem 'database_cleaner'
+  gem 'cucumber-rails', :require => false
 end
 
 # Use PG on Heroku:

@@ -13,3 +13,6 @@
 
 # Ignore keys file.
 /config/initializers/keys.rb
+
+# Ignore cloud9 metadata.
+.c9/*
