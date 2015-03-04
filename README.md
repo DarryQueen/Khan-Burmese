@@ -1,7 +1,9 @@
 # Khan-Burmese
 Our software solution for Khan Academy's Myanmar Community translation system.
 
+Heroku link: [here](http://khanburmese.herokuapp.com).
 Pivotal tracker link [here](https://www.pivotaltracker.com/n/projects/1286520).
+CodeClimate link [here](https://codeclimate.com/github/DarryQueen/Khan-Burmese).
 
 ## Iteration 0 Deliverables
 1. Public repo [here](https://github.com/DarryQueen/Khan-Burmese).
