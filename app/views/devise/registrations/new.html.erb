@@ -7,10 +7,6 @@
         <h3 class="panel-title">Sign Up</small></h3>
       </div>
       <div class="panel-body">
-        <%= render 'devise/shared/social' %>
-
-        <hr />
-
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: 'form' }) do |f| %>
           <div class="form-group">
             <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email Address' %>
@@ -30,6 +26,10 @@
           </div>
 
           <%= f.submit 'Sign Up', class: 'btn btn-info center-block' %>
+
+          <hr />
+
+          <%= render 'devise/shared/social' %>
         <% end %>
       </div>
     </div>
