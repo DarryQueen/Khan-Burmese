@@ -13,7 +13,8 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the (KA )?home\s?page$/ then '/dashboard'
+    when /^the (KA )?home\s?page$/ then '/users/sign_in'
+    when /^the signup page$/ then 'users/sign_up'
     when /^the dashboard page$/ then '/dashboard'
 
     # Add more mappings here.
