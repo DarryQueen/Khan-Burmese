@@ -2,18 +2,13 @@ Feature: allow a user to login
   
   As a user
   So that I can use the site
-  I want to be able to use facebook/google+ authentication or login manually
+  I want to be able to log in manually
   
 Background:
-  #Put steps here
+  Given I am on the home page
   
-Scenario: login via facebook
-  #put steps here
-  
-Scenario: login via google+
-  #put steps here
-
-#side note: can you even test these with cucumber?^^
-
-Scenario: login with email/password
-  #put steps here
+Scenario: login with faulty email
+  When I fill in "user_email" with "invalid@email"
+  And I fill in "user_password" with "1"
+  And I press "Log In"
+  Then I should see "Invalid email or password"
