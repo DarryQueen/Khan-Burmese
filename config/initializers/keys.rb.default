@@ -1,5 +1,0 @@
-# Copy this file to keys.rb. Replace the strings with your keys:
-Devise.setup do |config|
-  config.omniauth :facebook, '[public_key]', '[private_key]'
-  config.omniauth :google_oauth2, '[public_key]', '[private_key]', {}
-end
