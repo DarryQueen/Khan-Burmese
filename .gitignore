@@ -16,3 +16,7 @@
 
 # Ignore cloud9 metadata.
 .c9/*
+
+
+# Ignore simplecov output viles
+coverage/*

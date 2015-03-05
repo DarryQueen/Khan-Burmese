@@ -5,11 +5,11 @@ Feature: allow a user to create an account
   I want to be able to sign up for an account
   
 Background:
-  #put steps here
+  Given I am on the signup page
   
 Scenario: sign up on the signup page
-  #put steps here
-  
-Scenario: get verification email to verify my account
-  #put steps here
-  #is this even possible to implement via cucumber?
+  When I fill in "user_email" with "test@test.com"
+  And I fill in "user_password" with "password"
+  And I fill in "user_password_confirmation" with "password"
+  And I press "Sign Up"
+  Then I should see "Welcome! You have signed up successfully."
