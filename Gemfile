@@ -24,6 +24,8 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
+# This gem handles API Secrets :)
+gem 'figaro'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
