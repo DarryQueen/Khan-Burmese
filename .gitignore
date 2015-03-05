@@ -11,9 +11,6 @@
 # Ignore local asset pipline cache files.
 /public/assets
 
-# Ignore keys file.
-/config/initializers/keys.rb
-
 # Ignore cloud9 metadata.
 .c9/*
 
