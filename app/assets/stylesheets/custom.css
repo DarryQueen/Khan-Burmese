@@ -1,3 +1,17 @@
 body {
   padding-top: 70px;
 }
+
+/* Color override for social buttons. */
+.btn-social {
+  border-color: rgba(0,0,0,0.2);
+}
+.btn-social:hover {
+  color: #fff;
+}
+.btn-facebook:hover {
+  background-color: #3b5998;
+}
+.btn-google-plus:hover   {
+  background-color: #dd4b39;
+}
