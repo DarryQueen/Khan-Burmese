@@ -16,17 +16,21 @@ class ApplicationController < ActionController::Base
 
   # Store last URL for post-login redirect:
   def store_location
-    return unless request.get?
+    # We use a try/catch block for RailsAdmin.
+    begin
+      return unless request.get?
 
-    ignore_paths = [
-      user_omniauth_authorize_path(:provider => 'facebook'),
-      user_omniauth_authorize_path(:provider => 'google_oauth2'),
-      new_user_session_path, new_user_registration_path,
-      new_user_password_path, edit_user_password_path,
-      destroy_user_session_path
-    ]
+      ignore_paths = [
+        user_omniauth_authorize_path(:provider => 'facebook'),
+        user_omniauth_authorize_path(:provider => 'google_oauth2'),
+        new_user_session_path, new_user_registration_path,
+        new_user_password_path, edit_user_password_path,
+        destroy_user_session_path
+      ]
 
-    return if request.xhr? or request.path.match(Regexp.union(ignore_paths))
-    session[:previous_url] = request.fullpath
+      return if request.xhr? or request.path.match(Regexp.union(ignore_paths))
+      session[:previous_url] = request.fullpath
+    rescue
+    end
   end
 end

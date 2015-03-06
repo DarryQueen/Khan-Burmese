@@ -19,8 +19,10 @@ group :production do
   gem 'pg'
 end
 
+# Authorization gems:
 gem 'devise'
 gem 'cancancan', '~> 1.10'
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch => 'rails-3.x'
 
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
