@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = exception.message
+    flash.keep
     redirect_to :back
   end
 
