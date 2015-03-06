@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = exception.message
+    redirect_to :back
+  end
+
   private
 
   # Store last URL for post-login redirect:
