@@ -20,4 +20,4 @@ Scenario: Access the admin portal as a vanilla user.
   Given I am logged in as "ice@tea.com" with password "borepass"
   Then I should see "Signed in successfully."
   When I go to the admin portal
-  Then I should not see "Khan Burmese Admin"
+  Then I should see "Insufficient permissions."
