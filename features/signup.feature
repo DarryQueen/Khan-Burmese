@@ -13,3 +13,10 @@ Scenario: Sign up with valid email and password.
   And I fill in "user_password_confirmation" with "password"
   And I press "Sign Up"
   Then I should see "Welcome! You have signed up successfully."
+
+Scenario: Sign up with invalid password.
+  When I fill in "user_email" with "test@test.com"
+  And I fill in "user_password" with "pass"
+  And I fill in "user_password_confirmation" with "pass"
+  And I press "Sign Up"
+  Then I should see "Password must contain at least"
