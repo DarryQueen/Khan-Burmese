@@ -18,7 +18,7 @@ RailsAdmin.config do |config|
   config.authenticate_with { }
   # Authorize as administrator:
   config.authorize_with do
-    redirect_to main_app.root_path unless current_user.admin?
+    redirect_to main_app.root_path, :flash => { :alert => 'Insufficient permissions.' } unless current_user.admin?
   end
 
   # If you want to track changes on your models:
