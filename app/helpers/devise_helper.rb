@@ -6,7 +6,7 @@ module DeviseHelper
 
     # html.html_safe
     if flash.now[:alert]
-      flash.now[:alert] += '<br />'.html_safe
+      flash.now[:alert] = flash.now[:alert].html_safe + '<br />'.html_safe
     else
       flash.now[:alert] = ''.html_safe
     end
