@@ -8,9 +8,11 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = exception.message
-    flash.keep
-    redirect_to :back
+    begin
+      redirect_to :back, :flash => { :alert => exception.message }
+    rescue ActionController::RedirectBackError
+      redirect_to '/', :flash => { :alert => exception.message }
+    end
   end
 
   private
