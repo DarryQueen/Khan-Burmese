@@ -15,7 +15,6 @@ module NavigationHelpers
 
     when /^the (KA )?home\s?page$/ then '/users/sign_in'
     when /^the signup page$/ then 'users/sign_up'
-    when /^the dashboard page$/ then '/dashboard'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
