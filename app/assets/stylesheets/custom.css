@@ -6,7 +6,7 @@ body {
 .btn-social {
   border-color: rgba(0,0,0,0.2);
 }
-.btn-social:hover {
+.btn-social:hover, .btn-social:focus {
   color: #fff;
 }
 .btn-facebook:hover {
