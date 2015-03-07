@@ -24,3 +24,9 @@ en:
                 other: "Password must contain at least %{count} characters."
             password_confirmation:
               blank: "Password Confirmation cannot be blank."
+  unauthorized:
+    default: "Insufficient permissions."
+    access:
+      rails_admin: "This is a sensitive portal only available to administrators. Contact yours for help."
+    manage:
+      user: "You cannot manage other user accounts."

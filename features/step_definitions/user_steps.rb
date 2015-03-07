@@ -2,10 +2,8 @@ Given /^the following users:$/ do |users|
   users.hashes.each do |user|
     email = user['email']
     password = user['password']
-    admin = user['admin']
+    role = user['role']
 
-    user = User.new(:email => email, :password => password, :password_confirmation => password)
-    user.update_attribute :admin, admin
-    user.save!
+    user = User.create(:email => email, :password => password, :password_confirmation => password, :role => role)
   end
 end

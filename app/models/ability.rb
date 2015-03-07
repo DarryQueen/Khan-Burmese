@@ -4,18 +4,29 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
 
-    #Sets the permissions for Admins here
-    #Possible features:
-    #  -- Setting video priority
-    #  -- Awarding points
-    #  -- Upgrading Users to Admins
-    if user.admin?
-      can :manage, User
-    else
-      #can :read, :all
-    end
+    # Administrator permissions:
+    superadmin if user.is? :superadmin
+    admin if user.is? :admin
+    volunteer if user.is? :volunteer
+  end
 
-    # See the wiki for details:
-    # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+  def superadmin
+    admin
+
+    # Access the RailsAdmin portal:
+    can :access, :rails_admin
+    can :dashboard
+
+    # Superior power. Use with discretion.
+    can :manage, :all
+  end
+
+  def admin
+    volunteer
+
+    can :manage, User
+  end
+
+  def volunteer
   end
 end
