@@ -5,13 +5,28 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     # Administrator permissions:
-    if user.admin?
-      # Access the rails_admin console:
-      can :access, :rails_admin
-      can :dashboard
+    superadmin if user.is? :superadmin
+    admin if user.is? :admin
+    volunteer if user.is? :volunteer
+  end
 
-      # Manage all:
-      can :manage, :all
-    end
+  def superadmin
+    admin
+
+    # Access the RailsAdmin portal:
+    can :access, :rails_admin
+    can :dashboard
+
+    # Superior power. Use with discretion.
+    can :manage, :all
+  end
+
+  def admin
+    volunteer
+
+    can :manage, User
+  end
+
+  def volunteer
   end
 end

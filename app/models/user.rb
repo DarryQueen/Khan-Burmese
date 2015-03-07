@@ -1,17 +1,32 @@
 class User < ActiveRecord::Base
+  ROLES = %w[superadmin admin volunteer]
+
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
   devise :database_authenticatable, :registerable, :recoverable,
          :rememberable, :trackable, :validatable, :omniauthable
 
-  # Setup accessible (or protected) attributes for your model:
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :role
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
+  after_create :assign_default_role
+
+  def is?(role)
+    role.to_s == self.role
+  end
+
+  def assign_default_role
+    self.role ||= 'volunteer'
+    self.save
+  end
+
+  def email_verified?
+    self.email && self.email !~ TEMP_EMAIL_REGEX
+  end
+
   def self.find_for_oauth(auth, signed_in_resource = nil)
-    # Get the identity and user if they exist:
     identity = Identity.find_for_oauth(auth)
 
     # If a signed_in_resource is provided it always overrides the existing user
@@ -22,10 +37,7 @@ class User < ActiveRecord::Base
 
     # Create the user if needed:
     if user.nil?
-      # Get the existing user by email if the provider gives us a verified
-      # email. If no verified email was provided we assign a temporary email
-      # and ask the user to verify it on the next step via
-      # UsersController.finish_signup.
+      # Get the existing user by email:
       email = auth.info.email
       user = User.where(:email => email).first if email
 
@@ -46,9 +58,5 @@ class User < ActiveRecord::Base
       identity.save!
     end
     user
-  end
-
-  def email_verified?
-    self.email && self.email !~ TEMP_EMAIL_REGEX
   end
 end
