@@ -1,2 +1,12 @@
-<h1 class="text-center">Khan Academy Myanmar Community</h1>
-<p>This is the home page.</p>
+<div class="row">
+  <center>
+    <div style="margin-top:100px;">
+      <%= image_tag 'khan-academy.png', :class => 'img-responsive' %>
+    </div>
+    <div style="margin-top:-25px;">
+      <h1>Contribute to Learning Today!</h1>
+      <h5>Join us in bringing free education to Myanmar by translating important videos from Khan Academy.</h5>
+      <%= link_to 'Get Started', new_user_registration_path, :class => 'btn btn-default', :style => 'margin-top:20px;' %>
+    </div>
+  </center>
+</div>
