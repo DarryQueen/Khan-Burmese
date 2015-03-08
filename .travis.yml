@@ -6,3 +6,15 @@ script:
   - bundle exec rake db:schema:load
   - bundle exec rake db:test:prepare
   - bundle exec rake
+branches:
+  only:
+    - master
+notifications:
+  email:
+    recipients:
+      - darryqueen@berkeley.edu
+      - edwhang@berkeley.edu
+      - bwasmith@berkeley.edu
+      - nalnaji@berkeley.edu
+      - nishadsingh@berkeley.edu
+      - jshum@berkeley.edu
