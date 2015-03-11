@@ -3,15 +3,86 @@ body {
 }
 
 /* Color override for social buttons. */
+
 .btn-social {
   border-color: rgba(0,0,0,0.2);
 }
+
 .btn-social:hover, .btn-social:focus {
   color: #fff;
 }
+
 .btn-facebook:hover {
   background-color: #3b5998;
 }
-.btn-google-plus:hover   {
+
+.btn-google-plus:hover {
   background-color: #dd4b39;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+/* Logo */
+
+.img-logo {
+  height: 35px;
+  width: 35px;
+  display: inline-block;
+  float: left;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.inline-logo {
+  display: inline-block;
+}
+
+/* Modules (Dashboard)*/
+
+.module {
+  border-radius: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-bottom: 10px;
+}
+
+.module .panel-heading {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.module table {
+  margin-left: 7px;
+  margin-right: 7px;
+  padding-bottom: 10px;
+}
+
+.module .goals {
+  list-style-type: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.module ul li:last-child {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+/* Ranking */
+
+.module > .media-body {
+  width: 100%;
+}
+
+.module > .media-heading {
+  margin-top: 12px;
+}
+
+.profile-pic {
+  margin-left: 10px;
+  height: 50px;
+  width: 50px;
 }
