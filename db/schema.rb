@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150312215548) do
+ActiveRecord::Schema.define(:version => 20150312234511) do
 
   create_table "identities", :force => true do |t|
     t.integer  "user_id"
@@ -50,6 +50,10 @@ ActiveRecord::Schema.define(:version => 20150312215548) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "role"
+    t.string   "name"
+    t.string   "city"
+    t.string   "country"
+    t.text     "bio"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -59,8 +63,8 @@ ActiveRecord::Schema.define(:version => 20150312215548) do
     t.string   "youtube_id"
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end
