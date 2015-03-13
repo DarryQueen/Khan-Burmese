@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable,
          :rememberable, :trackable, :validatable, :omniauthable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :role,
+                  :name, :city, :country, :country, :bio
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
