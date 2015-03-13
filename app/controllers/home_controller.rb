@@ -4,7 +4,10 @@ class HomeController < ApplicationController
   def index
     if user_signed_in?
       flash.keep
-      redirect_to after_login_path
+      redirect_to dashboard_path
     end
+  end
+
+  def dashboard
   end
 end
