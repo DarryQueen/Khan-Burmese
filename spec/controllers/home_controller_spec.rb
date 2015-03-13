@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TestController do
+describe HomeController do
   describe "user logged in" do
     login_user
 
