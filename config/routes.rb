@@ -7,6 +7,8 @@ KhanBurmese::Application.routes.draw do
   root :to => 'home#index'
   get 'home' => 'home#dashboard', :as => :dashboard
 
+  resources :videos
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <b>Videos Listing</b>
+  </div>
+  <table class="table">
+    <tbody>
+      <% @videos.each do |video| %>
+        <tr>
+          <td>
+            <%= link_to video.title, video %>
+          </td>
+          <td><%= video.youtube_link %><td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
