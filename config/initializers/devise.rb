@@ -260,7 +260,6 @@ Devise.setup do |config|
 
   #To set up figaro, create or update the file "app/config/application.yml" 
   #(the format is found in application.yml.default)
-  Figaro.require_keys('facebook_public_key', 'facebook_private_key', 'google_public_key', 'google_private_key')
 
   config.omniauth :facebook, ENV['facebook_public_key'], ENV['facebook_private_key']
   config.omniauth :google_oauth2, ENV['google_public_key'], ENV['google_private_key'], {}
