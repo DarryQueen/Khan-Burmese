@@ -7,7 +7,10 @@ KhanBurmese::Application.routes.draw do
   root :to => 'home#index'
   get 'home' => 'home#dashboard', :as => :dashboard
 
-  resources :videos
+  resources :videos do
+    # Autocompletion for tags:
+    get :autocomplete_tag_name, :on => :collection
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

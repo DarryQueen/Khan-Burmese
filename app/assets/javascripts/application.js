@@ -14,4 +14,5 @@
 //= require jquery-ui-custom.min
 //= require jquery_ujs
 //= require_tree .
+//= require autocomplete-rails.min
 //= require bootstrap.min
