@@ -1,1 +1,8 @@
 $('#video-list').html("<%= escape_javascript(render('video_list')) %>");
+
+// Disable form submission by pressing "enter":
+$('#video-search').bind("keypress", function(e) {
+  if (e.keyCode == 13) {
+    return false;
+  }
+});
