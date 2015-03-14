@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :store_location, :authenticate_user!
+  before_filter :check_keys, :store_location, :authenticate_user!
 
   # Set post-login path to previous URL:
   def after_sign_in_path_for(resource)
@@ -34,6 +34,22 @@ class ApplicationController < ActionController::Base
       return if request.xhr? or request.path.match(Regexp.union(ignore_paths))
       session[:previous_url] = request.fullpath
     rescue
+    end
+  end
+
+  # Check if API keys have been set:
+  def check_keys
+    return unless Rails.env.development?
+    begin
+      Figaro.require_keys('facebook_public_key', 'facebook_private_key', 'google_public_key', 'google_private_key')
+    rescue Figaro::MissingKeys
+      error_message = 'Warning! You haven\'t set your keys in <code>config/application.yml</code>!'
+      if flash[:alert]
+        flash.now[:alert] = flash.now[:alert].gsub(/#{error_message}(<br \/>)?/, '')
+        flash.now[:alert] = ("#{error_message}<br />" + flash.now[:alert]).html_safe
+      else
+        flash.now[:alert] = error_message.html_safe
+      end
     end
   end
 end
