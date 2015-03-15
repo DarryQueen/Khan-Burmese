@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
+
   protect_from_forgery
   before_filter :check_keys, :store_location, :authenticate_user!
 
@@ -9,9 +11,9 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     begin
-      redirect_to :back, :flash => { :alert => exception.message }
+      redirect_to :back, :flash => { :alert => [exception.message] }
     rescue ActionController::RedirectBackError
-      redirect_to '/', :flash => { :alert => exception.message }
+      redirect_to '/', :flash => { :alert => [exception.message] }
     end
   end
 
@@ -44,12 +46,7 @@ class ApplicationController < ActionController::Base
       Figaro.require_keys('facebook_public_key', 'facebook_private_key', 'google_public_key', 'google_private_key')
     rescue Figaro::MissingKeys
       error_message = 'Warning! You haven\'t set your keys in <code>config/application.yml</code>!'
-      if flash[:alert]
-        flash.now[:alert] = flash.now[:alert].gsub(/#{error_message}(<br \/>)?/, '')
-        flash.now[:alert] = ("#{error_message}<br />" + flash.now[:alert]).html_safe
-      else
-        flash.now[:alert] = error_message.html_safe
-      end
+      add_flash(:alert, error_message, :now => true, :beginning => true)
     end
   end
 end
