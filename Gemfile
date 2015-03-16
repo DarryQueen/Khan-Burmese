@@ -29,6 +29,9 @@ gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch =>
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
+gem 'roadie'
+gem 'roadie-rails'
+
 # Handle API secrets:
 gem 'figaro'
 

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+     <%= KhanBurmese::Application.assets['bootstrap-email.min.css'].to_s.html_safe %>
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <%= yield %>
+</div>
+</body>
+</html>
