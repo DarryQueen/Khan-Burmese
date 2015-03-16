@@ -11,6 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui-custom.min
 //= require jquery_ujs
 //= require_tree .
+//= require autocomplete-rails.min
 //= require bootstrap.min

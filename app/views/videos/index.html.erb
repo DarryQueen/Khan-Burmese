@@ -1,9 +1,27 @@
-<%= form_tag videos_path, :method => 'get', :class => 'form-search', :id => 'video-search', :autocomplete => 'off' do %>
-  <%= text_field_tag :search, nil, :class => 'form-control', :placeholder => 'Search by category or name.' %>
+<%= form_tag videos_path, :method => 'get', :class => 'form-search', :id => 'video-search' do %>
+  <%= autocomplete_field_tag :search, nil, autocomplete_tag_name_videos_path, {
+    :class => 'form-control',
+    :placeholder => 'Search by category or name.',
+    :'data-delimiter' => ' ',
+    :tabindex => '-1',
+  } %>
 <% end %>
 
 <br />
 
 <div id="video-list">
-  <%= render 'video_list' %>
 </div>
+
+<!-- Javascript here: -->
+<%= javascript_tag do %>
+
+$(function() {
+  $('#video-search input').keyup(function() {
+    $.get($('#video-search').attr('action'), $('#video-search').serialize(), null, 'script');
+    return false;
+  });
+  $('#video-search input').keyup();
+  $('#search').focus();
+});
+
+<% end %>

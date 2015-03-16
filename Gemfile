@@ -32,6 +32,10 @@ gem 'omniauth-google-oauth2'
 # Handle API secrets:
 gem 'figaro'
 
+# Categorization:
+gem 'acts-as-taggable-on', '~> 3.4'
+gem 'rails3-jquery-autocomplete'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

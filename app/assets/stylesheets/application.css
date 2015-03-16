@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require jquery-ui-custom.min
  *= require bootstrap.min
  *= require bootstrap-social.min
  *= require font-awesome.min
