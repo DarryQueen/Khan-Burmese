@@ -34,4 +34,12 @@ KhanBurmese::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # Devise setup:
+  config.action_mailer.default_url_options = { :host => 'localhost', :port => 3000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => 'localhost', :port => 1025 }
+
+  # Set to false else Cucumber will Mailcatcher running:
+  config.action_mailer.perform_deliveries = false
 end
