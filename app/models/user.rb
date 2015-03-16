@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_REGEX = /\Achange@me/
 
   devise :database_authenticatable, :registerable, :recoverable,
-         :rememberable, :trackable, :validatable, :omniauthable
+         :rememberable, :trackable, :validatable, :omniauthable, :confirmable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role,
                   :name, :city, :country, :country, :bio
