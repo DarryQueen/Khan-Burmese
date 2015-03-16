@@ -9,3 +9,5 @@ production:
   facebook_private_key: 'INSERT_FACEBOOK_APP_SECRET'
   google_public_key: 'INSERT_GOOGLE_PUBLIC_KEY'
   google_private_key: 'INSERT_GOOGLE_PRIVATE_KEY'
+  sendgrid_username: 'INSERT_SENDGRID_USERNAME'
+  sendgrid_password: 'INSERT_SENDGRID_PASSWORD'
