@@ -5,7 +5,7 @@ end
 Given /^I log in by email$/ do
   email = 'testing@man.net'
   password = 'secretpass'
-  User.new(:email => email, :password => password, :password_confirmation => password).save!
+  User.create(:email => email, :password => password, :password_confirmation => password).confirm!
 
   visit '/users/sign_in'
   fill_in "user_email", :with => email

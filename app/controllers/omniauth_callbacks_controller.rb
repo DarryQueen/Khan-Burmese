@@ -3,6 +3,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     class_eval %Q{
       def #{provider}
         @user = User.find_for_oauth(env["omniauth.auth"], current_user)
+        @user.skip_confirmation!
 
         if @user.persisted?
           sign_in_and_redirect @user, event: :authentication

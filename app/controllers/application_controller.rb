@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
         user_omniauth_authorize_path(:provider => 'google_oauth2'),
         new_user_session_path, new_user_registration_path,
         new_user_password_path, edit_user_password_path,
-        destroy_user_session_path
+        destroy_user_session_path, user_confirmation_path
       ]
 
       return if request.xhr? or request.path.match(Regexp.union(ignore_paths))

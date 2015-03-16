@@ -62,5 +62,10 @@ module KhanBurmese
 
     # Fix for Bootstrap fonts.
     config.assets.paths << "#{Rails}/vendor/assets/fonts"
+
+    # Devise and Roadie integration:
+    config.to_prepare do
+      Devise::Mailer.layout 'email'
+    end
   end
 end

@@ -4,6 +4,6 @@ Given /^the following users:$/ do |users|
     password = user['password']
     role = user['role']
 
-    user = User.create(:email => email, :password => password, :password_confirmation => password, :role => role)
+    User.create(:email => email, :password => password, :password_confirmation => password, :role => role).confirm!
   end
 end
