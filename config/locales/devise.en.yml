@@ -15,7 +15,7 @@ en:
       not_found_in_database: "Invalid %{authentication_keys} or password."
       timeout: "Your session expired. Please sign in again to continue."
       unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your email address before continuing."
+      unconfirmed: "You have to confirm your email address before continuing. Click <a href=\"/users/confirmation/new\">here</a> to resend confirmation instructions."
     mailer:
       confirmation_instructions:
         subject: "Confirmation Instructions"
@@ -50,9 +50,9 @@ en:
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   errors:
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
-      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
-      expired: "has expired, please request a new one"
+      already_confirmed: "Your account was already confirmed; please try signing in."
+      confirmation_period_expired: "Your account needs to be confirmed within %{period}; please request a new confirmation."
+      expired: "Your account has expired; please request a new one."
       not_found: "not found"
       not_locked: "was not locked"
       not_saved:

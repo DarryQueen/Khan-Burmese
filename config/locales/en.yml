@@ -9,6 +9,7 @@ en:
     errors:
       messages:
         not_found: "%{model} not found."
+        blank: "%{attribute} can't be blank."
       models:
         user:
           attributes:
