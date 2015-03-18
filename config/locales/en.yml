@@ -10,6 +10,7 @@ en:
       messages:
         not_found: "%{model} not found."
         blank: "%{attribute} can't be blank."
+        invalid: "%{attribute} is invalid."
       models:
         user:
           attributes:
