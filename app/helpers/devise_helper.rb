@@ -6,5 +6,6 @@ module DeviseHelper
 
     messages = resource.errors.full_messages
     messages.each { |message| add_flash(:alert, message, :now => true) }
+    ''
   end
 end
