@@ -19,3 +19,14 @@ Given /^(?:|I )am logged in as "([^"]*)" with password "([^"]*)"$/ do |email, pa
   fill_in "user_password", :with => password
   click_button "Log In"
 end
+
+Given /^(?:|I )am logged in( as admin)?$/ do |admin|
+  email = 'grace@kelly.com'
+  password = 'iamthequeen'
+  role = admin ? 'admin' : 'volunteer'
+  User.create(:email => email, :password => password, :password_confirmation => password, :role => role).confirm!
+
+  steps %Q{
+    Given I am logged in as "#{email}" with password "#{password}"
+  }
+end
