@@ -2,6 +2,9 @@ language: ruby
 rvm:
   - 1.9.3
 env: facebook_public_key=test facebook_private_key=test google_public_key=test google_private_key=test
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
 script:
   - bundle exec rake db:schema:load
   - bundle exec rake db:test:prepare

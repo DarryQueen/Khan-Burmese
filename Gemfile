@@ -12,6 +12,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false
   gem 'rspec-rails', '~> 2.14.0'
+  gem 'selenium-webdriver'
   gem 'simplecov'
   gem 'factory_girl_rails', '~> 4.0'
 end
