@@ -24,7 +24,7 @@ body {
   padding: 0px;
 }
 
-/* Logo */
+/* Logo. */
 
 .img-logo {
   height: 35px;
@@ -39,7 +39,7 @@ body {
   display: inline-block;
 }
 
-/* Modules (Dashboard)*/
+/* Dashboard modules. */
 
 .module {
   border-radius: 15px;
@@ -71,7 +71,7 @@ body {
   border-bottom-right-radius: 15px;
 }
 
-/* Ranking */
+/* Ranking. */
 
 .module > .media-body {
   width: 100%;
