@@ -1,5 +1,5 @@
 class Video < ActiveRecord::Base
-  attr_accessible :description, :title, :youtube_id
+  attr_accessible :description, :title, :youtube_id, :starred
   acts_as_taggable
 
   def youtube_link
