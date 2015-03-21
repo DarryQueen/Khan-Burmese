@@ -10,6 +10,8 @@ KhanBurmese::Application.routes.draw do
   resources :videos do
     # Autocompletion for tags:
     get :autocomplete_tag_name, :on => :collection
+    # Star or unstar videos:
+    put :toggle_star
   end
 
   # The priority is based upon order of creation:

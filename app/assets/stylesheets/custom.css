@@ -2,6 +2,12 @@ body {
   padding-top: 70px;
 }
 
+/* Wrapper div. */
+
+.wrapper {
+  display: inline;
+}
+
 /* Color override for social buttons. */
 
 .btn-social {
@@ -85,4 +91,18 @@ body {
   margin-left: 10px;
   height: 50px;
   width: 50px;
+}
+
+/* Video stars. */
+
+.fa-starry {
+  margin-right: 10px;
+}
+
+.fa-star-starred {
+  color: #30a7fc;
+}
+
+.fa-star-unstarred {
+  color: #888;
 }
