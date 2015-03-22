@@ -25,4 +25,9 @@ $(function() {
   $('#search').focus();
 });
 
+function starClick(element) {
+  wrapper = $(element.parentNode);
+  wrapper.html('<i class="fa fa-spinner fa-pulse fa-starry fa-lg fa-fw"></i>');
+}
+
 <% end %>

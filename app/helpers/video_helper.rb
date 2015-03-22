@@ -6,7 +6,7 @@ module VideoHelper
     html = ''
     if can? :star, video
       i_class = ''
-      options = { :'data-method' => :put, :remote => true }
+      options = { :'data-method' => :put, :remote => true, :onclick => 'starClick(this);' }
 
       if video.starred
         i_class = i_starred
