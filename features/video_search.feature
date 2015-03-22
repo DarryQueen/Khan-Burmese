@@ -31,7 +31,7 @@ Scenario: Search for a specific video by title.
 
 @javascript
 Scenario: Search for videos by tag.
-  When I fill in "search" with "action"
+  When I fill in "search" with "action "
   Then I should see "Star Trek"
   And I should see "Crouching Tiger, Hidden Dragon"
 
