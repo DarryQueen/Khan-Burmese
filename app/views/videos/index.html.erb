@@ -12,17 +12,3 @@
 
 <div id="video-list">
 </div>
-
-<!-- Javascript here: -->
-<%= javascript_tag do %>
-
-$(function() {
-  $('#video-search input').keyup(function() {
-    $.get($('#video-search').attr('action'), $('#video-search').serialize(), null, 'script');
-    return false;
-  });
-  $('#video-search input').keyup();
-  $('#search').focus();
-});
-
-<% end %>
