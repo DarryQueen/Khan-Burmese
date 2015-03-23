@@ -1,3 +1,8 @@
-# Seed single administrator.
-user = User.create :email => 'admin@test.com', :password => 'administrator', :password_confirmation => 'administrator', :role => 'superadmin'
-puts 'New user created: ' << user.email
+development_seeds = []
+
+development_seeds.each do |seed|
+  seed_file = "#{Rails.root}/db/seeds/#{seed}.rb"
+  if File.exists?(seed_file)
+    require seed_file
+  end
+end
