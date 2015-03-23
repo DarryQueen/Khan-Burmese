@@ -6,10 +6,10 @@ Feature: Perform video searching with AJAX.
 
 Background:
   Given the following videos:
-    | title                          | description        | youtube_id  | tags                                               |
-    | The Help                       | A great movie.     | J_ajv_6pUnI | emma, stone, viola, davis, jessica, chastain       |
-    | Star Trek                      | A good movie.      | sKqDROmF6go | chris, pine, zoe, saldana, zachary, quinto, action |
-    | Crouching Tiger, Hidden Dragon | A wonderful movie. | s1hs62Is67s | zhang, ziyi, michelle, yeoh, chow, yunfat, action  |
+    | title                          | description        | youtube_id  | tags                                               | starred |
+    | The Help                       | A great movie.     | J_ajv_6pUnI | emma, stone, viola, davis, jessica, chastain       | true    |
+    | Star Trek                      | A good movie.      | sKqDROmF6go | chris, pine, zoe, saldana, zachary, quinto, action | false   |
+    | Crouching Tiger, Hidden Dragon | A wonderful movie. | s1hs62Is67s | zhang, ziyi, michelle, yeoh, chow, yunfat, action  | false   |
   And I am logged in
   And I am on the videos page
 
@@ -18,6 +18,8 @@ Scenario: See entire videos listing.
   Then I should see "The Help"
   And I should see "Star Trek"
   And I should see "Crouching Tiger, Hidden Dragon"
+  And I should see a star next to "The Help"
+  And I should not see a star next to "Star Trek"
 
 @javascript
 Scenario: See suggested tags.
