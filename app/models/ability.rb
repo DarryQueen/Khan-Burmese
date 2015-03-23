@@ -17,15 +17,15 @@ class Ability
     can :access, :rails_admin
     can :dashboard
 
-    # Videos:
-    can :star, :videos
-
     # Superior power. Use with discretion.
     can :manage, :all
   end
 
   def admin
     volunteer
+
+    # Videos:
+    can :star, Video
 
     can :manage, User
   end
