@@ -1,5 +1,5 @@
-body {
-  padding-top: 70px;
+html{
+  min-width: 500px;
 }
 
 /* Wrapper div. */
@@ -30,19 +30,69 @@ body {
   padding: 0px;
 }
 
-/* Logo. */
+/* Nav. */
 
 .img-logo {
   height: 35px;
   width: 35px;
   display: inline-block;
   float: left;
-  margin-top: 5px;
+  margin-top: 7px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.inline-nav {
+  display: inline-block;
+}
+
+.khan-nav .navbar-brand {
+  color: #333333;
+  padding-left: 0px;
+  margin-left: 0px !important;
+}
+
+.khan-nav .navbar-toggle {
+  margin-right: 10px;
+}
+
+.khan-nav .navbar-header {
+  margin-right: 0px;
+  margin-left: 0px;
+  float: left;
+}
+
+.khan-nav .navbar-signin {
+  float: right;
+  position: relative;
   margin-right: 5px;
 }
 
-.inline-logo {
-  display: inline-block;
+.khan-nav .dropdown-toggle {
+  padding-right: 5px;
+}
+
+.khan-nav .nav-mini {
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .khan-nav li:not(:last-child) a {
+    text-align: center;
+    color: #333333;
+  }
+  .khan-nav .dropdown {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .khan-nav .nav-mini {
+    display: none;
+  }
+  .khan-nav .dropdown:hover .dropdown-menu {
+    display: block;
+  }
 }
 
 /* Dashboard modules. */
@@ -51,7 +101,6 @@ body {
   border-radius: 15px;
   margin-left: 10px;
   margin-right: 10px;
-  padding-bottom: 10px;
 }
 
 .module .panel-heading {
@@ -59,28 +108,65 @@ body {
   border-top-right-radius: 15px;
 }
 
-.module table {
-  margin-left: 7px;
-  margin-right: 7px;
-  padding-bottom: 10px;
+.module .panel-heading a b{
+  color: #333333;
+}
+
+.module .panel-heading a:hover {
+  text-decoration: none;
+}
+.module .panel-heading a:focus {
+  text-decoration: none;
+}
+.module .panel-padding {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.module .table {
+  margin-bottom: 10px;
 }
 
 .module .goals {
   list-style-type: none;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
   padding-top: 10px;
 }
 
 .module ul li:last-child {
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px !important;
+  border-bottom-right-radius: 15px !important;
+}
+
+/* Videos. */
+
+.module-videos th {
+  color: #999999;
+}
+
+.module-videos td:first-child a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.module-videos .btn {
+  min-width: 55px;
 }
 
 /* Ranking. */
 
+.module .media {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
 .module > .media-body {
   width: 100%;
+}
+
+.module > .media:last-child{
+  margin-bottom: 10px;
 }
 
 .module > .media-heading {
