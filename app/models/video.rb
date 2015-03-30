@@ -2,6 +2,9 @@ class Video < ActiveRecord::Base
   attr_accessible :description, :title, :youtube_id, :starred
   acts_as_taggable
 
+  has_many :translations
+  has_many :translators, :through => :translations, :source => :user
+
   def youtube_link
     "https://www.youtube.com/watch?v=#{self.youtube_id}"
   end
