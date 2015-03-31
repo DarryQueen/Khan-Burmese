@@ -35,4 +35,24 @@ describe User, :type => :model do
       }.to change(User, :count).by(1)
     end
   end
+
+  describe "accessing translations and related videos" do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      @video = FactoryGirl.create(:video)
+      @translation = Translation.create(:user => @user, :video => @video)
+    end
+
+    it "should be able to access translations through user.translations" do
+      expect {@user.translations}.not_to raise_error
+      translations = @user.translations
+      expect(translations).to include @translation
+    end
+
+    it "should be able to access videos through user.translated_videos" do
+      expect {@user.translated_videos}.not_to raise_error
+      videos = @user.translated_videos
+      expect(videos).to include @video
+    end
+  end
 end
