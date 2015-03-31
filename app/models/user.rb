@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
 
   after_create :assign_default_role
 
+  has_many :translations
+  has_many :translated_videos, :through => :translations, :source => :video
+
   def is?(role)
     role.to_s == self.role
   end

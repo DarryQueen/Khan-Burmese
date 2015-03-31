@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150321032226) do
+ActiveRecord::Schema.define(:version => 20150330225258) do
 
   create_table "identities", :force => true do |t|
     t.integer  "user_id"
@@ -55,6 +55,13 @@ ActiveRecord::Schema.define(:version => 20150321032226) do
   end
 
   add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
+
+  create_table "translations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "video_id"
+    t.datetime "time_assigned"
+    t.datetime "time_last_updated"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
