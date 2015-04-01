@@ -21,4 +21,10 @@ FactoryGirl.define do
     uid 'liara'
     provider 'facebook'
   end
+
+  factory :video, class: Video do
+    title 'Factory-Created Video'
+    youtube_id 'FavUpD_IjVY'
+    description 'Factory-created description.'
+  end
 end
