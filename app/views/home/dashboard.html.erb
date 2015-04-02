@@ -1,144 +1,155 @@
 <div class="col-md-8 no-padding">
-  <div class="panel panel-default module">
+  <div class="panel panel-default module module-videos">
     <div class="panel-heading">
       <b>In Progress Videos</b>
-      <a class="pull-right" href="#"><i class="fa fa-plus-circle"></i></a>
+      <%= link_to videos_path, {:class => 'pull-right'} do %>
+       <i class="fa fa-plus-circle"></i>
+      <% end %>
     </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Category</th>
-          <th>Duration</th>
-          <th>Completed</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="#">Area of a Shaded Region</a></td>
-          <td>Math</td>
-          <td>1:31</td>
-          <td>11%</td>
-          <td><a href="#" class="btn btn-warning btn-xs">Submit</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">Area of an Equilateral Triangle</a></td>
-          <td>Math</td>
-          <td>3:42</td>
-          <td>76%</td>
-          <td><a href="#" class="btn btn-warning btn-xs">Submit</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">Area of a Sector Given an Angle</a></td>
-          <td>Math</td>
-          <td>2:26</td>
-          <td>30%</td>
-          <td><a href="#" class="btn btn-warning btn-xs">Submit</a></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="panel-padding">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Duration</th>
+            <th>Completed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#">Area of a Shaded Region</a></td>
+            <td>Math</td>
+            <td>1:31</td>
+            <td>11%</td>
+            <td><a href="#" class="btn btn-warning btn-xs">Submit</a></td>
+          </tr>
+          <tr>
+            <td><a href="#">Area of an Equilateral Triangle</a></td>
+            <td>Math</td>
+            <td>3:42</td>
+            <td>76%</td>
+            <td><a href="#" class="btn btn-warning btn-xs">Submit</a></td>
+          </tr>
+          <tr>
+            <td><a href="#">Area of a Sector Given an Angle</a></td>
+            <td>Math</td>
+            <td>2:26</td>
+            <td>30%</td>
+            <td><a href="#" class="btn btn-warning btn-xs">Submit</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
-  <div class="panel panel-default module">
+  <div class="panel panel-default module module-videos">
     <div class="panel-heading">
       <b>Recently Translated Videos</b>
-      <a class="pull-right" href="#"><i class="fa fa-plus-circle"></i></a>
+      <%= link_to videos_path, {:class => 'pull-right'} do %>
+       <i class="fa fa-plus-circle"></i>
+      <% end %>
     </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Category</th>
-          <th>Duration</th>
-          <th>Completed</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="#">Combining Like Terms 1</a></td>
-          <td>Math</td>
-          <td>3:23</td>
-          <td>100%</td>
-          <td><a href="#" class="btn btn-success btn-xs">Check</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">Combining Like Terms 2</a></td>
-          <td>Math</td>
-          <td>2:14</td>
-          <td>100%</td>
-          <td><a href="#" class="btn btn-success btn-xs">Check</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">Comparing Linear Functions 1</a></td>
-          <td>Math</td>
-          <td>1:09</td>
-          <td>100%</td>
-          <td><a href="#" class="btn btn-success btn-xs">Check</a></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="panel-padding">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Duration</th>
+            <th>Completed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#">Combining Like Terms 1</a></td>
+            <td>Math</td>
+            <td>3:23</td>
+            <td>100%</td>
+            <td><a href="#" class="btn btn-success btn-xs">Check</a></td>
+          </tr>
+          <tr>
+            <td><a href="#">Combining Like Terms 2</a></td>
+            <td>Math</td>
+            <td>2:14</td>
+            <td>100%</td>
+            <td><a href="#" class="btn btn-success btn-xs">Check</a></td>
+          </tr>
+          <tr>
+            <td><a href="#">Comparing Linear Functions 1</a></td>
+            <td>Math</td>
+            <td>1:09</td>
+            <td>100%</td>
+            <td><a href="#" class="btn btn-success btn-xs">Check</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
-  <div class="panel panel-default module">
+  <div class="panel panel-default module module-videos">
     <div class="panel-heading">
       <b>Top Priority Videos</b>
-      <a class="pull-right" href="#"><i class="fa fa-plus-circle"></i></a>
+      <%= link_to videos_path, {:class => 'pull-right'} do %>
+       <i class="fa fa-plus-circle"></i>
+      <% end %>
     </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Category</th>
-          <th>Duration</th>
-          <th>Completed</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="#">Addition Elimination Method</a></td>
-          <td>Math</td>
-          <td>2:01</td>
-          <td>0%</td>
-          <td><a href="#" class="btn btn-primary btn-xs">Select</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">Adding in Binary</a></td>
-          <td>Math</td>
-          <td>1:14</td>
-          <td>0%</td>
-          <td><a href="#" class="btn btn-primary btn-xs">Select</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">Adding Expressions 1</a></td>
-          <td>Math</td>
-          <td>1:02</td>
-          <td>0%</td>
-          <td><a href="#" class="btn btn-primary btn-xs">Select</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">Adding Expressions 2</a></td>
-          <td>Math</td>
-          <td>1:32</td>
-          <td>0%</td>
-          <td><a href="#" class="btn btn-primary btn-xs">Select</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">Adding Expressions 3</a></td>
-          <td>Math</td>
-          <td>1:21</td>
-          <td>0%</td>
-          <td><a href="#" class="btn btn-primary btn-xs">Select</a></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="panel-padding">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Duration</th>
+            <th>Completed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#">Addition Elimination Method</a></td>
+            <td>Math</td>
+            <td>2:01</td>
+            <td>0%</td>
+            <td><a href="#" class="btn btn-primary btn-xs">Select</a></td>
+          </tr>
+          <tr>
+            <td><a href="#">Adding in Binary</a></td>
+            <td>Math</td>
+            <td>1:14</td>
+            <td>0%</td>
+            <td><a href="#" class="btn btn-primary btn-xs">Select</a></td>
+          </tr>
+          <tr>
+            <td><a href="#">Adding Expressions 1</a></td>
+            <td>Math</td>
+            <td>1:02</td>
+            <td>0%</td>
+            <td><a href="#" class="btn btn-primary btn-xs">Select</a></td>
+          </tr>
+          <tr>
+            <td><a href="#">Adding Expressions 2</a></td>
+            <td>Math</td>
+            <td>1:32</td>
+            <td>0%</td>
+            <td><a href="#" class="btn btn-primary btn-xs">Select</a></td>
+          </tr>
+          <tr>
+            <td><a href="#">Adding Expressions 3</a></td>
+            <td>Math</td>
+            <td>1:21</td>
+            <td>0%</td>
+            <td><a href="#" class="btn btn-primary btn-xs">Select</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
 <div class="col-md-4 no-padding">
   <div class="panel panel-default module">
     <div class="panel-heading">
-      <b>Personal Accomplishments</b>
-      <a class="pull-right" href="#"><i class="fa fa-plus-circle"></i></a>
+      <a href="#"><b>Personal Accomplishments</b></a>
     </div>
     <ul class="list-group">
       <li class="list-group-item">
@@ -147,7 +158,7 @@
       </li>
       <li class="list-group-item">
         <span class="badge">23</span>
-        Recently Translated Videos
+        Reviewed Videos
       </li>
       <li class="list-group-item">
         <span class="badge">21</span>
@@ -158,8 +169,7 @@
 
   <div class="panel panel-default module">
     <div class="panel-heading">
-      <b>Collaborative Weekly Goals</b>
-      <a class="pull-right" href="#"><i class="fa fa-plus-circle"></i></a>
+      <a href="#"><b>Collaborative Weekly Goals</b></a>
     </div>
       <ul class="goals">
       <li>New Translators</li>
@@ -190,8 +200,7 @@
 
   <div class="panel panel-default module">
     <div class="panel-heading">
-      <b>Rankings</b>
-      <a class="pull-right" href="#"><i class="fa fa-plus-circle"></i></a>
+      <a href="#"><b>Rankings</b></a>
     </div>
     <div class="media">
       <div class="media-left media-middle">
@@ -201,6 +210,7 @@
       </div>
       <div class="media-body">
         <p class="media-heading">Edward Whang</p>
+        <span class="badge">31 Videos Translated</span>
       </div>
     </div>
     <div class="media">
@@ -211,6 +221,7 @@
       </div>
       <div class="media-body">
         <p class="media-heading">Darren Zhao</p>
+        <span class="badge">25 Videos Translated</span>
       </div>
     </div>
     <div class="media">
@@ -221,6 +232,7 @@
       </div>
       <div class="media-body">
         <p class="media-heading">Naseem Alnaji</p>
+        <span class="badge">21 Videos Translated</span>
       </div>
     </div>
   </div>
