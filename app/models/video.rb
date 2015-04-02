@@ -6,7 +6,7 @@ class Video < ActiveRecord::Base
   has_many :translators, :through => :translations, :source => :user
 
   def youtube_link
-    "https://www.youtube.com/watch?v=#{self.youtube_id}"
+    "http://www.youtube.com/embed/#{self.youtube_id}"
   end
 
   def self.search(search)

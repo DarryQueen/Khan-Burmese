@@ -12,6 +12,9 @@ KhanBurmese::Application.routes.draw do
     get :autocomplete_tag_name, :on => :collection
     # Star or unstar videos:
     put :toggle_star
+    resources :translations do
+      post 'upload' => 'translations#upload'
+    end
   end
 
   # The priority is based upon order of creation:
