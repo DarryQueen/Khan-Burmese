@@ -37,18 +37,24 @@
       <div role="tabpanel">
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane fade in active tab-amara" id="amara">
-            <b><a href="#">Link to Amara</a></b>
-            <div>To earn points, submit your completed Amara link.</div>
-            <input type="text" class="amara-form" name="amara-link">
-            <button class="btn btn-primary btn-xs">Submit</button>
+            <div>If you'd like to use Amara's translation interface, you can use the <b><a href="#">link to the Amara video</a></b>. Please, just make sure to let us know when you're done.</div>
+            <form role="form" class="tab-form">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="To earn points, submit your completed Amara link.">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </form>
           </div>
           <div role="tabpanel" class="tab-pane fade tab-srt" id="srt">
-            <b><a href="#">Download Most Recent SRT</a></b>
-            <div class="form-group">
-              <label for="uploadSRT">Upload SRT</label>
-              <input type="file" class="filestyle" data-icon="false" id="uploadSRT">
-            </div>
-            <button class="btn btn-warning btn-xs">Upload</button>
+            <div>If you want to translate offline using an SRT, you can <b><a href="#">download the video's SRT</a></b>. When you're finished translating, just ship it back to us!</div>
+            <form role="form" class="tab-form">
+              <div class="form-group">
+                <input type="file" enctype="multipart/form-data" class="filestyle" data-icon="false">
+              </div>
+              <button class="btn btn-primary">Upload</button>
+            </form>
           </div>
         </div>
       </div>

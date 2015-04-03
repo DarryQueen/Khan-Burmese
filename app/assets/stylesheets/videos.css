@@ -61,8 +61,8 @@
 }
 
 .tab-amara, .tab-srt {
-  padding-top: 15px;
-  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .btn-browse {
@@ -97,4 +97,9 @@
 
 .success-background {
   background-color: #28b62c;
+}
+
+.tab-pane .tab-form {
+  margin-top: 25px;
+  width: 500px;
 }
