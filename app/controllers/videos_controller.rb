@@ -7,6 +7,9 @@ class VideosController < ApplicationController
     }
   end
 
+  def show
+  end
+
   def toggle_star
     @video = Video.find(params[:video_id])
     authorize! :star, @video
