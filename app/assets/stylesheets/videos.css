@@ -23,7 +23,7 @@
 
 .module .video-footer {
   margin-top: 10px;
-  height: 20px;
+  height: 30px;
 }
 
 .module .video-footer > div:first-child {
@@ -58,4 +58,43 @@
     background: white;
     cursor: inherit;
     display: block;
+}
+
+.tab-amara, .tab-srt {
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.btn-browse {
+  margin-bottom: 10px;
+}
+
+.btn-translate {
+  width: 100%;
+}
+
+.btn-module {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+  height: 40px;
+}
+
+.btn-left {
+  float: left;
+  width: 48%;
+}
+
+.btn-right {
+  float: right;
+  width: 48%;
+}
+
+.tab-translation {
+  width: 50%;
+  text-align: center;
+}
+
+.success-background {
+  background-color: #28b62c;
 }
