@@ -1,0 +1,8 @@
+<div class="btn-module">
+  <% review_class = 'btn-block' %>
+  <% unless translation %>
+    <%= link_to 'Assign to Me', video_translations_path(video), :class => 'btn btn-primary btn-left', :'data-method' => :post %>
+    <% review_class = 'btn-right' %>
+  <% end %>
+  <%= link_to 'Review', '#review', :class => "btn btn-success #{review_class}" %>
+</div>

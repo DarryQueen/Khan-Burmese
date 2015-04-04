@@ -1,0 +1,47 @@
+<% if translation %>
+  <div id="translate">
+    <div class="panel-tabs">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active tab-translation">
+          <a href="#tab-amara" class="panel-title panel-title-tabs" aria-controls="home" role="tab" data-toggle="tab">
+            Translate on Amara
+          </a>
+        </li>
+        <li role="presentation" class="tab-translation">
+          <a href="#tab-srt" class="panel-title panel-title-tabs" aria-controls="srt" role="tab" data-toggle="tab">
+            Translate Offline
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel panel-default module module-padding module-tabs">
+      <div role="tabpanel">
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane fade in active tab-amara" id="tab-amara">
+            <span>If you'd like to use Amara's translation interface, you can use the <b><a href="#">link to the Amara video</a></b>. To earn points, submit your completed Amara link below.</span>
+
+            <form role="form" class="tab-form">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Copy your Amara link here.">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div role="tabpanel" class="tab-pane fade tab-srt" id="tab-srt">
+            <span>If you want to translate offline using an SRT, you can <b><a href="#">download the video's SRT</a></b>. When you're finished translating, just ship it back to us!</span>
+
+            <%= form_tag(video_translation_upload_path(video, translation), :class => 'tab-form', :multipart => true) do %>
+              <div class="form-group">
+                <%= file_field_tag 'srt', :class => 'filestyle', :'data-icon' => false %>
+              </div>
+              <%= submit_tag 'Upload', :class => 'btn btn-primary' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
