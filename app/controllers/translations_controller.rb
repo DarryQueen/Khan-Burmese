@@ -12,6 +12,16 @@ class TranslationsController < ApplicationController
     redirect_to video_path @video
   end
 
+  def destroy
+    @video = Video.find(params[:video_id])
+    @translation = Translation.find(params[:id])
+
+    authorize! :destroy, @translation
+
+    @translation.destroy
+    redirect_to video_path @video
+  end
+
   def upload
     @video = Video.find(params[:video_id])
     @translation = Translation.find(params[:translation_id])
