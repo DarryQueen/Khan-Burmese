@@ -2,12 +2,12 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new # guest user (not logged in)
+    @user = user || User.new
 
     # Administrator permissions:
-    superadmin if user.is? :superadmin
-    admin if user.is? :admin
-    volunteer if user.is? :volunteer
+    superadmin if @user.is? :superadmin
+    admin if @user.is? :admin
+    volunteer if @user.is? :volunteer
   end
 
   def superadmin
@@ -31,5 +31,10 @@ class Ability
   end
 
   def volunteer
+    # Translations:
+    can :upload, Translation, :user_id => @user.id
+    can :destroy, Translation do |translation|
+      translation.user == @user and not translation.complete
+    end
   end
 end

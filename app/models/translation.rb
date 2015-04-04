@@ -4,14 +4,26 @@ class Translation < ActiveRecord::Base
   attr_accessible :user, :video
 
   validates_presence_of :video
+  validates_uniqueness_of :user_id, :scope => :video_id
+
+  @@root_folder_name = 'public/srt/'
+
+  def complete
+    File.exist?(srt_path)
+  end
+
+  def srt_path
+    folder_name = "#{@@root_folder_name}#{self.id}/"
+    file_name =  "#{self.id}.srt"
+    File.join(folder_name, file_name)
+  end
 
   def upload_srt(srt)
     Translation.verify_file(srt)
 
-    root_folder_name = 'public/srt/'
-    Translation.make_folder(root_folder_name)
+    Translation.make_folder(@@root_folder_name)
 
-    folder_name = "#{root_folder_name}#{self.id}/"
+    folder_name = "#{@@root_folder_name}#{self.id}/"
     Translation.make_folder(folder_name)
 
     file_name =  "#{self.id}.srt"
