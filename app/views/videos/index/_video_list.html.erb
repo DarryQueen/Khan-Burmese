@@ -4,8 +4,8 @@
   </div>
   <table class="table">
     <tbody>
-      <% @videos.each do |video| %>
-        <%= render 'video_row', video: video %>
+      <% videos.each do |video| %>
+        <%= render 'videos/index/video_row', video: video %>
       <% end %>
     </tbody>
   </table>

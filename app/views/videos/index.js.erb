@@ -1,4 +1,4 @@
-$('#video-list').html("<%= escape_javascript(render('video_list')) %>");
+$('#video-list').html("<%= escape_javascript(render('videos/index/video_list', :videos => @videos)) %>");
 
 // Disable form submission advances:
 $('#video-search').bind("keypress", function(e) {
