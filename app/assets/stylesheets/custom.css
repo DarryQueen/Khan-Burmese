@@ -2,12 +2,6 @@ html{
   min-width: 500px;
 }
 
-/* Wrapper div. */
-
-.wrapper {
-  display: inline;
-}
-
 /* Color override for social buttons. */
 
 .btn-social {
@@ -181,7 +175,8 @@ html{
 
 /* Video stars. */
 
-.fa-starry {
+.star-inline {
+  display: inline;
   margin-right: 10px;
 }
 

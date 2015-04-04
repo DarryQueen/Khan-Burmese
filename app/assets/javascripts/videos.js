@@ -9,5 +9,5 @@ $(function() {
 
 function starClick(element) {
   wrapper = $(element.parentNode);
-  wrapper.html('<i class="fa fa-spinner fa-pulse fa-starry fa-lg fa-fw"></i>');
+  wrapper.html('<i class="fa fa-spinner fa-pulse fa-lg fa-fw"></i>');
 }
