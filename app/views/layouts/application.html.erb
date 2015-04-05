@@ -17,32 +17,39 @@
         <%= image_tag('/favicon.png', :class => 'img-logo') %>
         <div class="navbar-brand"><b>Khan</b>Academy <b><i>Myanmar</i></b></div>
       <% end %>
-    </div>
-    <% if user_signed_in? %>
+      <% if user_signed_in? %>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-to-nav-mini">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            <%= current_user.email %>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation"><a href="#">My Videos</a></li>
+            <li class="divider"></li>
+            <li role="presentation"><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
+          </ul>
+        </li>
+      </ul>
+      <% else %>
+        <%= link_to 'Log In', new_user_session_path, :class => 'btn btn-default navbar-btn navbar-signin' %>
+      <% end %>
+    </div>
+    <% if user_signed_in? %>
       <div class="collapse navbar-collapse" id="collapse-to-nav-mini">
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav">
           <li class="nav-mini" role="presentation"><a href="#">Profile</a></li>
-          <li class="nav-mini" role="presentation"><a href="#">Settings</a></li>
+          <li class="nav-mini" role="presentation"><a href="#">My Videos</a></li>
           <li class="nav-mini" role="presentation"><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li role="presentation"><a href="#">Profile</a></li>
-              <li role="presentation"><a href="#">Settings</a></li>
-              <li class="divider"></li>
-              <li role="presentation"><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
-            </ul>
-          </li>
         </ul>
       </div>
-    <% else %>
-      <%= link_to 'Log In', new_user_session_path, :class => 'btn btn-default navbar-btn navbar-signin' %>
     <% end %>
   </div>
 </nav>
