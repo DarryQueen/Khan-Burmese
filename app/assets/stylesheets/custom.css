@@ -54,6 +54,7 @@ html{
   margin-right: 0px;
   margin-left: 0px;
   float: left;
+  width: 100%;
 }
 
 .khan-nav .navbar-signin {
@@ -67,11 +68,15 @@ html{
 }
 
 .khan-nav .nav-mini {
-    font-weight: bold;
+  font-weight: bold;
+}
+
+.khan-nav .navbar-right {
+  margin-right: 0px;
 }
 
 @media (max-width: 768px) {
-  .khan-nav li:not(:last-child) a {
+  .khan-nav li a {
     text-align: center;
     color: #333333;
   }
