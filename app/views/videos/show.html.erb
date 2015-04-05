@@ -1,65 +1,9 @@
 <div class="col-md-8 no-padding">
-  <div class="panel panel-default module">
-    <div class="panel-heading">
-      <b>Adding and Subtracting Fractions</b>
-      <a class="pull-right" href="#"><i class="fa fa-star"></i></a>
-    </div>
-    <div class="h_iframe">
-        <!-- a transparent image is preferable -->
-        <img class="ratio" src="http://placehold.it/16x9"/>
-        <iframe width="420" height="315" src="https://www.youtube.com/embed/52ZlXsFJULI" frameborder="0" allowfullscreen></iframe>
-    </div>
+  <%= render 'videos/show/video_frame', :video => @video %>
 
-    <div class="video-footer">
-      <div class="pull-left"><b>Progress:</b></div>
-      <div class="progress pull-left">
-        <div class="progress-bar progress-bar-default" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-          <span class="sr-only">40% Complete (success)</span>
-        </div>
-      </div>
-      <div class="pull-right"><b>Views: 1,184,424</b></div>
-    </div>
-  </div>
+  <%= render 'videos/show/actions', :video => @video, :user => current_user, :translation => @user_translation %>
 
-  <div class="btn-module">
-    <a href="#translate" class="btn btn-primary btn-left">Translate</a>
-    <a href="#review" class="btn btn-success btn-right">Review</a>
-  </div>
-
-  <div id="translate">
-    <div class="panel-tabs">
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active tab-translation"><a href="#amara" class="panel-title panel-title-tabs" aria-controls="home" role="tab" data-toggle="tab">Translate on Amara</a></li>
-        <li role="presentation" class="tab-translation"><a href="#srt" class="panel-title panel-title-tabs" aria-controls="srt" role="tab" data-toggle="tab">Translate Offline</a></li>
-      </ul>
-    </div>
-    <div class="panel panel-default module module-padding module-tabs">
-      <div role="tabpanel">
-        <div class="tab-content">
-          <div role="tabpanel" class="tab-pane fade in active tab-amara" id="amara">
-            <div>If you'd like to use Amara's translation interface, you can use the <b><a href="#">link to the Amara video</a></b>. Please, just make sure to let us know when you're done.</div>
-            <form role="form" class="tab-form">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="To earn points, submit your completed Amara link.">
-                <div class="input-group-btn">
-                  <button type="button" class="btn btn-primary">Submit</button>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div role="tabpanel" class="tab-pane fade tab-srt" id="srt">
-            <div>If you want to translate offline using an SRT, you can <b><a href="#">download the video's SRT</a></b>. When you're finished translating, just ship it back to us!</div>
-            <form role="form" class="tab-form">
-              <div class="form-group">
-                <input type="file" enctype="multipart/form-data" class="filestyle" data-icon="false">
-              </div>
-              <button class="btn btn-primary">Upload</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'videos/show/translate_frame', :video => @video, :user => current_user, :translation => @user_translation %>
 
   <div id="review" class="panel panel-default module module-videos">
     <div class="panel-heading">

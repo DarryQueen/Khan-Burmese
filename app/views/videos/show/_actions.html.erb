@@ -1,0 +1,29 @@
+<div class="btn-module">
+  <% review_class = 'btn-block' %>
+  <% if translation.nil? %>
+    <%= link_to 'Assign to Me', video_translations_path(video), :class => 'btn btn-primary btn-left', :'data-method' => :post %>
+    <% review_class = 'btn-right' %>
+  <% elsif not translation.complete %>
+    <%= link_to 'Unassign Me', '#', :class => 'btn btn-danger btn-left', :data => { :toggle => 'modal', :target => '#deleteModal' } %>
+    <% review_class = 'btn-right' %>
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="deleteModalLabel">Confirm Unassignment</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to cancel this assignment? This will put this video back on the market for other users to translate.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <%= link_to 'Unassign', video_translation_path(video, translation), :class => 'btn btn-danger', :'data-method' => :delete %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= link_to 'Review', '#review', :class => "btn btn-success #{review_class}" %>
+</div>

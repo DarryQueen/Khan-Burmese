@@ -8,6 +8,8 @@ class VideosController < ApplicationController
   end
 
   def show
+    @video = Video.find(params[:id])
+    @user_translation = Translation.find_by_video_id_and_user_id(@video, current_user)
   end
 
   def toggle_star

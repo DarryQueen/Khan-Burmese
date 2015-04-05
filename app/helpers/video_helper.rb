@@ -1,7 +1,7 @@
 module VideoHelper
   def toggle_star_button(video)
-    i_starred = '<i class="fa fa-lg fa-star fa-starry fa-star-starred fa-fw"></i>'.html_safe
-    i_unstarred = '<i class="fa fa-lg fa-star fa-starry fa-star-unstarred fa-fw"></i>'.html_safe
+    i_starred = '<i class="fa fa-lg fa-star fa-star-starred fa-fw"></i>'.html_safe
+    i_unstarred = '<i class="fa fa-lg fa-star fa-star-unstarred fa-fw"></i>'.html_safe
 
     html = ''
     if can? :star, video
