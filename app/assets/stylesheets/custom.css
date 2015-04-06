@@ -188,6 +188,8 @@ html{
 
 .star-inline {
   display: inline;
+}
+.star-inline i {
   margin-right: 10px;
 }
 
