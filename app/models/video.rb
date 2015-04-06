@@ -5,6 +5,8 @@ class Video < ActiveRecord::Base
   has_many :translations
   has_many :translators, :through => :translations, :source => :user
 
+  validates_uniqueness_of :youtube_id
+
   def translated?
     not self.completed_translations.empty?
   end
@@ -25,6 +27,21 @@ class Video < ActiveRecord::Base
       (tagged_videos + title_videos).uniq
     else
       scoped
+    end
+  end
+
+  def self.import(file)
+    if File.extname(file.original_filename) != ".csv"
+      raise ArgumentError, "Only CSV files are allowed."
+    end
+
+    CSV.foreach(file.path, headers: true) do |row|
+      if row['youtube_id'].nil?
+        raise ArgumentError, "Need <code>youtube_id</code> column in CSV file.".html_safe
+      end
+
+      attributes = row.to_hash.slice('description', 'title', 'youtube_id')
+      video = Video.create(attributes)
     end
   end
 end
