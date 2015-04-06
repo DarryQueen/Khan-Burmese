@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150330225258) do
+ActiveRecord::Schema.define(:version => 20150406195923) do
 
   create_table "identities", :force => true do |t|
     t.integer  "user_id"
@@ -59,8 +59,9 @@ ActiveRecord::Schema.define(:version => 20150330225258) do
   create_table "translations", :force => true do |t|
     t.integer  "user_id"
     t.integer  "video_id"
-    t.datetime "time_assigned"
     t.datetime "time_last_updated"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
