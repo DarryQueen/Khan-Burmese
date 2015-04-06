@@ -1,0 +1,10 @@
+<h1>Previews</h1>
+<p>
+  Here you can find the list of prototypes. Note that none of these pages will work as intended; they are mockups for look-and-feel.
+
+  <div class="preview-links">
+    <% @pages.each do |page| %>
+      <b><%= link_to page.titleize, params.merge({ :page => page }) %></b>
+    <% end %>
+  </div>
+</p>
