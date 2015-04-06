@@ -1,0 +1,33 @@
+<div id="review" class="panel panel-default module module-videos">
+  <div class="panel-heading">
+    <b>Recent Translations</b>
+  </div>
+  <div class="panel-content">
+    <% if translations.empty? %>
+      <div class="panel-empty">
+        No translations yet. Be the first to make one!
+      </div>
+    <% else %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Author</th>
+            <th>Updated</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% translations.each do |translation| %>
+            <tr>
+              <td><%= translation.user.email %></td>
+              <td><%= translation.time_updated.localtime.strftime("%B %d, %Y at %l:%M") %></td>
+              <td>
+                <%= link_to 'Download', download_path(:filename => translation.srt_path), :class => 'btn btn-success btn-xs' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

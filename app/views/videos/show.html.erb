@@ -5,39 +5,7 @@
 
   <%= render 'videos/show/translate_frame', :video => @video, :user => current_user, :translation => @user_translation %>
 
-  <div id="review" class="panel panel-default module module-videos">
-    <div class="panel-heading">
-      <b>Recent Translations</b>
-    </div>
-    <div class="panel-content">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Author</th>
-            <th>Uploaded</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="#">Darren Zhao</a></td>
-            <td>1/2/14</td>
-            <td><button class="btn btn-success btn-xs">Download</button></td>
-          </tr>
-          <tr>
-            <td><a href="#">Edward Whang</a></td>
-            <td>1/2/13</td>
-            <td><button class="btn btn-success btn-xs">Download</button></td>
-          </tr>
-          <tr>
-            <td><a href="#">Edward Whang</a></td>
-            <td>1/2/12</td>
-            <td><button class="btn btn-success btn-xs">Download</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <%= render 'videos/show/translations_frame', :video => @video, :user => current_user, :translations => @completed_translations %>
 </div>
 
 <div class="col-md-4 no-padding">
