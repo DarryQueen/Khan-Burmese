@@ -94,6 +94,12 @@ html{
   }
 }
 
+/* Links on preview page. */
+
+.preview-links {
+  margin-top: 30px;
+}
+
 /* Dashboard modules. */
 
 .module {

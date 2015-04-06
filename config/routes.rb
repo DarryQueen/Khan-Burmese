@@ -7,6 +7,9 @@ KhanBurmese::Application.routes.draw do
   root :to => 'home#index'
   get 'home' => 'home#dashboard', :as => :dashboard
 
+  # For page prototypes:
+  get 'preview' => 'preview#show', :as => :prototype
+
   resources :videos do
     # Autocompletion for tags:
     get :autocomplete_tag_name, :on => :collection

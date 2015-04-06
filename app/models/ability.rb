@@ -24,6 +24,9 @@ class Ability
   def admin
     volunteer
 
+    # Previews:
+    can :read, :prototype
+
     # Videos:
     can :star, Video
 
