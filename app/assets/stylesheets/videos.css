@@ -104,3 +104,31 @@
   width: 100%;
   max-width: 500px;
 }
+
+@media (min-width: 992px) {
+  .video-filter {
+    height: 40px;
+  }
+}
+
+.padding-button {
+  padding-right: 2px;
+  padding-left: 2px;
+}
+
+.video-filter .padding-button:first-child {
+  padding-left: 0px;
+}
+
+.video-filter .padding-button:last-child {
+  padding-right: 0px;
+}
+
+.padding-button a {
+  width: 100%;
+}
+
+.video-filter .col-md-6 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
