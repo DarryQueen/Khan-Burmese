@@ -6,15 +6,77 @@
   <ul class="list-group">
     <li class="list-group-item">
       <b>Name:</b>
-      <div class="pull-right"><%= user.name %></div>
+      <% if can? :edit, user %>
+        <div class="pull-right">
+          <%= content_tag :span, user.name, {
+            :id => 'user-name',
+            :class => 'rest-in-place',
+            :data => {
+              :url => user_path(user),
+              :object => 'user',
+              :attribute => 'name',
+              :placeholder => 'Full Name'
+            }
+          } %>
+          <a class="rip-edit rip-edit-inline" onclick="$('#user-name').click();">
+            <i class="fa fa-pencil"></i>
+          </a>
+        </div>
+      <% else %>
+        <span class="pull-right"><%= user.name %></span>
+      <% end %>
     </li>
     <li class="list-group-item">
       <b>Country:</b>
-      <div class="pull-right">United States</div>
+      <% if can? :edit, user %>
+        <div class="pull-right">
+          <%= content_tag :span, user.country, {
+            :id => 'user-country',
+            :class => 'rest-in-place',
+            :data => {
+              :url => user_path(user),
+              :object => 'user',
+              :attribute => 'country',
+              :placeholder => 'Country'
+            }
+          } %>
+          <a class="rip-edit rip-edit-inline" onclick="$('#user-country').click();">
+            <i class="fa fa-pencil"></i>
+          </a>
+        </div>
+      <% else %>
+        <% if user.country.nil? || user.country.empty? %>
+          <i class="fa fa-bicycle pull-right"></i>
+        <% else %>
+          <span class="pull-right"><%= user.country %></span>
+        <% end %>
+      <% end %>
     </li>
     <li class="list-group-item">
       <b>City:</b>
-      <div class="pull-right">SF Bay Area</div>
+      <% if can? :edit, user %>
+        <div class="pull-right">
+          <%= content_tag :span, user.city, {
+            :id => 'user-city',
+            :class => 'rest-in-place',
+            :data => {
+              :url => user_path(user),
+              :object => 'user',
+              :attribute => 'city',
+              :placeholder => 'City'
+            }
+          } %>
+          <a class="rip-edit rip-edit-inline" onclick="$('#user-city').click();">
+            <i class="fa fa-pencil"></i>
+          </a>
+        </div>
+      <% else %>
+        <% if user.city.nil? || user.city.empty? %>
+          <i class="fa fa-rocket pull-right"></i>
+        <% else %>
+          <span class="pull-right"><%= user.city %></span>
+        <% end %>
+      <% end %>
     </li>
     <li class="list-group-item">
       <b>Email:</b>

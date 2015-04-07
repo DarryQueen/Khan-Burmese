@@ -23,3 +23,14 @@ form.form-search p:before {
 .img-square {
   width: 100%;
 }
+
+.rip-edit {
+  cursor: pointer;
+}
+.rip-edit.rip-edit-inline {
+  padding-left: 10px;
+}
+
+.rest-in-place.rip-bio textarea {
+  width: 100%;
+}
