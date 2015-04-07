@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
   after_create :assign_default_role
-  before_save :titleize
+  before_save :capitalize_fields
 
   has_many :translations
   has_many :translated_videos, :through => :translations, :source => :video
@@ -64,8 +64,11 @@ class User < ActiveRecord::Base
   end
 
   private
-  def titleize
-    first_name = first_name.titleize if first_name
-    last_name = last_name.titleize if last_name
+  def capitalize_fields
+    write_attribute(:first_name, first_name.titleize)
+    write_attribute(:last_name, last_name.titleize)
+
+    write_attribute(:country, country.titleize) if country
+    write_attribute(:city, city.titleize) if city
   end
 end
