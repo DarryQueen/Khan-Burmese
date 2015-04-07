@@ -8,11 +8,12 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable, :omniauthable, :confirmable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role,
-                  :name, :city, :country, :country, :bio
+                  :first_name, :last_name, :city, :country, :bio
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
   after_create :assign_default_role
+  before_save :titleize
 
   has_many :translations
   has_many :translated_videos, :through => :translations, :source => :video
@@ -62,5 +63,11 @@ class User < ActiveRecord::Base
       identity.save!
     end
     user
+  end
+
+  private
+  def titleize
+    first_name = first_name.titleize if first_name
+    last_name = last_name.titleize if last_name
   end
 end
