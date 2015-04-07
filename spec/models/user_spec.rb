@@ -9,7 +9,7 @@ describe User, :type => :model do
       auth = OpenStruct.new({
         :provider => 'facebook',
         :uid => 'liara',
-        :info => OpenStruct.new({ :email => user.email })
+        :info => OpenStruct.new({ :email => user.email, :name => 'Liara T\'Soni' })
       })
 
       Identity.stub(:find_for_oauth => facebook_id)
@@ -25,7 +25,7 @@ describe User, :type => :model do
       auth = OpenStruct.new({
         :provider => 'facebook',
         :uid => 'liara',
-        :info => OpenStruct.new({ :email => 'miranda@lawson.com' })
+        :info => OpenStruct.new({ :email => 'miranda@lawson.com', :name => 'Liara T\'Soni' })
       })
 
       Identity.stub(:find_for_oauth => facebook_id)
