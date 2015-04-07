@@ -5,6 +5,10 @@ class Video < ActiveRecord::Base
   has_many :translations
   has_many :translators, :through => :translations, :source => :user
 
+  def completed_translations
+    self.translations.select { |translation| translation.complete? }
+  end
+
   def youtube_link
     "http://www.youtube.com/embed/#{self.youtube_id}"
   end

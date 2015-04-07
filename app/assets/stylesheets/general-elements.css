@@ -19,6 +19,12 @@
   margin-right: 10px;
 }
 
+.panel-empty {
+  padding: 15px 0px 15px 0px;
+  text-align: center;
+  color: #999;
+}
+
 .panel-tabs .nav-tabs>li:last-child>a {
   margin-right: 0;
 }

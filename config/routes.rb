@@ -10,6 +10,9 @@ KhanBurmese::Application.routes.draw do
   # For page prototypes:
   get 'preview' => 'preview#show', :as => :prototype
 
+  # Download files:
+  get 'download' => 'files#download'
+
   resources :videos do
     # Autocompletion for tags:
     get :autocomplete_tag_name, :on => :collection

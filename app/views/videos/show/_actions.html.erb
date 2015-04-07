@@ -3,7 +3,7 @@
   <% if translation.nil? %>
     <%= link_to 'Assign to Me', video_translations_path(video), :class => 'btn btn-primary btn-left', :'data-method' => :post %>
     <% review_class = 'btn-right' %>
-  <% elsif not translation.complete %>
+  <% elsif not translation.complete? %>
     <%= link_to 'Unassign Me', '#', :class => 'btn btn-danger btn-left', :data => { :toggle => 'modal', :target => '#deleteModal' } %>
     <% review_class = 'btn-right' %>
 

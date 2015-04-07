@@ -6,9 +6,19 @@ class Translation < ActiveRecord::Base
   validates_presence_of :video
   validates_uniqueness_of :user_id, :scope => :video_id
 
+  after_create :update_time
+
   @@root_folder_name = 'public/srt/'
 
-  def complete
+  def time_assigned
+    self.created_at
+  end
+
+  def time_updated
+    self.time_last_updated
+  end
+
+  def complete?
     File.exist?(srt_path)
   end
 
@@ -29,9 +39,16 @@ class Translation < ActiveRecord::Base
     file_name =  "#{self.id}.srt"
     path = File.join(folder_name, file_name)
     File.open(path, 'w+') { |f| f.write(srt.read) }
+
+    update_time
   end
 
   private
+  def update_time
+    self.time_last_updated = Time.now
+    self.save
+  end
+
   def self.make_folder(folder_name)
     unless File.exist?(folder_name)
       Dir::mkdir(folder_name)

@@ -37,7 +37,7 @@ class Ability
     # Translations:
     can :upload, Translation, :user_id => @user.id
     can :destroy, Translation do |translation|
-      translation.user == @user and not translation.complete
+      translation.user == @user and not translation.complete?
     end
   end
 end
