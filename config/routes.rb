@@ -16,8 +16,6 @@ KhanBurmese::Application.routes.draw do
   resources :users, :only => [ :show, :update ]
 
   resources :videos do
-    # Autocompletion for tags:
-    get :autocomplete_tag_name, :on => :collection
     # Star or unstar videos:
     put :toggle_star
     resources :translations do

@@ -42,7 +42,6 @@ gem 'figaro'
 
 # Categorization:
 gem 'acts-as-taggable-on', '~> 3.4'
-gem 'rails3-jquery-autocomplete'
 
 # In-place editing:
 gem 'rest_in_place'

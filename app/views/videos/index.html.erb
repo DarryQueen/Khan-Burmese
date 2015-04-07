@@ -1,12 +1,8 @@
 <div class="video-filter">
   <%= form_tag videos_path, :method => 'get', :class => 'form-search', :id => 'video-search' do %>
     <div class="col-lg-8 col-md-6 no-padding">
-      <%= autocomplete_field_tag :search, nil, autocomplete_tag_name_videos_path, {
-        :id => 'search',
-        :class => 'form-control video-search',
-        :placeholder => 'Search by category or name.',
-        :'data-delimiter' => ' ',
-        :tabindex => '-1',
+      <%= text_field_tag :search, nil, {
+        :class => 'form-control', :placeholder => 'Search by video name.', :autocomplete => 'off'
       } %>
     </div>
 
