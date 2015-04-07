@@ -50,8 +50,8 @@ describe User, :type => :model do
     end
 
     it "should be able to access videos through user.translated_videos" do
-      expect {@user.translated_videos}.not_to raise_error
-      videos = @user.translated_videos
+      expect {@user.translation_videos}.not_to raise_error
+      videos = @user.translation_videos
       expect(videos).to include @video
     end
   end

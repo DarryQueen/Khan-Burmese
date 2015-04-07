@@ -6,10 +6,10 @@ Feature: Restrict access to the admin portal.
 
 Background:
   Given the following users:
-    | email                | password  | role        |
-    | su@wonderland.com    | superpass | superadmin  |
-    | admin@wonderland.com | normpass  | admin       |
-    | ice@tea.com          | borepass  | volunteer   |
+    | email                | password  | role        | name         |
+    | su@wonderland.com    | superpass | superadmin  | Vivienne     |
+    | admin@wonderland.com | normpass  | admin       | Lara Croft   |
+    | ice@tea.com          | borepass  | volunteer   | Sona Buvelle |
 
 Scenario: Access the admin portal as an admin.
   Given I am logged in as "su@wonderland.com" with password "superpass"

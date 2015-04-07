@@ -9,6 +9,7 @@ Background:
 
 Scenario: Sign up with valid email and password.
   When I fill in "user_email" with "test@test.com"
+  And I fill in "user_name" with "Kate Moss"
   And I fill in "user_password" with "password"
   And I fill in "user_password_confirmation" with "password"
   And I press "Sign Up"
@@ -16,6 +17,7 @@ Scenario: Sign up with valid email and password.
 
 Scenario: Sign up with invalid password.
   When I fill in "user_email" with "test@test.com"
+  And I fill in "user_name" with "Grace Jones"
   And I fill in "user_password" with "pass"
   And I fill in "user_password_confirmation" with "pass"
   And I press "Sign Up"
