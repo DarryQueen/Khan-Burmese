@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable, :omniauthable, :confirmable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role,
-                  :first_name, :last_name, :city, :country, :bio
+                  :name, :city, :country, :bio
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
-  validates_presence_of :first_name, :last_name
+  validates_presence_of :name
 
   after_create :assign_default_role
   before_save :capitalize_fields
@@ -19,8 +19,12 @@ class User < ActiveRecord::Base
   has_many :translations
   has_many :translation_videos, :through => :translations, :source => :video
 
-  def full_name
-    "#{first_name} #{last_name}"
+  def first_name
+    names = self.name.rpartition(' ')
+    names.first.empty? ? names.last : names.first
+  end
+  def last_name
+    self.name.rpartition(' ').last
   end
 
   def untranslated_videos
@@ -55,12 +59,10 @@ class User < ActiveRecord::Base
 
       # Create the user if it's a new registration:
       if user.nil?
-        full_names = auth.info.name.rpartition(' ')
         user = User.new(
           :email => email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           :password => Devise.friendly_token[0, 20],
-          :first_name => full_names.first,
-          :last_name => full_names.last
+          :name => auth.info.name
         )
         user.skip_confirmation! if user.respond_to?(:skip_confirmation)
         user.save!
@@ -77,8 +79,7 @@ class User < ActiveRecord::Base
 
   private
   def capitalize_fields
-    write_attribute(:first_name, first_name.titleize)
-    write_attribute(:last_name, last_name.titleize)
+    write_attribute(:name, name.titleize) if name
 
     write_attribute(:country, country.titleize) if country
     write_attribute(:city, city.titleize) if city
