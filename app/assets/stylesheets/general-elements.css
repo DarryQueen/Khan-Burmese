@@ -19,6 +19,10 @@
   margin-right: 10px;
 }
 
+.panel-paragraphs {
+  padding: 15px 15px 5px 15px;
+}
+
 .panel-empty {
   padding: 15px 0px 15px 0px;
   text-align: center;
@@ -37,4 +41,18 @@
 .module-padding {
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.profile-email {
+  text-overflow: ellipsis;
+  max-width: 200px;
+  overflow: hidden;
+}
+
+@media (min-width: 750px) and (max-width: 1000px) {
+  .profile-email {
+    text-overflow: ellipsis;
+    max-width: 100px;
+    overflow: hidden;
+  }
 }
