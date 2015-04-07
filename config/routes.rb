@@ -13,6 +13,8 @@ KhanBurmese::Application.routes.draw do
   # Download files:
   get 'download' => 'files#download'
 
+  resources :users, :only => [ :show ]
+
   resources :videos do
     # Autocompletion for tags:
     get :autocomplete_tag_name, :on => :collection

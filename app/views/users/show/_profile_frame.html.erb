@@ -1,0 +1,24 @@
+<div class="panel panel-default module module-videos">
+  <div class="panel-heading">
+    <b>Profile</b>
+  </div>
+  <%= image_tag 'avatar.jpg', :class => 'img-square' %>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <b>Name:</b>
+      <div class="pull-right"><%= user.full_name %></div>
+    </li>
+    <li class="list-group-item">
+      <b>Country:</b>
+      <div class="pull-right">United States</div>
+    </li>
+    <li class="list-group-item">
+      <b>City:</b>
+      <div class="pull-right">SF Bay Area</div>
+    </li>
+    <li class="list-group-item">
+      <b>Email:</b>
+      <div class="pull-right profile-email"><%= mail_to user.email %></div>
+    </li>
+  </ul>
+</div>

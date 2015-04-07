@@ -19,3 +19,7 @@ form.form-search p:before {
   content: '\f002';
   font-family: "FontAwesome";
 }
+
+.img-square {
+  width: 100%;
+}

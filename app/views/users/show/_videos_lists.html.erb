@@ -1,0 +1,41 @@
+<div class="" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default module module-videos">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <div class="panel-heading" role="tab" id="headingOne">
+        Assigned Videos
+        <span class="badge pull-right"><%= assigned_videos.length %></span>
+      </div>
+    </a>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-padding">
+        <% if assigned_videos.empty? %>
+          <div class="panel-empty">
+            No videos assigned yet.
+          </div>
+        <% else %>
+          <%= render 'videos/index/videos_table', :videos => assigned_videos %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default module module-videos">
+    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+      <div class="panel-heading" role="tab" id="headingTwo">
+          Translated Videos
+          <span class="badge pull-right"><%= translated_videos.length %></span>
+      </div>
+    </a>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-padding">
+        <% if translated_videos.empty? %>
+          <div class="panel-empty">
+            No videos translated yet.
+          </div>
+        <% else %>
+          <%= render 'videos/index/videos_table', :videos => translated_videos %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
