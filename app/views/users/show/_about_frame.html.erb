@@ -1,0 +1,35 @@
+<div class="panel panel-default module">
+  <div class="panel-heading">
+    <b>About Me</b>
+    <% if can? :edit, user %>
+      <a class="rip-edit rip-edit-inline pull-right" onclick="$('#user-bio').click();">
+        <i class="fa fa-pencil"></i>
+      </a>
+    <% end %>
+  </div>
+  <% if can? :edit, user %>
+    <div class="panel-paragraphs">
+      <%= content_tag :p, user.bio, {
+        :id => 'user-bio',
+        :class => 'rest-in-place rip-bio',
+        :data => {
+          :formtype => 'textarea',
+          :url => user_path(user),
+          :object => 'user',
+          :attribute => 'bio',
+          :placeholder => 'Tell us a little about yourself.'
+        }
+      } %>
+    </div>
+  <% else %>
+    <% if user.bio.nil? || user.bio.empty? %>
+      <div class="panel-empty">
+        Nothing here yet!
+      </div>
+    <% else %>
+      <div class="panel-paragraphs">
+        <p><%= user.bio %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>

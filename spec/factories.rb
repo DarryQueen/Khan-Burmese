@@ -1,17 +1,20 @@
 FactoryGirl.define do
   factory :user do
+    name 'Olivia Benson'
     email 'normal@user.com'
     password 'password'
     role 'volunteer'
   end
 
   factory :admin, class: User do
+    name 'Carol Peletier'
     email 'admin@user.com'
     password 'password'
     role 'admin'
   end
 
   factory :superadmin, class: User do
+    name 'Nene Leakes'
     email 'superadmin@user.com'
     password 'password'
     role 'superadmin'

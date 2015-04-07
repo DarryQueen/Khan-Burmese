@@ -5,6 +5,10 @@ class Video < ActiveRecord::Base
   has_many :translations
   has_many :translators, :through => :translations, :source => :user
 
+  def translated?
+    not self.completed_translations.empty?
+  end
+
   def completed_translations
     self.translations.select { |translation| translation.complete? }
   end

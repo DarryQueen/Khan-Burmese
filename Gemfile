@@ -40,6 +40,9 @@ gem 'figaro'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'rails3-jquery-autocomplete'
 
+# In-place editing:
+gem 'rest_in_place'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

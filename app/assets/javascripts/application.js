@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-ui-custom.min
 //= require jquery_ujs
+//= require rest_in_place
 //= require_tree .
 //= require autocomplete-rails.min
 //= require bootstrap.min

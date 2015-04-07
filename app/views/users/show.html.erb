@@ -1,0 +1,9 @@
+<div class="col-sm-4 no-padding">
+  <%= render 'users/show/profile_frame', :user => @user %>
+</div>
+
+<div class="col-sm-8 no-padding">
+  <%= render 'users/show/about_frame', :user => @user %>
+
+  <%= render 'users/show/videos_lists', :assigned_videos => @assigned_videos, :translated_videos => @translated_videos %>
+</div>
