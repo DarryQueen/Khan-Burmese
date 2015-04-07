@@ -11,12 +11,24 @@ class User < ActiveRecord::Base
                   :first_name, :last_name, :city, :country, :bio
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+  validates_presence_of :first_name, :last_name
 
   after_create :assign_default_role
   before_save :capitalize_fields
 
   has_many :translations
-  has_many :translated_videos, :through => :translations, :source => :video
+  has_many :translation_videos, :through => :translations, :source => :video
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def untranslated_videos
+    self.translation_videos.select { |video| not video.translated? }
+  end
+  def translated_videos
+    self.translation_videos.select { |video| video.translated? }
+  end
 
   def is?(role)
     role.to_s == self.role
