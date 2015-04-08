@@ -26,6 +26,8 @@ module NavigationHelpers
     when /^the video page for "([^"]*)"$/
       video = Video.find_by_title($1)
       video_path(video)
+    when /^the previews page$/
+      prototype_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

@@ -22,3 +22,13 @@ Scenario: Access the admin portal as a vanilla user.
   Then I should see "Signed in successfully."
   When I go to the admin portal
   Then I should see "This is a sensitive portal"
+
+Scenario: Access the previews page as an admin.
+  Given I am logged in as "su@wonderland.com" with password "superpass"
+  When I go to the previews page
+  Then I should see "Previews"
+
+Scenario: Access the previews page as a vanilla user.
+  Given I am logged in as "ice@tea.com" with password "borepass"
+  When I go to the previews page
+  Then I should see "Insufficient permissions."
