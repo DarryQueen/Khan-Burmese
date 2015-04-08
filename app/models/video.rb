@@ -1,9 +1,14 @@
 class Video < ActiveRecord::Base
-  attr_accessible :description, :title, :youtube_id, :starred
+  require 'YoutubeReader'
+
+  attr_accessible :description, :title, :youtube_id, :starred, :duration
   acts_as_taggable
 
   has_many :translations
   has_many :translators, :through => :translations, :source => :user
+
+  validates_presence_of :youtube_id
+  validates_uniqueness_of :youtube_id
 
   def translated?
     not self.completed_translations.empty?
@@ -25,6 +30,42 @@ class Video < ActiveRecord::Base
       (tagged_videos + title_videos).uniq
     else
       scoped
+    end
+  end
+
+  def self.import(file)
+    if File.extname(file.original_filename) != ".csv"
+      raise ArgumentError, "Only CSV files are allowed."
+    end
+
+    CSV.foreach(file.path, headers: true) do |row|
+      if row['youtube_id'].nil?
+        raise ArgumentError, "Need <code>youtube_id</code> column in CSV file.".html_safe
+      end
+
+      keys = [ 'description', 'title', 'youtube_id', 'duration' ]
+      attributes = row.to_hash.slice(*keys)
+
+      video = Video.new(attributes)
+      video.fill_missing_fields
+      video.save
+    end
+  end
+
+  private
+  def fill_missing_fields
+    youtube_values = {}
+
+    begin
+      youtube_values = YoutubeReader::parse_video(self.youtube_id)
+    rescue
+    end
+
+    unless youtube_values.empty?
+      fields = [ 'description', 'title', 'duration' ]
+      fields.each do |field|
+        write_attribute(field, youtube_values[field]) unless self[field]
+      end
     end
   end
 end

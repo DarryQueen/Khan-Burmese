@@ -1,5 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
+require 'csv'
 require 'rails/all'
 
 if defined?(Bundler)
@@ -17,6 +18,9 @@ module KhanBurmese
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
+
+    # Load modules:
+    config.autoload_paths += Dir["#{config.root}/lib/modules/"]
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.

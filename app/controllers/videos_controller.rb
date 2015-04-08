@@ -20,4 +20,19 @@ class VideosController < ApplicationController
     @video.toggle :starred
     @video.save
   end
+
+  def import
+    authorize! :import, :video
+
+    if request.post?
+      begin
+        Video.import(params[:file])
+        add_flash(:notice, 'Video(s) imported!')
+        redirect_to videos_path
+      rescue ArgumentError => e
+        add_flash(:alert, "#{e.message}")
+        redirect_to import_videos_path
+      end
+    end
+  end
 end

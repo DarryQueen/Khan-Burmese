@@ -34,3 +34,14 @@ form.form-search p:before {
 .rest-in-place.rip-bio textarea {
   width: 100%;
 }
+
+.download {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.form-import {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 500px;
+}
