@@ -30,8 +30,8 @@ class TranslationsController < ApplicationController
 
     begin
       @translation.upload_srt(params[:srt])
-    rescue Exception => exception
-      add_flash(:alert, exception.message)
+    rescue ArgumentError => e
+      add_flash(:alert, e.message)
     end
     redirect_to video_path @video
   end

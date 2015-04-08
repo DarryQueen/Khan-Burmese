@@ -34,8 +34,12 @@ class Video < ActiveRecord::Base
   end
 
   def self.import(file)
+    unless file
+      raise ArgumentError, 'Missing file.'
+    end
+
     if File.extname(file.original_filename) != ".csv"
-      raise ArgumentError, "Only CSV files are allowed."
+      raise ArgumentError, 'Invalid file type.'
     end
 
     CSV.foreach(file.path, headers: true) do |row|
@@ -52,7 +56,6 @@ class Video < ActiveRecord::Base
     end
   end
 
-  private
   def fill_missing_fields
     youtube_values = {}
 

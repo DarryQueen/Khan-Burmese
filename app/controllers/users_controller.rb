@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
 
+    authorize! :edit, @user
+
     if @user.update_attributes!(params[:user])
       respond_to do |format|
         format.html { redirect_to @user }
