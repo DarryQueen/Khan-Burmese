@@ -23,6 +23,8 @@ module NavigationHelpers
       rails_admin_path
     when /^the videos page$/
       videos_path
+    when /^the videos import page$/
+      import_videos_path
     when /^the video page for "([^"]*)"$/
       video = Video.find_by_title($1)
       video_path(video)
