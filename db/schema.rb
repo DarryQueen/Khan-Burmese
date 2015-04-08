@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150407195247) do
+ActiveRecord::Schema.define(:version => 20150408010213) do
 
   create_table "identities", :force => true do |t|
     t.integer  "user_id"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(:version => 20150407195247) do
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
     t.boolean  "starred",     :default => false
+    t.integer  "duration"
   end
 
 end
