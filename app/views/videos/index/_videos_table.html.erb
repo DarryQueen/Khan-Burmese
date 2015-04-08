@@ -8,8 +8,6 @@
     </tr>
   </thead>
   <tbody>
-    <% videos.each do |video| %>
-      <%= render 'videos/index/video_row', video: video %>
-    <% end %>
+    <%= render :partial => 'videos/index/video_row', :collection => videos, :as => :video %>
   </tbody>
 </table>
