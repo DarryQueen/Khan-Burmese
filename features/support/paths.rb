@@ -26,6 +26,9 @@ module NavigationHelpers
     when /^the video page for "([^"]*)"$/
       video = Video.find_by_title($1)
       video_path(video)
+    when /^the user profile page for "([^"]*)"$/
+      user = User.find_by_email($1)
+      user_path(user)
     when /^the previews page$/
       prototype_path
 

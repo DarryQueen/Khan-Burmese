@@ -1,6 +1,32 @@
 require 'spec_helper'
 
 describe User, :type => :model do
+  describe "naming schematics" do
+    before(:each) do
+      @user = User.new({
+        :email => 'normal@user.com',
+        :password => 'password'
+      })
+    end
+
+    it "should split first and last names" do
+      @user.name = 'lady Gaga'
+      @user.save
+
+      @user.name.should eq 'Lady Gaga'
+      @user.first_name.should eq 'Lady'
+      @user.last_name.should eq 'Gaga'
+    end
+
+    it "should accept mononyms" do
+      @user.name = 'madonna'
+      @user.save
+
+      @user.first_name.should eq 'Madonna'
+      @user.last_name.should eq 'Madonna'
+    end
+  end
+
   describe "find identities for users" do
     it "should find the facebook identity" do
       user = FactoryGirl.create(:user)
@@ -49,10 +75,15 @@ describe User, :type => :model do
       expect(translations).to include @translation
     end
 
-    it "should be able to access videos through user.translated_videos" do
+    it "should be able to access videos through user.translation_videos" do
       expect {@user.translation_videos}.not_to raise_error
       videos = @user.translation_videos
       expect(videos).to include @video
+    end
+
+    it "should dynamically update translated and untranslated videos" do
+      expect(@user.untranslated_videos).to include @video
+      expect(@user.translated_videos).not_to include @video
     end
   end
 end
