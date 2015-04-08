@@ -5,7 +5,7 @@ Feature: Allow a user to login.
   I want to be able to log in manually.
 
 Background:
-  Given I am on the home page
+  Given I am on the login page
 
 Scenario: Log in with faulty email.
   When I fill in "user_email" with "the@cake"

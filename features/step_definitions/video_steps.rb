@@ -1,6 +1,6 @@
 Given /^the following videos:$/ do |videos|
   videos.hashes.each do |video|
-    tags = video.delete('tags').split(', ')
+    tags = video['tags'] ? video.delete('tags').split(', ') : nil
     new_video = Video.new(video)
     new_video.tag_list.add(tags)
     new_video.save!
@@ -11,6 +11,10 @@ When /^(?:|I )click the star next to "([^"]*)"$/ do |video_title|
   video = Video.find_by_title(video_title)
   star = "toggle-star-#{video.id}"
   page.find_by_id("#{star}").find('a').click()
+end
+
+When /^(?:|I )upload the file "([^"]*)" to "([^"]*)"$/ do |filename, inputname|
+  attach_file(inputname, File.join(Rails.root, 'features', 'assets', filename))
 end
 
 Then /^(?:|I )should see a ?(.*) star next to "([^"]*)"$/ do |star_type, video|
