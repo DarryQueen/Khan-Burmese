@@ -1,10 +1,13 @@
 class Video < ActiveRecord::Base
+  require 'YoutubeReader'
+
   attr_accessible :description, :title, :youtube_id, :starred, :duration
   acts_as_taggable
 
   has_many :translations
   has_many :translators, :through => :translations, :source => :user
 
+  validates_presence_of :youtube_id
   validates_uniqueness_of :youtube_id
 
   def translated?
@@ -40,8 +43,29 @@ class Video < ActiveRecord::Base
         raise ArgumentError, "Need <code>youtube_id</code> column in CSV file.".html_safe
       end
 
-      attributes = row.to_hash.slice('description', 'title', 'youtube_id')
-      video = Video.create(attributes)
+      keys = [ 'description', 'title', 'youtube_id', 'duration' ]
+      attributes = row.to_hash.slice(*keys)
+
+      video = Video.new(attributes)
+      video.fill_missing_fields
+      video.save
+    end
+  end
+
+  private
+  def fill_missing_fields
+    youtube_values = {}
+
+    begin
+      youtube_values = YoutubeReader::parse_video(self.youtube_id)
+    rescue
+    end
+
+    unless youtube_values.empty?
+      fields = [ 'description', 'title', 'duration' ]
+      fields.each do |field|
+        write_attribute(field, youtube_values[field]) unless self[field]
+      end
     end
   end
 end
