@@ -1,9 +1,16 @@
 Given /^the following users:$/ do |users|
   users.hashes.each do |user|
-    email = user['email']
-    password = user['password']
-    role = user['role']
+    User.create(user).confirm!
+  end
+end
 
-    User.create(:email => email, :password => password, :password_confirmation => password, :role => role).confirm!
+Then /^(?:|I )should( not)? see an edit button with parent "([^"]*)"$/ do |negate, parent|
+  pencil_class = '.fa.fa-pencil'
+  css = "#{parent} #{pencil_class}"
+
+  if negate
+    page.should_not have_css(css)
+  else
+    page.should have_css(css)
   end
 end

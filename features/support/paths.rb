@@ -13,10 +13,26 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the (KA )?home\s?page$/ then '/users/sign_in'
-    when /^the signup page$/ then 'users/sign_up'
-    when /^the admin portal$/ then '/admin'
-    when /^the videos page$/ then '/videos'
+    when /^the (KA )?home\s?page$/
+      root_path
+    when /^the login page$/
+      new_user_session_path
+    when /^the signup page$/
+      new_user_registration_path
+    when /^the admin portal$/
+      rails_admin_path
+    when /^the videos page$/
+      videos_path
+    when /^the videos import page$/
+      import_videos_path
+    when /^the video page for "([^"]*)"$/
+      video = Video.find_by_title($1)
+      video_path(video)
+    when /^the user profile page for "([^"]*)"$/
+      user = User.find_by_email($1)
+      user_path(user)
+    when /^the previews page$/
+      prototype_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

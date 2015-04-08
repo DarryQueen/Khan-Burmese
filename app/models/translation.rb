@@ -57,9 +57,9 @@ class Translation < ActiveRecord::Base
 
   def self.verify_file(srt)
     if srt.nil?
-      raise Exception.new('Missing file.')
+      raise ArgumentError, 'Missing file.'
     elsif File.extname(srt.original_filename) != '.srt' 
-      raise Exception.new('Invalid file type.')
+      raise ArgumentError, 'Invalid file type.'
     end
   end
 end
