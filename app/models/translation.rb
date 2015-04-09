@@ -10,6 +10,23 @@ class Translation < ActiveRecord::Base
 
   @@root_folder_name = 'public/srt/'
 
+  # Maps from integer representation in the database to status symbol:
+  @@STATUS_HASH = { 0 => :incomplete, 1 => :complete, 2 => :complete_with_priority }
+
+  # Maps from status symbol to point value:
+  @@POINTS_HASH = { :incomplete => 0, :complete => 1, :complete_with_priority => 2 }
+
+  # Maps from status symbol to integer representation for database:
+  @@STATUS_TO_INT_HASH = @@STATUS_HASH.invert
+
+  def points
+    @@POINTS_HASH[self.status_symbol]
+  end
+
+  def status_symbol
+    return @@STATUS_HASH[self.status]
+  end
+
   def time_assigned
     self.created_at
   end
@@ -18,8 +35,16 @@ class Translation < ActiveRecord::Base
     self.time_last_updated
   end
 
+  def complete
+    unless self.complete?
+      new_status = self.video.starred ? @@STATUS_TO_INT_HASH[:complete_with_priority] : @@STATUS_TO_INT_HASH[:complete]
+      self.status = new_status
+      self.save
+    end
+  end
+
   def complete?
-    File.exist?(srt_path)
+    File.exist?(srt_path) and [ :complete_with_priority, :complete ].include? self.status_symbol
   end
 
   def srt_path
@@ -41,6 +66,7 @@ class Translation < ActiveRecord::Base
     File.open(path, 'w+') { |f| f.write(srt.read) }
 
     update_time
+    complete
   end
 
   private
