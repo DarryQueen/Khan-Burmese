@@ -11,6 +11,7 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
     @user_translation = Translation.find_by_video_id_and_user_id(@video, current_user)
     @completed_translations = @video.completed_translations
+    @contributors = @video.translators.take(4)
   end
 
   def toggle_star
