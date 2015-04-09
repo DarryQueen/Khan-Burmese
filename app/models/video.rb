@@ -22,6 +22,37 @@ class Video < ActiveRecord::Base
     "http://www.youtube.com/embed/#{self.youtube_id}"
   end
 
+  def fill_missing_fields
+    youtube_values = {}
+
+    begin
+      youtube_values = YoutubeReader::parse_video(self.youtube_id)
+    rescue
+    end
+
+    unless youtube_values.empty?
+      fields = [ 'description', 'title', 'duration' ]
+      fields.each do |field|
+        write_attribute(field, youtube_values[field]) unless self[field]
+      end
+    end
+  end
+
+  def self.recently_translated_videos(time)
+    Video.all.select do |video|
+      recent = false
+      video.translations.each do |translation|
+        recent = true if translation.complete? and translation.time_updated > time
+      end
+
+      recent
+    end
+  end
+
+  def self.priority_videos
+    Video.where(:starred => true)
+  end
+
   def self.search(search)
     if search
       tags = search.split
@@ -53,22 +84,6 @@ class Video < ActiveRecord::Base
       video = Video.new(attributes)
       video.fill_missing_fields
       video.save
-    end
-  end
-
-  def fill_missing_fields
-    youtube_values = {}
-
-    begin
-      youtube_values = YoutubeReader::parse_video(self.youtube_id)
-    rescue
-    end
-
-    unless youtube_values.empty?
-      fields = [ 'description', 'title', 'duration' ]
-      fields.each do |field|
-        write_attribute(field, youtube_values[field]) unless self[field]
-      end
     end
   end
 end
