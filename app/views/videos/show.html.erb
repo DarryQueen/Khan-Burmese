@@ -9,45 +9,7 @@
 </div>
 
 <div class="col-md-4 no-padding">
-  <div class="panel panel-default module">
-    <div class="panel-heading">
-      <b>Contributors</b>
-      <a class="pull-right" href="#"><i class="fa fa-plus-circle"></i></a>
-    </div>
-    <div class="media">
-      <div class="media-left media-middle">
-        <a href="#">
-          <%= image_tag 'avatar.jpg', :class => 'img-circle media-object profile-pic' %>
-        </a>
-      </div>
-      <div class="media-body">
-        <p class="media-heading">Edward Whang</p>
-        <span class="badge">Translator</span>
-      </div>
-    </div>
-    <div class="media">
-      <div class="media-left media-middle">
-        <a href="#">
-          <%= image_tag 'avatar.jpg', :class => 'img-circle media-object profile-pic' %>
-        </a>
-      </div>
-      <div class="media-body">
-        <p class="media-heading">Darren Zhao</p>
-        <span class="badge">Translator</span>
-      </div>
-    </div>
-    <div class="media">
-      <div class="media-left media-middle">
-        <a href="#">
-          <%= image_tag 'avatar.jpg', :class => 'img-circle media-object profile-pic' %>
-        </a>
-      </div>
-      <div class="media-body">
-        <p class="media-heading">Naseem Alnaji</p>
-        <span class="badge success-background">Reviewer</span>
-      </div>
-    </div>
-  </div>
+  <%= render 'videos/show/contributors_frame', :contributors => @contributors %>
 
   <div class="panel panel-default module module-videos">
     <div class="panel-heading">

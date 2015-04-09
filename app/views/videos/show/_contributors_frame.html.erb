@@ -1,0 +1,13 @@
+<div class="panel panel-default module">
+  <div class="panel-heading">
+    <b>Contributors</b>
+    <a class="pull-right" href="#"><i class="fa fa-plus-circle"></i></a>
+  </div>
+  <% if contributors.empty? %>
+    <div class="panel-empty">
+      No one has contributed yet!
+    </div>
+  <% else %>
+    <%= render :partial => 'videos/show/contributor_row', :collection => contributors, :as => :contributor %>
+  <% end %>
+</div>
