@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     self.translation_videos.select { |video| video.translated? }
   end
 
+  def points
+    self.translations.reduce(0) { |sum, translation| sum + translation.points }
+  end
+
   def is?(role)
     role.to_s == self.role
   end
