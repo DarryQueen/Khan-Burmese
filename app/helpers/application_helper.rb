@@ -19,4 +19,20 @@ module ApplicationHelper
       flash[key].html_safe
     end
   end
+
+  def seconds_to_string(seconds)
+    return '0' unless seconds
+
+    h = (seconds / 3600).to_s
+    m = (seconds / 60 % 60).to_s
+    s = (seconds % 60).to_s.rjust(2, '0')
+
+    times = []
+    if h != '0'
+      times.push(h)
+      m = m.to_s.rjust(2, '0')
+    end
+    times.push(m, s)
+    times.join(':')
+  end
 end

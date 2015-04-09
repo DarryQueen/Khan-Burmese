@@ -6,6 +6,6 @@
     <%= link_to video.title, video %>
   </td>
   <td>Math</td>
-  <td>3:14</td>
+  <td><%= seconds_to_string(video.duration) %></td>
   <td>Unassigned</td>
 </tr>

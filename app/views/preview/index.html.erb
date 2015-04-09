@@ -4,7 +4,7 @@
 
   <div class="preview-links">
     <% @pages.each do |page| %>
-      <b><%= link_to page.titleize, params.merge({ :page => page }) %></b>
+      <b><%= link_to page.titleize, params.merge({ :page => page }) %></b><br />
     <% end %>
   </div>
 </p>

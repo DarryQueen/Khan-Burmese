@@ -1,8 +1,19 @@
 <div class="panel panel-default module module-videos">
   <div class="panel-heading">
-    <b>Videos</b>
+    <% title_link ||= nil %>
+    <% if title_link %>
+      <b><%= link_to title, title_link %></b>
+    <% else %>
+      <b><%= title %></b>
+    <% end %>
   </div>
-  <div class="panel-content">
-    <%= render 'videos/index/videos_table', :videos => videos %>
-  </div>
+  <% if videos.empty? %>
+    <div class="panel-empty">
+      <%= message_empty %>
+    </div>
+  <% else %>
+    <div class="panel-content">
+      <%= render 'videos/index/videos_table', :videos => videos %>
+    </div>
+  <% end %>
 </div>

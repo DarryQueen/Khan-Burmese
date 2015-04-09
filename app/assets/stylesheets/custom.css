@@ -146,7 +146,8 @@ html{
 
 /* Videos. */
 
-.module-videos th {
+.module-videos .table>thead>tr>th {
+  padding-top: 15px;
   color: #999999;
 }
 

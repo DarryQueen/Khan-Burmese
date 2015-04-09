@@ -5,9 +5,10 @@ class PreviewController < ApplicationController
     if params[:page]
       render params[:page]
     else
-      @pages = Dir.glob("#{Rails.root}/app/views/preview/[^index]*.html.erb").map {
+      @pages = Dir.glob("#{Rails.root}/app/views/preview/*.html.erb").map {
         |path| File.basename(path, '.html.erb')
       }
+      @pages.delete('index')
       render 'index'
     end
   end
