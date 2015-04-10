@@ -43,6 +43,9 @@ gem 'rails3-jquery-autocomplete'
 # In-place editing:
 gem 'rest_in_place'
 
+# Voting:
+gem 'acts_as_votable', '~> 0.10.0'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
