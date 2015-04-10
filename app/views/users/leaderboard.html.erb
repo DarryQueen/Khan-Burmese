@@ -1,0 +1,13 @@
+<h2>Leaderboard</h2>
+
+<div class="btn-group" role="group">
+  <%= link_to 'Month', leaderboard_users_path(:standings => 'month'), :class => 'btn btn-default' %>
+  <%= link_to 'Year', leaderboard_users_path(:standings => 'year'), :class => 'btn btn-default' %>
+  <%= link_to 'All Time', leaderboard_users_path(:standings => 'all_time'), :class => 'btn btn-default' %>
+</div>
+
+<%= render :partial => 'users/leaderboard/leader_frame',
+  :collection => @leaders,
+  :as => :leader,
+  :locals => { :after => @after }
+%>

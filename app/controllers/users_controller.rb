@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  @@LEADERBOARD_LIMIT = 10
+
   def show
     @user = User.find(params[:id])
     @assigned_videos = @user.untranslated_videos
@@ -22,5 +24,17 @@ class UsersController < ApplicationController
         format.json { render :nothing => true }
       end
     end
+  end
+
+  def leaderboard
+    @standings = params[:standings]
+    if @standings == 'year'
+      @after = 1.year.ago
+    elsif @standings == 'month'
+      @after = 1.month.ago
+    else
+      @after = Time.new(0)
+    end
+    @leaders = User.leaders(@after).take(@@LEADERBOARD_LIMIT)
   end
 end
