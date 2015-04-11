@@ -172,3 +172,8 @@
 .badge.danger {
   background-color: #ff4136;
 }
+
+.modal textarea {
+  resize: vertical;
+  max-height: 200px;
+}

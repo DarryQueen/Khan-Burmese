@@ -9,6 +9,11 @@
       </div>
     <% else %>
       <%= render 'videos/translations/translations_table', :video => video, :translations => translations %>
+      <%= render :partial => 'videos/translations/downvote_modal',
+        :collection => translations,
+        :as => :translation,
+        :locals => { :video => video }
+      %>
     <% end %>
   </div>
 </div>

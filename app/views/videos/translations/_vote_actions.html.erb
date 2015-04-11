@@ -1,5 +1,13 @@
 <% if can? :review, translation %>
   <%= toggle_vote_button(true, video, translation) %>
-  <%= toggle_vote_button(false, video, translation) %>
+  <% data = {} %>
+  <% data = {
+    :toggle => 'modal',
+    :target => "#downvoteModal#{translation.id}"
+  } if current_user.voted_as_when_voted_on(translation) != false %>
+  <%= toggle_vote_button(false, video, translation, {
+    :data => data
+  }) %>
 <% end %>
+
 <%= score_badge(translation.net_votes) %>

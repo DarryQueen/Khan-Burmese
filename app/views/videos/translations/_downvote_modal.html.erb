@@ -1,0 +1,23 @@
+<div class="modal fade" id="downvoteModal<%= translation.id %>" tabindex="-1" role="dialog" aria-labelledby="downvoteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content module">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="deleteModalLabel">Constructive Criticism</h4>
+      </div>
+      <%= form_tag video_translation_review_mail_path(video, translation) do %>
+        <div class="modal-body">
+          <p>You've just downvoted <%= translation.user.first_name %>'s translation. Care to give them some advice on how to make it better?</p>
+          <%= text_area_tag 'message', nil, {
+            :placeholder => 'Write your criticisms here.',
+            :class => 'form-control'
+          } %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <%= submit_tag 'Send', :class => 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
