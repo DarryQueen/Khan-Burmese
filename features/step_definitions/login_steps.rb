@@ -3,9 +3,10 @@ Given /^I am not authenticated$/ do
 end
 
 Given /^I log in by email$/ do
+  name = 'Laetitia Casta'
   email = 'testing@man.net'
   password = 'secretpass'
-  User.create(:email => email, :password => password, :password_confirmation => password).confirm!
+  User.create(:email => email, :password => password, :name => name, :password_confirmation => password).confirm!
 
   visit '/users/sign_in'
   fill_in "user_email", :with => email
@@ -21,10 +22,11 @@ Given /^(?:|I )am logged in as "([^"]*)" with password "([^"]*)"$/ do |email, pa
 end
 
 Given /^(?:|I )am logged in( as admin)?$/ do |admin|
+  name = 'Natasha Poly'
   email = 'grace@kelly.com'
   password = 'iamthequeen'
   role = admin ? 'admin' : 'volunteer'
-  User.create(:email => email, :password => password, :password_confirmation => password, :role => role).confirm!
+  User.create(:email => email, :password => password, :name => name, :password_confirmation => password, :role => role).confirm!
 
   steps %Q{
     Given I am logged in as "#{email}" with password "#{password}"
