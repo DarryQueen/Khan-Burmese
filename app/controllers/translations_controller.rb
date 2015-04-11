@@ -35,4 +35,19 @@ class TranslationsController < ApplicationController
     end
     redirect_to video_path @video
   end
+
+  def vote
+    @video = Video.find(params[:video_id])
+    @translation = Translation.find(params[:translation_id])
+
+    authorize! :review, @translation
+
+    if current_user.voted_as_when_voted_on(@translation).to_s == params[:vote]
+      current_user.unvote_for @translation
+    else
+      @translation.vote_by :voter => current_user, :vote => params[:vote]
+    end
+
+    render 'videos/vote'
+  end
 end

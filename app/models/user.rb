@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role,
                   :name, :city, :country, :bio
+  acts_as_voter
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
   validates_presence_of :name

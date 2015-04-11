@@ -22,6 +22,7 @@ KhanBurmese::Application.routes.draw do
     put :toggle_star
     resources :translations do
       post 'upload' => 'translations#upload'
+      post 'vote' => 'translations#vote'
     end
 
     # Video uploading from CSV:

@@ -2,6 +2,7 @@ class Translation < ActiveRecord::Base
   belongs_to :user
   belongs_to :video
   attr_accessible :user, :video
+  acts_as_votable
 
   validates_presence_of :video
   validates_uniqueness_of :user_id, :scope => :video_id
@@ -21,6 +22,10 @@ class Translation < ActiveRecord::Base
 
   def points
     @@POINTS_HASH[self.status_symbol]
+  end
+
+  def net_votes
+    self.get_upvotes.size - self.get_downvotes.size
   end
 
   def status_symbol
