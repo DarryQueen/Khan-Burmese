@@ -24,6 +24,10 @@ class Translation < ActiveRecord::Base
     @@POINTS_HASH[self.status_symbol]
   end
 
+  def reviewers
+    self.votes_for.voters
+  end
+
   def net_votes
     self.get_upvotes.size - self.get_downvotes.size
   end
