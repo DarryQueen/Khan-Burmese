@@ -1,0 +1,14 @@
+<div id="review" class="panel panel-default module module-videos">
+  <div class="panel-heading">
+    <b>Recent Translations</b>
+  </div>
+  <div class="panel-content">
+    <% if translations.empty? %>
+      <div class="panel-empty">
+        No translations yet. Be the first to make one!
+      </div>
+    <% else %>
+      <%= render 'videos/translations/translations_table', :video => video, :translations => translations %>
+    <% end %>
+  </div>
+</div>

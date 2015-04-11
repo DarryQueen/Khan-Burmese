@@ -162,7 +162,7 @@ html{
   text-decoration: none;
 }
 
-.module-videos td:first-child a {
+.module-videos td .row-title {
   text-decoration: none;
   font-weight: bold;
 }

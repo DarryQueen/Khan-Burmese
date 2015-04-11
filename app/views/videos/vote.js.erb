@@ -1,0 +1,3 @@
+$('#vote-translation-<%= @translation.id %>').html("<%= escape_javascript(
+  render 'videos/translations/vote_actions', :video => @video, :translation => @translation
+) %>");

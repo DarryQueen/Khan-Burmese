@@ -5,7 +5,7 @@
 
   <%= render 'videos/show/translate_frame', :video => @video, :user => current_user, :translation => @user_translation %>
 
-  <%= render 'videos/show/translations_frame', :video => @video, :user => current_user, :translations => @completed_translations %>
+  <%= render 'videos/translations/translations_frame', :video => @video, :user => current_user, :translations => @completed_translations %>
 </div>
 
 <div class="col-md-4 no-padding">

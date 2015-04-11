@@ -1,0 +1,5 @@
+<% if can? :review, translation %>
+  <%= toggle_vote_button(true, video, translation) %>
+  <%= toggle_vote_button(false, video, translation) %>
+<% end %>
+<%= score_badge(translation.net_votes) %>
