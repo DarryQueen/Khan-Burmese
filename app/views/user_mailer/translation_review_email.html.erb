@@ -1,0 +1,8 @@
+<h1>Hello, <%= @user.first_name %>!</h1>
+
+<p><%= @reviewer.first_name %> has reviewed your translation for <%= link_to @video.title, video_url(@video) %>. Here's what they had to say to make it better:</p>
+<blockquote>
+  <p><%= @message %>
+</blockquote>
+
+<p>You can go back and update the translation <%= link_to 'here', video_url(@video) %> with their changes in mind.<p>

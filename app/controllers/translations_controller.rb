@@ -50,4 +50,16 @@ class TranslationsController < ApplicationController
 
     render 'videos/vote'
   end
+
+  def review_mail
+    @translation = Translation.find(params[:translation_id])
+    @message = h(params[:message]).gsub(/\n/, '<br />').html_safe
+
+    authorize! :review, @translation
+
+    UserMailer.translation_review_email(@translation, current_user, @message).deliver
+
+    add_flash(:notice, 'Your message has been sent!')
+    redirect_to :back
+  end
 end
