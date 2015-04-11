@@ -5,5 +5,9 @@
 <div class="col-sm-8 no-padding">
   <%= render 'users/show/about_frame', :user => @user %>
 
-  <%= render 'users/show/videos_lists', :assigned_videos => @assigned_videos, :translated_videos => @translated_videos %>
+  <%= render 'users/show/videos_lists', {
+    :assigned_videos => @assigned_videos,
+    :translated_videos => @translated_videos,
+    :reviewed_videos => @reviewed_videos
+  } %>
 </div>

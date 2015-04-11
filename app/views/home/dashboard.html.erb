@@ -23,6 +23,7 @@
   <%= render 'home/dashboard/accomplishments_frame', {
     :assigned => @assigned_videos.length,
     :translated => @translated_videos.length,
+    :reviewed => @reviewed_videos.length,
     :user => current_user
   } %>
 

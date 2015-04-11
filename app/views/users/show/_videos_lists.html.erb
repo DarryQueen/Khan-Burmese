@@ -38,4 +38,24 @@
       </div>
     </div>
   </div>
+
+  <div class="panel panel-default module module-videos">
+    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+      <div class="panel-heading" role="tab" id="headingThree">
+          Reviewed Videos
+          <span class="badge pull-right"><%= reviewed_videos.length %></span>
+      </div>
+    </a>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-padding">
+        <% if translated_videos.empty? %>
+          <div class="panel-empty">
+            No videos reviewed yet.
+          </div>
+        <% else %>
+          <%= render 'videos/index/videos_table', :videos => reviewed_videos %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

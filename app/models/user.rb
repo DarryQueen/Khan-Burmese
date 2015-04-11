@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     self.translation_videos.select { |video| video.translated? }
   end
 
+  def reviewed_videos
+    self.get_voted(Translation).map { |translation| translation.video }.uniq
+  end
+
   def points
     self.translations.reduce(0) { |sum, translation| sum + translation.points }
   end
