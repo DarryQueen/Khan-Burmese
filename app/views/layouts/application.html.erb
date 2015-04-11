@@ -32,7 +32,6 @@
           </a>
           <ul class="dropdown-menu" role="menu">
             <li role="presentation"><%= link_to 'Profile', user_path(current_user) %></li>
-            <li role="presentation"><a href="#">My Videos</a></li>
             <li class="divider"></li>
             <li role="presentation"><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
           </ul>
@@ -46,7 +45,6 @@
       <div class="collapse navbar-collapse" id="collapse-to-nav-mini">
         <ul class="nav">
           <li class="nav-mini" role="presentation"><%= link_to 'Profile', user_path(current_user) %></li>
-          <li class="nav-mini" role="presentation"><a href="#">My Videos</a></li>
           <li class="nav-mini" role="presentation"><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
         </ul>
       </div>

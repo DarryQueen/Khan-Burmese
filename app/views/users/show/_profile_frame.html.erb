@@ -2,22 +2,26 @@
   <div class="panel-heading">
     <b>Profile</b>
   </div>
-  <%= image_tag 'avatar.jpg', :class => 'img-square' %>
+  <a href="#">
+    <%= image_tag 'avatar.jpg', :class => 'img-square' %>
+  </a>
   <ul class="list-group">
     <li class="list-group-item">
       <b>Name:</b>
       <% if can? :edit, user %>
         <div class="pull-right">
-          <%= content_tag :span, user.name, {
-            :id => 'user-name',
-            :class => 'rest-in-place',
-            :data => {
-              :url => user_path(user),
-              :object => 'user',
-              :attribute => 'name',
-              :placeholder => 'Full Name'
-            }
-          } %>
+          <span class="rest-in-div">
+            <%= content_tag :span, user.name, {
+              :id => 'user-name',
+              :class => 'rest-in-place',
+              :data => {
+                :url => user_path(user),
+                :object => 'user',
+                :attribute => 'name',
+                :placeholder => 'Full Name'
+              }
+            } %>
+          </span>
           <a class="rip-edit rip-edit-inline" onclick="$('#user-name').click();">
             <i class="fa fa-pencil"></i>
           </a>
@@ -30,16 +34,18 @@
       <b>Country:</b>
       <% if can? :edit, user %>
         <div class="pull-right">
-          <%= content_tag :span, user.country, {
-            :id => 'user-country',
-            :class => 'rest-in-place',
-            :data => {
-              :url => user_path(user),
-              :object => 'user',
-              :attribute => 'country',
-              :placeholder => 'Country'
-            }
-          } %>
+          <span class="rest-in-div">
+            <%= content_tag :span, user.country, {
+              :id => 'user-country',
+              :class => 'rest-in-place',
+              :data => {
+                :url => user_path(user),
+                :object => 'user',
+                :attribute => 'country',
+                :placeholder => 'Country'
+              }
+            } %>
+          </span>
           <a class="rip-edit rip-edit-inline" onclick="$('#user-country').click();">
             <i class="fa fa-pencil"></i>
           </a>
@@ -56,16 +62,18 @@
       <b>City:</b>
       <% if can? :edit, user %>
         <div class="pull-right">
-          <%= content_tag :span, user.city, {
-            :id => 'user-city',
-            :class => 'rest-in-place',
-            :data => {
-              :url => user_path(user),
-              :object => 'user',
-              :attribute => 'city',
-              :placeholder => 'City'
-            }
-          } %>
+          <span class="rest-in-div">
+            <%= content_tag :span, user.city, {
+              :id => 'user-city',
+              :class => 'rest-in-place',
+              :data => {
+                :url => user_path(user),
+                :object => 'user',
+                :attribute => 'city',
+                :placeholder => 'City'
+              }
+            } %>
+          </span>
           <a class="rip-edit rip-edit-inline" onclick="$('#user-city').click();">
             <i class="fa fa-pencil"></i>
           </a>
