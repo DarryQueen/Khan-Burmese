@@ -51,6 +51,7 @@ GEM
       multi_json (~> 1.0)
     acts-as-taggable-on (3.5.0)
       activerecord (>= 3.2, < 5)
+    acts_as_votable (0.10.0)
     addressable (2.3.7)
     arel (3.0.3)
     bcrypt (3.1.10)
@@ -260,6 +261,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
+  acts_as_votable (~> 0.10.0)
   cancancan (~> 1.10)
   coffee-rails (~> 3.2.1)
   cucumber-rails

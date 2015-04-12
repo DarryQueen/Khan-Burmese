@@ -18,6 +18,10 @@ class Video < ActiveRecord::Base
     self.translations.select { |translation| translation.complete? }
   end
 
+  def reviewers
+    self.completed_translations.map { |translation| translation.reviewers }.flatten
+  end
+
   def youtube_link
     "http://www.youtube.com/embed/#{self.youtube_id}"
   end

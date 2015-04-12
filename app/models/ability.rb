@@ -40,6 +40,9 @@ class Ability
     can :destroy, Translation do |translation|
       translation.user == @user and not translation.complete?
     end
+    can :review, Translation do |translation|
+      translation.user != @user and translation.complete?
+    end
 
     # User:
     can :edit, User, :id => @user.id

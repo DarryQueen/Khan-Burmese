@@ -1,11 +1,13 @@
 <div class="media">
   <div class="media-left media-middle">
     <a href="#">
-      <%= image_tag 'avatar.jpg', :class => 'img-circle media-object profile-pic' %>
+      <%= link_to user_path(contributor) do %>
+        <%= image_tag 'avatar.jpg', :class => 'img-circle media-object profile-pic' %>
+      <% end %>
     </a>
   </div>
   <div class="media-body">
-    <p class="media-heading"><%= contributor.name %></p>
-    <span class="badge">Translator</span>
+    <p class="media-heading"><%= link_to contributor.name, user_path(contributor) %></p>
+    <span class="badge badge-<%= role %>"><%= role.titleize %></span>
   </div>
 </div>

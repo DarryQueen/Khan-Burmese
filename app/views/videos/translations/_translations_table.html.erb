@@ -1,0 +1,17 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Author</th>
+      <th>Updated</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => 'videos/translations/translation_row',
+      :collection => translations,
+      :as => :translation,
+      :locals => { :video => video }
+    %>
+  </tbody>
+</table>

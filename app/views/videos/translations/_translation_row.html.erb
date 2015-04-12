@@ -1,0 +1,12 @@
+<tr>
+  <td>
+    <div id="vote-translation-<%= translation.id %>" class="vote-group">
+      <%= render 'videos/translations/vote_actions', :video => video, :translation => translation %>
+    </div>
+  </td>
+  <td><%= link_to translation.user.name, user_path(translation.user), :class => 'row-title' %></td>
+  <td><%= translation.time_updated.localtime.strftime("%B %d, %Y at %l:%M") %></td>
+  <td>
+    <%= link_to 'Download', download_path(:filename => translation.srt_path), :class => 'btn btn-success btn-xs' %>
+  </td>
+</tr>

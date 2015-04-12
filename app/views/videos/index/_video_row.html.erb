@@ -3,7 +3,7 @@
     <div id="toggle-star-<%= video.id %>" class="star-inline">
       <%= toggle_star_button(video) %>
     </div>
-    <%= link_to video.title, video %>
+    <%= link_to video.title, video, :class => 'row-title' %>
   </td>
   <td>Math</td>
   <td><%= seconds_to_string(video.duration) %></td>

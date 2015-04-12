@@ -12,5 +12,6 @@ class HomeController < ApplicationController
     @assigned_videos = current_user.untranslated_videos
     @translated_videos = Video.recently_translated_videos(1.week.ago).take(5)
     @priority_videos = Video.priority_videos.take(5) - @assigned_videos - @translated_videos
+    @reviewed_videos = current_user.reviewed_videos
   end
 end

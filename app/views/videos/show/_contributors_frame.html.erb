@@ -3,11 +3,20 @@
     <b>Contributors</b>
     <a class="pull-right" href="#"><i class="fa fa-plus-circle"></i></a>
   </div>
-  <% if contributors.empty? %>
+  <% if translators.empty? and reviewers.empty? %>
     <div class="panel-empty">
       No one has contributed yet!
     </div>
   <% else %>
-    <%= render :partial => 'videos/show/contributor_row', :collection => contributors, :as => :contributor %>
+    <%= render :partial => 'videos/show/contributor_row',
+      :collection => translators,
+      :as => :contributor,
+      :locals => { :role => 'translator' }
+    %>
+    <%= render :partial => 'videos/show/contributor_row',
+      :collection => reviewers,
+      :as => :contributor,
+      :locals => { :role => 'reviewer' }
+    %>
   <% end %>
 </div>
