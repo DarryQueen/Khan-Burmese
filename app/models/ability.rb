@@ -18,7 +18,7 @@ class Ability
     can :dashboard
 
     # Superior power. Use with discretion.
-    can :manage, :all
+    # can :manage, :all
   end
 
   def admin
