@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @assigned_videos = @user.untranslated_videos
     @translated_videos = @user.translated_videos
-    @reviewed_videos = @user.reviewed_videos - @translated_videos - @assigned_videos
+    @reviewed_videos = @user.reviewed_videos
   end
 
   def update

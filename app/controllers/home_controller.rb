@@ -10,8 +10,9 @@ class HomeController < ApplicationController
 
   def dashboard
     @assigned_videos = current_user.untranslated_videos
-    @translated_videos = Video.recently_translated_videos(1.week.ago).take(5)
-    @priority_videos = Video.priority_videos.take(5) - @assigned_videos - @translated_videos
+    @translated_videos = current_user.translated_videos
+    @recently_translated_videos = Video.recently_translated_videos(1.week.ago).take(5)
+    @priority_videos = Video.priority_videos.take(5)
     @reviewed_videos = current_user.reviewed_videos
   end
 end
