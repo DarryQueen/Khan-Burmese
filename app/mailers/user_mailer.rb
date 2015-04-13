@@ -8,6 +8,6 @@ class UserMailer < ActionMailer::Base
     @reviewer = reviewer
     @message = message
     @video = translation.video
-    mail(:to => @user, :subject => 'Your Translation Has Been Reviewed')
+    mail(:to => @user.email, :subject => 'Your Translation Has Been Reviewed')
   end
 end
