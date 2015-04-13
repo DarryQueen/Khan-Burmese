@@ -16,6 +16,8 @@ en:
           taken: "You already have a translation for this video."
         user:
           attributes:
+            name:
+              blank: "Name cannot be blank."
             email:
               blank: "Email cannot be blank."
               taken: "Email has already been taken."
