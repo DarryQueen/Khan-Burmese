@@ -13,7 +13,7 @@
             No videos assigned yet.
           </div>
         <% else %>
-          <%= render 'videos/index/videos_table', :videos => assigned_videos %>
+          <%= render 'videos/index/videos_table', :videos => assigned_videos, :star => true %>
         <% end %>
       </div>
     </div>
@@ -48,7 +48,7 @@
     </a>
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="panel-padding">
-        <% if translated_videos.empty? %>
+        <% if reviewed_videos.empty? %>
           <div class="panel-empty">
             No videos reviewed yet.
           </div>

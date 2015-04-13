@@ -2,12 +2,13 @@
   <%= render 'videos/index/videos_list', {
     :title => 'Assigned Videos',
     :videos => @assigned_videos,
-    :message_empty => 'No videos assigned.'
+    :message_empty => 'No videos assigned.',
+    :star => true
   } %>
 
   <%= render 'videos/index/videos_list', {
     :title => 'Recently Translated Videos',
-    :videos => @translated_videos,
+    :videos => @recently_translated_videos,
     :message_empty => 'No videos translated recently.'
   } %>
 

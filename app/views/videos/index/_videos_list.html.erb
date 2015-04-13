@@ -13,7 +13,7 @@
     </div>
   <% else %>
     <div class="panel-content">
-      <%= render 'videos/index/videos_table', :videos => videos %>
+      <%= render 'videos/index/videos_table', :videos => videos, :star => (defined?(star) and star) %>
     </div>
   <% end %>
 </div>
