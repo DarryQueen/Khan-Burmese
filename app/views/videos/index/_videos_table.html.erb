@@ -8,6 +8,10 @@
     </tr>
   </thead>
   <tbody>
-    <%= render :partial => 'videos/index/video_row', :collection => videos, :as => :video %>
+    <%= render :partial => 'videos/index/video_row',
+      :collection => videos,
+      :as => :video,
+      :locals => { :star => (defined?(star) and star) }
+    %>
   </tbody>
 </table>

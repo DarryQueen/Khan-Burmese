@@ -1,7 +1,7 @@
 <tr>
   <td>
     <div id="toggle-star-<%= video.id %>" class="star-inline">
-      <%= toggle_star_button(video) %>
+      <%= toggle_star_button(video) if (defined?(star) and star) %>
     </div>
     <%= link_to video.title, video, :class => 'row-title' %>
   </td>
