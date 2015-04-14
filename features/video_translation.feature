@@ -27,7 +27,7 @@ Scenario: Assign video and unassign video.
 Scenario: Translate a video offline.
   When I press "Assign to Me"
   And I press "Translate Offline"
-  Then I should see "download the video's"
+  Then I should see "If you want to translate offline"
   When I upload the file "subtitle.srt" to "srt"
   And I press "Upload"
   Then I should not see "Unassign Me"
