@@ -1,15 +1,19 @@
 class Translation < ActiveRecord::Base
   belongs_to :user
   belongs_to :video
-  attr_accessible :user, :video
+  attr_accessible :user, :video, :srt
   acts_as_votable
+
+  has_attached_file :srt,
+    :storage => :dropbox,
+    :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
+    :dropbox_visibility => 'private',
+    :path => "#{Rails.env}/srt/:id/translation.srt"
 
   validates_presence_of :video
   validates_uniqueness_of :user_id, :scope => :video_id
 
   after_create :update_time
-
-  @@root_folder_name = 'public/srt/'
 
   # Maps from integer representation in the database to status symbol:
   @@STATUS_HASH = { 0 => :incomplete, 1 => :complete, 2 => :complete_with_priority }
@@ -53,26 +57,14 @@ class Translation < ActiveRecord::Base
   end
 
   def complete?
-    File.exist?(srt_path) and [ :complete_with_priority, :complete ].include? self.status_symbol
+    [ :complete_with_priority, :complete ].include? self.status_symbol
   end
 
-  def srt_path
-    folder_name = "#{@@root_folder_name}#{self.id}/"
-    file_name =  "#{self.id}.srt"
-    File.join(folder_name, file_name)
-  end
+  def upload_srt(srt_file)
+    Translation.verify_file(srt_file)
 
-  def upload_srt(srt)
-    Translation.verify_file(srt)
-
-    Translation.make_folder(@@root_folder_name)
-
-    folder_name = "#{@@root_folder_name}#{self.id}/"
-    Translation.make_folder(folder_name)
-
-    file_name =  "#{self.id}.srt"
-    path = File.join(folder_name, file_name)
-    File.open(path, 'w+') { |f| f.write(srt.read) }
+    self.srt = srt_file
+    self.save
 
     update_time
     complete
@@ -82,12 +74,6 @@ class Translation < ActiveRecord::Base
   def update_time
     self.time_last_updated = Time.now
     self.save
-  end
-
-  def self.make_folder(folder_name)
-    unless File.exist?(folder_name)
-      Dir::mkdir(folder_name)
-    end
   end
 
   def self.verify_file(srt)
