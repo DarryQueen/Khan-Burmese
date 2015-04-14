@@ -4,6 +4,13 @@ facebook_private_key: 'INSERT_FACEBOOK_APP_SECRET'
 google_public_key: 'INSERT_GOOGLE_PUBLIC_KEY'
 google_private_key: 'INSERT_GOOGLE_PRIVATE_KEY'
 
+dropbox_app_key: 'INSERT_DROPBOX_APP_KEY'
+dropbox_app_secret: 'INSERT_DROPBOX_APP_SECRET'
+dropbox_access_token: 'INSERT_DROPBOX_ACCESS_TOKEN'
+dropbox_access_token_secret: 'INSERT_DROPBOX_ACCESS_TOKEN_SECRET'
+dropbox_user_id: 'INSERT_DROPBOX_USER_ID'
+dropbox_access_type: 'INSERT_DROPBOX_ACCESS_TYPE'
+
 production:
   facebook_public_key: 'INSERT_FACEBOOK_APP_ID'
   facebook_private_key: 'INSERT_FACEBOOK_APP_SECRET'
@@ -11,3 +18,10 @@ production:
   google_private_key: 'INSERT_GOOGLE_PRIVATE_KEY'
   sendgrid_username: 'INSERT_SENDGRID_USERNAME'
   sendgrid_password: 'INSERT_SENDGRID_PASSWORD'
+
+  dropbox_app_key: 'INSERT_DROPBOX_APP_KEY'
+  dropbox_app_secret: 'INSERT_DROPBOX_APP_SECRET'
+  dropbox_access_token: 'INSERT_DROPBOX_ACCESS_TOKEN'
+  dropbox_access_token_secret: 'INSERT_DROPBOX_ACCESS_TOKEN_SECRET'
+  dropbox_user_id: 'INSERT_DROPBOX_USER_ID'
+  dropbox_access_type: 'INSERT_DROPBOX_ACCESS_TYPE'

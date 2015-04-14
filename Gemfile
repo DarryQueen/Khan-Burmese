@@ -46,6 +46,10 @@ gem 'rest_in_place'
 # Voting:
 gem 'acts_as_votable', '~> 0.10.0'
 
+# File uploading:
+gem 'paperclip', '~> 3.5'
+gem 'paperclip-dropbox', '>= 1.1.7'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
