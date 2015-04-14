@@ -1,5 +1,6 @@
 class Video < ActiveRecord::Base
   require 'YoutubeReader'
+  require 'net/http'
 
   attr_accessible :description, :title, :youtube_id, :starred, :duration
   acts_as_taggable
@@ -26,6 +27,16 @@ class Video < ActiveRecord::Base
     "http://www.youtube.com/embed/#{self.youtube_id}"
   end
 
+  def amara_link
+    "http://www.amara.org/en/subtitles/editor/#{self.amara_id}/my/"
+  end
+
+  def amara_en_srt
+    link = "http://www.amara.org/en/videos/#{self.amara_id}/en/"
+
+    Video.get_srt_link_from_amara(link)
+  end
+
   def fill_missing_fields
     youtube_values = {}
 
@@ -40,6 +51,8 @@ class Video < ActiveRecord::Base
         write_attribute(field, youtube_values[field]) unless self[field]
       end
     end
+
+    write_attribute(:amara_id, YoutubeReader::amara_id(self.youtube_id))
   end
 
   def self.recently_translated_videos(time)
@@ -89,5 +102,14 @@ class Video < ActiveRecord::Base
       video.fill_missing_fields
       video.save
     end
+  end
+
+  def self.get_srt_link_from_amara(amara_link)
+    result = Net::HTTP.get_response(URI.parse(amara_link))
+    return nil if [ '404', '403' ].include?(result.code)
+    result = Net::HTTP.get_response(URI.parse(result.header['location'])) if [ '302', '301' ].include?(result.code)
+
+    srt_link_match = /<a href="([^"]*)">SRT<\/a>/.match(result.body)[1]
+    "http://www.amara.org/#{srt_link_match}"
   end
 end
