@@ -36,6 +36,20 @@ class TranslationsController < ApplicationController
     redirect_to video_path @video
   end
 
+  def submit_amara
+    @video = Video.find(params[:video_id])
+    @translation = Translation.find(params[:translation_id])
+
+    authorize! :upload, @translation
+
+    begin
+      @translation.upload_amara(params[:amara_link])
+    rescue ArgumentError => e
+      add_flash(:alert, e.message)
+    end
+    redirect_to video_path @video
+  end
+
   def vote
     @video = Video.find(params[:video_id])
     @translation = Translation.find(params[:translation_id])
