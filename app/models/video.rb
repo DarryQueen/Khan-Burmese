@@ -40,6 +40,8 @@ class Video < ActiveRecord::Base
         write_attribute(field, youtube_values[field]) unless self[field]
       end
     end
+
+    write_attribute(:amara_id, YoutubeReader::amara_id(self.youtube_id))
   end
 
   def self.recently_translated_videos(time)
