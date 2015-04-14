@@ -19,7 +19,7 @@
       <div role="tabpanel">
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane fade in active tab-amara" id="tab-amara">
-            <span>If you'd like to use Amara's translation interface, you can use the <b><a href="#">link to the Amara video</a></b>. To earn points, submit your completed Amara link below.</span>
+            <span>If you'd like to use Amara's translation interface, you can use the <b><%= link_to 'link to the Amara video', video.amara_link %></b>. To earn points, submit your completed Amara link below.</span>
 
             <form role="form" class="tab-form">
               <div class="input-group">
@@ -31,7 +31,11 @@
             </form>
           </div>
           <div role="tabpanel" class="tab-pane fade tab-srt" id="tab-srt">
-            <span>If you want to translate offline using an SRT, you can <b><a href="#">download the video's SRT</a></b>. When you're finished translating, just ship it back to us!</span>
+            <% if (srt_link = video.amara_en_srt) %>
+              <span>If you want to translate offline using an SRT, you can <b><%= link_to 'download the video\'s SRT', srt_link %></b>. When you're finished translating, just ship it back to us!</span>
+            <% else %>
+              <span>If you want to translate offline using an SRT, you can use the video above. Unfortunately, there is no English SRT available. When you're finished translating, just ship it back to us!</span>
+            <% end %>
 
             <%= form_tag(video_translation_upload_path(video, translation), :class => 'tab-form', :multipart => true) do %>
               <div class="form-group">
