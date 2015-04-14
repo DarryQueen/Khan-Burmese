@@ -1,6 +1,7 @@
 # Khan-Burmese
 [![Build Status](https://travis-ci.org/DarryQueen/Khan-Burmese.png?branch=master)](https://travis-ci.org/DarryQueen/Khan-Burmese)
 [![Code Climate](https://codeclimate.com/github/DarryQueen/Khan-Burmese.png)](https://codeclimate.com/github/DarryQueen/Khan-Burmese)
+[![Test Coverage](https://codeclimate.com/github/DarryQueen/Khan-Burmese/badges/coverage.png)](https://codeclimate.com/github/DarryQueen/Khan-Burmese)
 
 Our software solution for Khan Academy's Myanmar Community translation system.
 

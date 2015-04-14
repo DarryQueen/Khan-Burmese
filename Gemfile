@@ -17,6 +17,10 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
 end
 
+group :test do
+  gem 'codeclimate-test-reporter', :require => false
+end
+
 # Use PG on Heroku:
 group :production do
   gem 'pg'
