@@ -8,7 +8,7 @@ SimpleCov.start 'rails'
 ENV['SKIP_RAILS_ADMIN_INITIALIZER'] = 'false'
 require 'cucumber/rails'
 
-require "codeclimate-test-reporter"
+require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
 
 # Capybara defaults to CSS3 selectors rather than XPath.
