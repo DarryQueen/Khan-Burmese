@@ -1,0 +1,17 @@
+<div class="panel panel-default module">
+  <div class="panel-heading">
+    <b><%= title %></b>
+  </div>
+  <ul class="goals">
+    <li>
+    <b>Current Goal: <%= current_goal %> </b>
+    <%= form_tag(update_goal_path, :class => 'pull-right', :method => :put) do %>
+    <%= text_field_tag 'value' %>
+    <input type="hidden" name="goal" value=<%= goal_name %>>
+    <%= submit_tag 'Update', :class => 'btn btn-primary' %>
+    <% end %>
+    </li>
+  </br>
+  </ul>
+
+</div>

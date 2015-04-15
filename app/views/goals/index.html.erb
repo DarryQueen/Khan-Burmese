@@ -1,0 +1,17 @@
+<h2> Goals </h2>
+<%= render 'goals/index/goal_frame', {
+    :title => 'Number of Translators',
+    :current_goal => @number_of_translators_goal,
+    :goal_name => 'number_of_translators'
+  } %>
+<%= render 'goals/index/goal_frame', {
+    :title => 'Number of Videos Translated',
+    :current_goal => @number_of_translated_videos_goal,
+    :goal_name => 'number_of_translated_videos'
+  } %>
+<%= render 'goals/index/goal_frame', {
+    :title => 'Number of Minutes Translated',
+    :current_goal => @number_of_minutes_translated_goal,
+    :goal_name => 'number_of_minutes_translated'
+  } %>
+
