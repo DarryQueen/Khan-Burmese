@@ -133,6 +133,8 @@ class Video < ActiveRecord::Base
       attributes = row.to_hash.slice(*keys)
 
       video = Video.new(attributes)
+      video.subject_list.add(row['subject'])
+
       video.fill_missing_fields
       video.save
     end
