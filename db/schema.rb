@@ -11,7 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150414065711) do
+ActiveRecord::Schema.define(:version => 20150415013114) do
+
+  create_table "goals", :force => true do |t|
+    t.string  "descriptor"
+    t.integer "value"
+  end
 
   create_table "identities", :force => true do |t|
     t.integer  "user_id"
@@ -62,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20150414065711) do
     t.datetime "time_last_updated"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "points"
     t.integer  "status",            :default => 0
     t.string   "srt_file_name"
     t.string   "srt_content_type"

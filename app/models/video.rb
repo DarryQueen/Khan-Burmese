@@ -77,6 +77,31 @@ class Video < ActiveRecord::Base
     self
   end
 
+  def is_translated?
+    self.translations.each do |translation|
+      if [:complete, :complete_with_priority].include? translation.status
+        return true
+      end
+    end
+    false
+  end
+
+  def self.number_of_translated_videos
+    sum = 0
+    Video.all.each do |video|
+      sum += video.is_translated? ? 1 : 0
+    end
+    sum
+  end
+
+  def self.number_of_minutes_translated
+    sum = 0
+    Video.all.each do |video|
+      sum += video.is_translated? ? video.duration : 0
+    end
+    sum
+  end
+
   def fill_missing_fields
     youtube_values = {}
 

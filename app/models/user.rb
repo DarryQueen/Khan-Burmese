@@ -60,6 +60,23 @@ class User < ActiveRecord::Base
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end
 
+  def is_translator?
+    self.translations.each do |translation|
+      if [:complete, :complete_with_priority].include? translation.status_symbol
+        return true
+      end
+    end
+    false
+  end
+
+  def self.number_of_translators
+    sum = 0
+    User.all.each do |user|
+      sum += user.is_translator? ? 1 : 0
+    end
+    sum
+  end
+
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
 

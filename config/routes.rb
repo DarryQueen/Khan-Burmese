@@ -18,6 +18,14 @@ KhanBurmese::Application.routes.draw do
       get 'leaderboard' => 'users#leaderboard'
     end
   end
+  
+  # Set goals:
+  get 'goals' => 'goals#index'
+
+  # Update goals:
+  put 'update_goal' => 'goals#update'
+
+  resources :users, :only => [ :show, :update ]
 
   resources :videos do
     # Star or unstar videos:
