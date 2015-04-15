@@ -1,19 +1,26 @@
 <div class="video-filter">
   <%= form_tag videos_path, :method => 'get', :class => 'form-search', :id => 'video-search' do %>
-    <%= autocomplete_field_tag :search, nil, autocomplete_tag_name_videos_path, {
-      :id => 'search',
-      :class => 'form-control',
-      :placeholder => 'Search by category or name.',
-      :'data-delimiter' => ' ',
-      :tabindex => '-1',
-    } %>
+    <div class="col-lg-8 col-md-6 no-padding">
+      <%= autocomplete_field_tag :search, nil, autocomplete_tag_name_videos_path, {
+        :id => 'search',
+        :class => 'form-control video-search',
+        :placeholder => 'Search by category or name.',
+        :'data-delimiter' => ' ',
+        :tabindex => '-1',
+      } %>
+    </div>
 
-    <div id="status-filter" class="status-check-group">
-      <% @statuses.each do |status| %>
-        <label class="status-check">
-          <%= check_box_tag 'statuses[]', status, true %><%= status.titleize %>
-        </label>
-      <% end %>
+    <div id="status-filter" class="status-check-group col-lg-4 col-md-6 no-padding">
+      <div class="btn-group col-xs-12 no-padding" role="group" aria-label="...">
+        <% @statuses.each_with_index do |status, i| %>
+          <span class="button-checkbox btn-group col-xs-3 no-padding">
+            <% check_box = check_box_tag 'statuses[]', status, @default_params[status], :class => 'hidden' %>
+            <%= check_box unless i == 0 %>
+            <button type="button" class="btn col-xs-12" data-color="<%= status_to_color(status) %>"><%= status.titleize %></button>
+            <%= check_box if i == 0 %>
+          </span>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>

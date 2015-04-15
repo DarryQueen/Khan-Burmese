@@ -6,6 +6,9 @@ class VideosController < ApplicationController
       |video| video.starred ? 0 : 1
     }
     @statuses = Video.statuses.map(&:to_s)
+
+    @default_params = {}
+    params[:statuses].each { |status| @default_params[status] = true } if params[:statuses]
   end
 
   def show
