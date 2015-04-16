@@ -1,0 +1,30 @@
+.vote-group .active
+  color: #ff4136
+
+.vote
+  color: #158cba
+  position: relative
+  top: 4px
+  .upvote, .downvote, .upvote-link, .downvote-link
+    position: absolute
+  .upvote-link
+    height: 50%
+    width: 14px
+    z-index: 5000
+  .downvote-link
+    height: 50%
+    top: 50%
+    width: 14px
+    z-index: 5000
+
+.badge
+  &.vote-badge
+    margin-left: 14px
+  &.success, &.badge-reviewer
+    background-color: #28b62c
+  &.danger
+    background-color: #ff4136
+
+.modal textarea
+  resize: vertical
+  max-height: 200px
