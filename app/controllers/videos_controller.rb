@@ -2,9 +2,10 @@ class VideosController < ApplicationController
   autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
 
   def index
-    @videos = Video.search(params[:search]).sort_by {
+    @videos = Video.search(params[:search], params[:statuses]).sort_by {
       |video| video.starred ? 0 : 1
     }
+    @statuses = Video.statuses.map(&:to_s)
   end
 
   def show

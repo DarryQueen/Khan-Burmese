@@ -11,12 +11,23 @@ class Video < ActiveRecord::Base
   validates_presence_of :youtube_id
   validates_uniqueness_of :youtube_id
 
+  @@statuses = [ :unassigned, :assigned, :translated, :reviewed ]
+
+  def assigned?
+    not self.translations.empty?
+  end
   def translated?
     not self.completed_translations.empty?
+  end
+  def reviewed?
+    not self.reviewed_translations.empty?
   end
 
   def completed_translations
     self.translations.select { |translation| translation.complete? }
+  end
+  def reviewed_translations
+    self.translations.select { |translation| translation.reviewed? }
   end
 
   def reviewers
@@ -35,6 +46,16 @@ class Video < ActiveRecord::Base
     link = "http://www.amara.org/en/videos/#{self.amara_id}/en/"
 
     Video.get_srt_link_from_amara(link)
+  end
+
+  def status
+    if self.assigned?
+      return :reviewed if self.reviewed?
+      return :translated if self.translated?
+      :assigned
+    else
+      :unassigned
+    end
   end
 
   def fill_missing_fields
@@ -70,15 +91,27 @@ class Video < ActiveRecord::Base
     Video.where(:starred => true)
   end
 
-  def self.search(search)
+  def self.statuses
+    @@statuses
+  end
+
+  def self.search(search, statuses)
+    videos = scoped
+
     if search
+      title_videos = videos.where('title LIKE ?', "%#{search}%")
+
       tags = search.split
       tagged_videos = Video.tagged_with(tags, :any => true)
-      title_videos = Video.where('title LIKE ?', "%#{search}%")
-      (tagged_videos + title_videos).uniq
-    else
-      scoped
+
+      videos = (title_videos + tagged_videos).uniq
     end
+
+    if statuses and not statuses.empty?
+      videos = videos.select { |video| statuses.include?(video.status.to_s) }
+    end
+
+    videos
   end
 
   def self.import(file)
