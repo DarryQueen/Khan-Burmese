@@ -5,6 +5,8 @@ $(function() {
   });
   $('#video-search input').keyup();
   $('#search').focus();
+
+  $('[data-toggle="tooltip"]').tooltip();
 });
 
 function starClick(element) {
