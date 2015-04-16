@@ -1,0 +1,54 @@
+/* Nav. */
+.img-logo
+  height: 35px
+  width: 35px
+  display: inline-block
+  float: left
+  margin-top: 7px
+  margin-right: 5px
+  margin-left: 5px
+
+.inline-nav
+  display: inline-block
+
+.khan-nav .navbar-brand
+  color: #333333
+  padding-left: 0px
+  margin-left: 0px !important
+
+.khan-nav
+  .navbar-toggle
+    margin-right: 10px
+  .navbar-header
+    margin-right: 0px
+    margin-left: 0px
+    float: left
+    width: 100%
+  .navbar-signin
+    float: right
+    position: relative
+    margin-right: 5px
+  .dropdown-toggle
+    padding-right: 5px
+  .nav-mini
+    font-weight: bold
+  .navbar-right
+    margin-right: 0px
+
+/* For mobile viewers. */
+$mobile-drop-down-color: #333333
+@media (max-width: 768px)
+  .khan-nav 
+    li a
+      text-align: center
+      color: $mobile-drop-down-color
+    .dropdown 
+      display: none
+
+/* For laptop viewers. */
+@media (min-width: 768px)
+  .khan-nav
+    .nav-mini
+      display: none
+    .dropdown:hover .dropdown-menu
+      display: block
