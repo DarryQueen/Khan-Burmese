@@ -49,4 +49,13 @@ module VideoHelper
 
     content_tag :span, score, :class => badge_class
   end
+
+  def status_to_color(status)
+    case status.to_s
+    when 'unassigned' then 'danger'
+    when 'assigned' then 'warning'
+    when 'translated' then 'primary'
+    when 'reviewed' then 'success'
+    end
+  end
 end

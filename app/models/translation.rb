@@ -48,6 +48,10 @@ class Translation < ActiveRecord::Base
     self.time_last_updated
   end
 
+  def reviewed?
+    self.net_votes > 0
+  end
+
   def complete
     unless self.complete?
       new_status = self.video.starred ? @@STATUS_TO_INT_HASH[:complete_with_priority] : @@STATUS_TO_INT_HASH[:complete]
