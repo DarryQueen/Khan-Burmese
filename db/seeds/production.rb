@@ -1,4 +1,4 @@
-production_seeds = ['admin']
+production_seeds = [ 'admin' ]
 
 production_seeds.each do |seed|
   seed_file = "#{Rails.root}/db/seeds/#{seed}.rb"

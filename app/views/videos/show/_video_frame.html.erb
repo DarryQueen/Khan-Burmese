@@ -11,7 +11,7 @@
   </div>
 
   <div class="video-footer">
-    <div class="pull-left"><b>Subject: Math</b></div>
-    <div class="pull-right"><b>Duration: 2:15</b></div>
+    <div class="pull-left"><b>Subject: <%= video.subject_list.join(', ') %></b></div>
+    <div class="pull-right"><b>Duration: <%= seconds_to_string(video.duration) %></b></div>
   </div>
 </div>

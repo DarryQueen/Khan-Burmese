@@ -198,8 +198,6 @@ GEM
       activesupport (= 3.2.16)
       bundler (~> 1.0)
       railties (= 3.2.16)
-    rails3-jquery-autocomplete (1.0.15)
-      rails (>= 3.2)
     railties (3.2.16)
       actionpack (= 3.2.16)
       activesupport (= 3.2.16)
@@ -293,7 +291,6 @@ DEPENDENCIES
   paperclip-dropbox (>= 1.1.7)
   pg
   rails (= 3.2.16)
-  rails3-jquery-autocomplete
   rails_admin!
   rake
   rest_in_place

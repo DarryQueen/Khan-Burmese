@@ -5,7 +5,7 @@
     </div>
     <%= link_to video.title, video, :class => 'row-title' %>
   </td>
-  <td>Math</td>
+  <td><%= video.subject_list.join(', ') %></td>
   <td><%= seconds_to_string(video.duration) %></td>
   <td><%= video.status.to_s.titleize %><td>
 </tr>

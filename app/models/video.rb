@@ -4,6 +4,7 @@ class Video < ActiveRecord::Base
 
   attr_accessible :description, :title, :youtube_id, :starred, :duration
   acts_as_taggable
+  acts_as_taggable_on :subject
 
   has_many :translations
   has_many :translators, :through => :translations, :source => :user
@@ -95,16 +96,19 @@ class Video < ActiveRecord::Base
     @@statuses
   end
 
-  def self.search(search, statuses)
+  def self.all_subjects
+    Video.subject_counts.map { |subject| subject.name }
+  end
+
+  def self.search(search, statuses = [], subjects = [])
     videos = scoped
 
     if search
-      title_videos = videos.where('title LIKE ?', "%#{search}%")
+      videos = videos.where('title LIKE ?', "%#{search}%")
+    end
 
-      tags = search.split
-      tagged_videos = Video.tagged_with(tags, :any => true)
-
-      videos = (title_videos + tagged_videos).uniq
+    if subjects and not subjects.empty?
+      videos = videos.select { |video| not (video.subject_list & subjects).empty? }
     end
 
     if statuses and not statuses.empty?
@@ -132,6 +136,8 @@ class Video < ActiveRecord::Base
       attributes = row.to_hash.slice(*keys)
 
       video = Video.new(attributes)
+      video.subject_list.add(row['subject'])
+
       video.fill_missing_fields
       video.save
     end

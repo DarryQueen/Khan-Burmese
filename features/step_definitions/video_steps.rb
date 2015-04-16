@@ -1,8 +1,8 @@
 Given /^the following videos:$/ do |videos|
   videos.hashes.each do |video|
-    tags = video['tags'] ? video.delete('tags').split(', ') : nil
+    tags = video['subjects'] ? video.delete('subjects').split(', ') : nil
     new_video = Video.new(video)
-    new_video.tag_list.add(tags)
+    new_video.subject_list.add(tags)
     new_video.save!
   end
 end
