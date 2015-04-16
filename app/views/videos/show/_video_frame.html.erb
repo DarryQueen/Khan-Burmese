@@ -6,9 +6,8 @@
     </div>
   </div>
 
-  <div class="h_iframe">
-      <%= image_tag 'video_placeholder.jpg', :class => 'ratio' %>
-      <iframe src="<%= video.youtube_link %>" frameborder="0" allowfullscreen></iframe>
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="<%= video.youtube_link %>" frameborder="0" allowfullscreen></iframe>
   </div>
 
   <div class="video-footer">
