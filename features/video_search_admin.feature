@@ -6,10 +6,10 @@ Feature: Perform video searching with AJAX.
 
 Background:
   Given the following videos:
-    | title                          | description        | youtube_id  | tags                                               | starred |
-    | The Help                       | A great movie.     | J_ajv_6pUnI | emma, stone, viola, davis, jessica, chastain       | true    |
-    | Star Trek                      | A good movie.      | sKqDROmF6go | chris, pine, zoe, saldana, zachary, quinto, action | false   |
-    | Crouching Tiger, Hidden Dragon | A wonderful movie. | s1hs62Is67s | zhang, ziyi, michelle, yeoh, chow, yunfat, action  | false   |
+    | title                          | description        | youtube_id  | starred |
+    | The Help                       | A great movie.     | J_ajv_6pUnI | true    |
+    | Star Trek                      | A good movie.      | sKqDROmF6go | false   |
+    | Crouching Tiger, Hidden Dragon | A wonderful movie. | s1hs62Is67s | false   |
   And I am logged in as admin
   And I am on the videos page
 
