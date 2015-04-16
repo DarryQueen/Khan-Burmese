@@ -7,9 +7,19 @@ $(function() {
   $('#search').focus();
 
   $('[data-toggle="tooltip"]').tooltip();
+
+  // Disable form submission advances:
+  $('#video-search').bind('keypress', function(e) {
+    if (e.keyCode == 13) {
+      return false;
+    }
+  });
+  $('#search').bind('blur', function(e) {
+    this.focus();
+  });
 });
 
 function starClick(element) {
-  wrapper = $(element.parentNode);
+  var wrapper = $(element.parentNode);
   wrapper.html('<i class="fa fa-spinner fa-pulse fa-lg fa-fw"></i>');
 }
