@@ -13,6 +13,7 @@
  *= require jquery-ui-custom.min
  *= require bootstrap.min
  *= require bootstrap-social.min
+ *= require bootstrap-select.min
  *= require font-awesome.min
  *= stub bootstrap-email.min
  */

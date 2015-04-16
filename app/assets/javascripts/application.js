@@ -14,5 +14,6 @@
 //= require jquery-ui-custom.min
 //= require jquery_ujs
 //= require rest_in_place
+//= require bootstrap-select.min
 //= require_tree .
 //= require bootstrap.min
