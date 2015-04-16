@@ -14,6 +14,7 @@
 //= require jquery-ui-custom.min
 //= require jquery_ujs
 //= require rest_in_place
+//= require jquery-checkbox-buttons.min
 //= require bootstrap-select.min
 //= require_tree .
 //= require bootstrap.min

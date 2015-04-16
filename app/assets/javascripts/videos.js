@@ -1,6 +1,7 @@
 $(function() {
   $('#video-search input').keyup(videoSearch);
   $('#status-filter input').change(videoSearch);
+  $('#subject-filter').change(videoSearch);
 
   $('#video-search input').keyup();
   $('#search').focus();

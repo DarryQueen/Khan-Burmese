@@ -1,21 +1,27 @@
 <div class="video-filter">
   <%= form_tag videos_path, :method => 'get', :class => 'form-search', :id => 'video-search' do %>
-    <div class="col-lg-8 col-md-6 no-padding">
+    <div class="col-lg-6 col-md-5 no-padding">
       <%= text_field_tag :search, nil, {
         :class => 'form-control', :placeholder => 'Search by video name.', :autocomplete => 'off'
       } %>
     </div>
 
-    <div id="status-filter" class="status-check-group col-lg-4 col-md-6 no-padding">
+    <div id="status-filter" class="status-check-group col-lg-6 col-md-7 no-padding">
       <div class="btn-group col-xs-12 no-padding" role="group" aria-label="...">
         <% @statuses.each_with_index do |status, i| %>
-          <span class="button-checkbox btn-group col-xs-3 no-padding">
+          <span class="button-checkbox btn-group col-xs-2 no-padding">
             <% check_box = check_box_tag 'statuses[]', status, @default_params[status], :class => 'hidden' %>
             <%= check_box unless i == 0 %>
             <button type="button" class="btn col-xs-12" data-color="<%= status_to_color(status) %>"><%= status.titleize %></button>
             <%= check_box if i == 0 %>
           </span>
         <% end %>
+
+        <select id="subject-filter" name="subjects[]" class="selectpicker show-tick col-xs-4" title="All Subjects" data-selected-text-format="count > 2" multiple>
+          <% @subjects.each do |subject| %>
+            <option><span><%= subject %></span></option>
+          <%end%>
+        </select>
       </div>
     </div>
   <% end %>
