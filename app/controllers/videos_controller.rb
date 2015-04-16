@@ -1,8 +1,10 @@
 class VideosController < ApplicationController
   def index
-    @videos = Video.search(params[:search], params[:statuses]).sort_by {
+    @videos = Video.search(params[:search], params[:statuses], params[:subjects]).sort_by {
       |video| video.starred ? 0 : 1
     }
+    @subjects = Video.all_subjects
+
     @statuses = Video.statuses.map(&:to_s)
 
     @default_params = {}

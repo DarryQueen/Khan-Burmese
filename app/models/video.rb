@@ -96,16 +96,19 @@ class Video < ActiveRecord::Base
     @@statuses
   end
 
-  def self.search(search, statuses)
+  def self.all_subjects
+    Video.subject_counts.map { |subject| subject.name }
+  end
+
+  def self.search(search, statuses = [], subjects = [])
     videos = scoped
 
     if search
-      title_videos = videos.where('title LIKE ?', "%#{search}%")
+      videos = videos.where('title LIKE ?', "%#{search}%")
+    end
 
-      tags = search.split
-      tagged_videos = Video.tagged_with(tags, :any => true)
-
-      videos = (title_videos + tagged_videos).uniq
+    if subjects and not subjects.empty?
+      videos = videos.select { |video| not (video.subject_list & subjects).empty? }
     end
 
     if statuses and not statuses.empty?
