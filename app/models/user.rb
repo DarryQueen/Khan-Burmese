@@ -32,7 +32,9 @@ class User < ActiveRecord::Base
     self.translation_videos.select { |video| not video.translated? }
   end
   def translated_videos
-    self.translation_videos.select { |video| video.translated? }
+    self.translation_videos.select do |video|
+      video.translations.select { |t| t.complete? }.map(&:user).include?(self)
+    end
   end
 
   def reviewed_videos
