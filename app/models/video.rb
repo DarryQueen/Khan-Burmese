@@ -104,7 +104,7 @@ class Video < ActiveRecord::Base
     videos = scoped
 
     if search
-      videos = videos.where('title LIKE ?', "%#{search}%")
+      videos = videos.where('lower(title) LIKE ?', "%#{search.downcase}%")
     end
 
     if subjects and not subjects.empty?
