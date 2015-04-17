@@ -8,6 +8,12 @@ $(function() {
 
   $('[data-toggle="tooltip"]').tooltip();
 
+  // Tooltips for translations frame:
+  $('#review-link').click(function() {
+    $('#review').tooltip('show');
+    setTimeout(function() { $('#review').tooltip('destroy'); }, 3000);
+  });
+
   // Disable form submission advances:
   $('#video-search').bind('keypress', function(e) {
     if (e.keyCode == 13) {
