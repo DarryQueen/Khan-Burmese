@@ -1,23 +1,49 @@
-<h2>Leaderboard</h2>
+<div class="col-md-4">
+  <div class="panel panel-default module">
+    <div class="panel-heading">
+      <b>Leaderboard</b>
+    </div>
+    <div class="panel-paragraphs">
+      <p>Earn 1 point for every video translated.</p>
+      <p>Earn an extra point for every starred video translated.</p>
+    </div>
+  </div>
 
-<div class="btn-group" id="leaderboard-buttons" role="group">
-  <%= link_to 'Month', leaderboard_users_path(:standings => 'month'), {
-    :id => 'leaderboard-month',
-    :class => 'btn btn-default',
-    :remote => true
-  } %>
-  <%= link_to 'Year', leaderboard_users_path(:standings => 'year'), {
-    :id => 'leaderboard-year',
-    :class => 'btn btn-default',
-    :remote => true
-  } %>
-  <%= link_to 'All Time', leaderboard_users_path(:standings => 'all_time'), {
-    :id => 'leaderboard-all',
-    :class => 'btn btn-default',
-    :remote => true
+  <%= render 'home/dashboard/accomplishments_frame', {
+    :assigned => @assigned_videos.length,
+    :translated => @translated_videos.length,
+    :reviewed => @reviewed_videos.length,
+    :user => current_user
   } %>
 </div>
 
-<div id="leaderboard-frame">
-  <%= render 'users/leaderboard/leaders_frame', :leaders => @leaders, :after => @after %>
+<div class="col-md-8">
+  <div class="btn-group btn-leaderboard" id="leaderboard-buttons" role="group">
+    <%= link_to 'Month', leaderboard_users_path(:standings => 'month'), {
+      :id => 'leaderboard-month',
+      :class => "btn btn-default col-xs-4#{' btn-primary' if @default_params['month']}",
+      :remote => true
+    } %>
+    <%= link_to 'Year', leaderboard_users_path(:standings => 'year'), {
+      :id => 'leaderboard-year',
+      :class => "btn btn-default col-xs-4#{' btn-primary' if @default_params['year']}",
+      :remote => true
+    } %>
+    <%= link_to 'All Time', leaderboard_users_path(:standings => 'all_time'), {
+      :id => 'leaderboard-all',
+      :class => "btn btn-default col-xs-4#{' btn-primary' if @default_params['all_time']}",
+      :remote => true
+    } %>
+  </div>
+
+  <div class="panel panel-default module">
+    <div class="panel-heading">
+      <b>Translators</b>
+    </div>
+    <div class="panel-leaderboard">
+      <div id="leaderboard-frame">
+        <%= render 'users/leaderboard/leaders_frame', :leaders => @leaders, :after => @after %>
+      </div>
+    </div>
+  </div>
 </div>

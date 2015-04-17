@@ -27,7 +27,11 @@ class UsersController < ApplicationController
   end
 
   def leaderboard
-    @standings = params[:standings]
+    @assigned_videos = current_user.untranslated_videos
+    @translated_videos = current_user.translated_videos
+    @reviewed_videos = current_user.reviewed_videos
+
+    @standings = params[:standings] || 'all_time'
     if @standings == 'year'
       @after = 1.year.ago
     elsif @standings == 'month'
@@ -35,6 +39,8 @@ class UsersController < ApplicationController
     else
       @after = Time.new(0)
     end
+    @default_params = { @standings => true }
+
     @leaders = User.leaders(@after).take(@@LEADERBOARD_LIMIT)
   end
 end
