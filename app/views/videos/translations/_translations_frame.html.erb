@@ -1,4 +1,5 @@
-<div id="review" class="panel panel-default module module-videos">
+<% tooltip_title = translations.empty? ? 'Sorry, nothing to review.' : 'Review translations here!' %>
+<div id="review" title="<%= tooltip_title %>" class="panel panel-default module module-videos" data-trigger="manual">
   <div class="panel-heading">
     <b>Recent Translations</b>
   </div>
