@@ -13,7 +13,11 @@ KhanBurmese::Application.routes.draw do
   # Download files:
   get 'download' => 'files#download'
 
-  resources :users, :only => [ :show, :update ]
+  resources :users, :only => [ :show, :update ] do
+    collection do
+      get 'leaderboard' => 'users#leaderboard'
+    end
+  end
 
   resources :videos do
     # Star or unstar videos:

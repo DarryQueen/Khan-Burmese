@@ -41,8 +41,8 @@ class User < ActiveRecord::Base
     self.get_voted(Translation).map { |translation| translation.video }.uniq
   end
 
-  def points
-    self.translations.reduce(0) { |sum, translation| sum + translation.points }
+  def points(after = Time.new(0))
+    self.translations.reduce(0) { |sum, translation| sum + ((translation.time_updated > after) ? translation.points : 0) }
   end
 
   def is?(role)
@@ -86,6 +86,10 @@ class User < ActiveRecord::Base
       identity.save!
     end
     user
+  end
+
+  def self.leaders(after = Time.new(0))
+    User.all.sort_by { |user| user.points(after) }.reverse
   end
 
   private

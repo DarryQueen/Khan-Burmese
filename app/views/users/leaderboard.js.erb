@@ -1,0 +1,4 @@
+$('#leaderboard-frame').html("<%= escape_javascript(render 'users/leaderboard/leaders_frame', {
+  :leaders => @leaders,
+  :after => @after
+}) %>");
