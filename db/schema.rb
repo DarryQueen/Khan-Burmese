@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(:version => 20150415013114) do
     t.datetime "time_last_updated"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "points"
     t.integer  "status",            :default => 0
     t.string   "srt_file_name"
     t.string   "srt_content_type"
