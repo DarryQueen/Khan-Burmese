@@ -1,0 +1,28 @@
+<li class="list-group-item">
+  <b><%= attribute.titleize %>:</b>
+  <% if can? :edit, user %>
+    <div class="pull-right">
+      <span class="user-field-row">
+        <%= content_tag :span, content, {
+          :id => id,
+          :class => 'rest-in-place',
+          :data => {
+            :url => user_path(user),
+            :object => 'user',
+            :attribute => attribute,
+            :placeholder => placeholder
+          }
+        } %>
+      </span>
+      <a class="rip-edit rip-edit-inline" onclick="$('#<%= id %>').click();">
+        <i class="fa fa-pencil"></i>
+      </a>
+    </div>
+  <% else %>
+    <% if content.blank? %>
+      <%= empty_sub %>
+    <% else %>
+      <span class="user-field-row pull-right"><%= content %></span>
+    <% end %>
+  <% end %>
+</li>
