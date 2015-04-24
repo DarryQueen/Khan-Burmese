@@ -139,7 +139,13 @@ class Video < ActiveRecord::Base
       video.subject_list.add(row['subject'])
 
       video.fill_missing_fields
-      video.save
+
+      if video.save and row['translated?'] and row['translated?'].downcase != 'false'
+        translation = Translation.new(:video => video)
+
+        link = "http://www.amara.org/en/videos/#{video.amara_id}/my/"
+        translation.upload_amara(link)
+      end
     end
   end
 
@@ -148,7 +154,8 @@ class Video < ActiveRecord::Base
     return nil if [ '404', '403' ].include?(result.code)
     result = Net::HTTP.get_response(URI.parse(result.header['location'])) if [ '302', '301' ].include?(result.code)
 
-    srt_link_match = /<a href="([^"]*)">SRT<\/a>/.match(result.body)[1]
-    "http://www.amara.org/#{srt_link_match}"
+    srt_link_match = /<a href="([^"]*)">SRT<\/a>/.match(result.body)
+    return nil if srt_link_match.nil?
+    "http://www.amara.org/#{srt_link_match[1]}"
   end
 end

@@ -92,6 +92,17 @@ class User < ActiveRecord::Base
     User.all.sort_by { |user| user.points(after) }.reverse
   end
 
+  # Anonymous user object for translations:
+  def self.anonymous_user
+    @@anonymous ||= User.new
+    class << @@anonymous
+      def name
+        'Anonymous'
+      end
+    end
+    @@anonymous
+  end
+
   private
   def capitalize_fields
     write_attribute(:name, name.titleize) if name
