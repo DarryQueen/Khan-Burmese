@@ -87,7 +87,7 @@ class Translation < ActiveRecord::Base
     Translation.verify_link(amara_link)
 
     srt_link = Video.get_srt_link_from_amara(amara_link)
-    raise ArgumentError, 'No SRT published.' unless srt_link
+    raise ArgumentError, "No SRT published for #{video.title}." unless srt_link
 
     self.srt = URI.parse(srt_link)
     self.save
@@ -111,7 +111,7 @@ class Translation < ActiveRecord::Base
   end
 
   def self.verify_link(amara_link)
-    unless amara_link =~ /^http:\/\/www.amara.org\/en\/videos\/([\w\d]+)\/my\/(\d+)\/?$/
+    unless amara_link =~ /^http:\/\/www.amara.org\/en\/videos\/([\w\d]+)\/my(\/(\d+))?\/?$/
       raise ArgumentError, 'Invalid link format.'
     end
   end
