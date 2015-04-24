@@ -148,7 +148,8 @@ class Video < ActiveRecord::Base
     return nil if [ '404', '403' ].include?(result.code)
     result = Net::HTTP.get_response(URI.parse(result.header['location'])) if [ '302', '301' ].include?(result.code)
 
-    srt_link_match = /<a href="([^"]*)">SRT<\/a>/.match(result.body)[1]
-    "http://www.amara.org/#{srt_link_match}"
+    srt_link_match = /<a href="([^"]*)">SRT<\/a>/.match(result.body)
+    return nil if srt_link_match.nil?
+    "http://www.amara.org/#{srt_link_match[1]}"
   end
 end
