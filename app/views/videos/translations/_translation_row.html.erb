@@ -4,7 +4,10 @@
       <%= render 'videos/translations/vote_actions', :video => video, :translation => translation %>
     </div>
   </td>
-  <td><%= link_to translation.user.name, user_path(translation.user), :class => 'row-title' %></td>
+  <td>
+    <% user_url = translation.anonymous_translator? ? nil : translation.user %>
+    <%= link_to_unless translation.anonymous_translator?, translation.user.name, user_url, :class => 'row-title' %>
+  </td>
   <td><%= translation.time_updated.localtime.strftime("%B %d, %Y at %l:%M") %></td>
   <td>
     <%= link_to 'Download', translation.srt.url(:download => true), :class => 'btn btn-success btn-xs' %>

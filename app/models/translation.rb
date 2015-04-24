@@ -24,6 +24,10 @@ class Translation < ActiveRecord::Base
   # Maps from status symbol to integer representation for database:
   @@STATUS_TO_INT_HASH = @@STATUS_HASH.invert
 
+  def user
+    super || User.anonymous_user
+  end
+
   def points
     @@POINTS_HASH[self.status_symbol]
   end
@@ -50,6 +54,10 @@ class Translation < ActiveRecord::Base
 
   def reviewed?
     self.net_votes > 0
+  end
+
+  def anonymous_translator?
+    user_id.nil?
   end
 
   def complete
