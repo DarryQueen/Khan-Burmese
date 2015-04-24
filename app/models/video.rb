@@ -139,7 +139,13 @@ class Video < ActiveRecord::Base
       video.subject_list.add(row['subject'])
 
       video.fill_missing_fields
-      video.save
+
+      if video.save and row['translated?'] and row['translated?'].downcase != 'false'
+        translation = Translation.new(:video => video)
+
+        link = "http://www.amara.org/en/videos/#{video.amara_id}/my/"
+        translation.upload_amara(link)
+      end
     end
   end
 
