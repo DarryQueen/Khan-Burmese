@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @assigned_videos = @user.untranslated_videos
+    @assigned_videos = @user.assigned_videos
     @translated_videos = @user.translated_videos
     @reviewed_videos = @user.reviewed_videos
   end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def leaderboard
-    @assigned_videos = current_user.untranslated_videos
+    @assigned_videos = current_user.assigned_videos
     @translated_videos = current_user.translated_videos
     @reviewed_videos = current_user.reviewed_videos
 

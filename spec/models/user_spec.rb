@@ -82,7 +82,7 @@ describe User, :type => :model do
     end
 
     it "should dynamically update translated and untranslated videos" do
-      expect(@user.untranslated_videos).to include @video
+      expect(@user.assigned_videos).to include @video
       expect(@user.translated_videos).not_to include @video
     end
   end

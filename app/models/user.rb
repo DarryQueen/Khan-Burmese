@@ -28,8 +28,10 @@ class User < ActiveRecord::Base
     self.name.rpartition(' ').last
   end
 
-  def untranslated_videos
-    self.translation_videos.select { |video| not video.translated? }
+  def assigned_videos
+    self.translation_videos.select do |video|
+      video.translations.select { |t| not t.complete? }.map(&:user).include?(self)
+    end
   end
   def translated_videos
     self.translation_videos.select do |video|
