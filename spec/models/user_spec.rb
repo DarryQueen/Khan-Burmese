@@ -70,13 +70,13 @@ describe User, :type => :model do
     end
 
     it "should be able to access translations through user.translations" do
-      expect {@user.translations}.not_to raise_error
+      expect { @user.translations }.not_to raise_error
       translations = @user.translations
       expect(translations).to include @translation
     end
 
     it "should be able to access videos through user.translation_videos" do
-      expect {@user.translation_videos}.not_to raise_error
+      expect { @user.translation_videos }.not_to raise_error
       videos = @user.translation_videos
       expect(videos).to include @video
     end
@@ -84,6 +84,78 @@ describe User, :type => :model do
     it "should dynamically update translated and untranslated videos" do
       expect(@user.assigned_videos).to include @video
       expect(@user.translated_videos).not_to include @video
+    end
+  end
+
+  describe "leaderboard and points tests" do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      @year_t, @month_t, @old_t = Translation.new, Translation.new, Translation.new
+      @year_t.stub(:status_symbol).and_return(:complete_with_priority)
+      @year_t.stub(:status_symbol).and_return(:complete)
+      @year_t.stub(:status_symbol).and_return(:incomplete)
+      @year_t.stub(:time_updated).and_return(40.days.ago)
+      @month_t.stub(:time_updated).and_return(20.days.ago)
+      @old_t.stub(:time_updated).and_return(2.years.ago)
+
+      @user.stub(:translations).and_return([@year_t, @month_t, @old_t])   
+    end
+
+    it "should calculate all_time points correctly" do
+      expect(@user.points).to eq(@year_t.points + @month_t.points + @old_t.points)
+    end
+
+    it "should calculate year points correctly" do
+      expect(@user.points(1.year.ago)).to eq(@year_t.points + @month_t.points)
+    end
+
+    it "should calculate month points correctly" do
+      expect(@user.points(1.month.ago)).to eq(@month_t.points)
+    end
+  end
+
+  describe "video methods" do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      @video = FactoryGirl.create(:video)
+      @translation = Translation.create(:user => @user, :video => @video)
+    end
+
+    it "should return the correct assigned videos" do
+      @translation.stub(:complete?).and_return(false)
+      expect(@user.assigned_videos).to include @video
+    end
+  end
+
+  describe "basic methods" do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+    end
+
+    it "should return the correct first name" do
+      expect(@user.first_name).to eq 'Olivia'
+    end
+
+    it "should return the correct last name" do
+      expect(@user.last_name).to eq 'Benson'
+    end
+
+    it "should identify a defalut user's role correclty" do
+      @user.assign_default_role
+      expect(@user.is?('volunteer')).to eq true
+    end
+
+    it "should check for email verficiation correctly" do
+      expect(@user.email_verified?).to eq true
+      @user.email = nil
+      expect(@user.email_verified?).not_to eq true
+    end
+
+    it "should capitalize fields correctly in after_safe" do
+      @user.country = "united states"
+      expect(@user.country).to eq "united states"
+      @user.save
+      expect(@user.country).to eq "United States"
     end
   end
 end

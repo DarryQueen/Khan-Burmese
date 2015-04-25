@@ -39,4 +39,19 @@ describe UsersController do
       expect(@user.reload.name).to eq 'Casey Novak'
     end
   end
+
+  describe "leaderboard tests" do
+    login_user
+
+    before(:each) do
+      @user = User.find_by_email('normal@user.com')
+      @video = FactoryGirl.create(:video)
+      @translation = Translation.create(:user => @user, :video => @video)
+    end
+
+    it "should not count untranslated videos as translated" do
+      get 'leaderboard'
+      expect(assigns(:translated_videos)).not_to include @video
+    end
+  end
 end
