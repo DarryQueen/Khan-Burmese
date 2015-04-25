@@ -66,7 +66,9 @@ class Video < ActiveRecord::Base
 
     begin
       youtube_values = YoutubeReader::parse_video(self.youtube_id)
-    rescue
+    rescue ArgumentError => e
+      self.errors.add(:base, "#{e.message} for \"#{self.title}\" video.")
+      return false
     end
 
     unless youtube_values.empty?

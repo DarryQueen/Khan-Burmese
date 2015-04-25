@@ -13,6 +13,8 @@ module YoutubeReader
 
     data = Hash.from_xml(request)['entry']
 
+    raise ArgumentError, 'Invalid Youtube ID' if data.nil?
+
     attributes = {
       'title' => data['title'],
       'description' => data['group']['description'],
