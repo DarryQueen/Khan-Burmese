@@ -12,6 +12,8 @@ class Video < ActiveRecord::Base
   validates_presence_of :youtube_id
   validates_uniqueness_of :youtube_id
 
+  before_create :fill_missing_fields
+
   @@statuses = [ :unassigned, :assigned, :translated, :reviewed ]
 
   def assigned?
@@ -137,8 +139,6 @@ class Video < ActiveRecord::Base
 
       video = Video.new(attributes)
       video.subject_list.add(row['subject'])
-
-      video.fill_missing_fields
 
       if video.save and row['translated?'] and row['translated?'].downcase != 'false'
         translation = Translation.new(:video => video)
