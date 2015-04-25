@@ -7,16 +7,16 @@
   } %>
 
   <%= render 'videos/index/videos_list', {
-    :title => 'Recently Translated Videos',
-    :videos => @recently_translated_videos,
-    :message_empty => 'No videos translated recently.'
-  } %>
-
-  <%= render 'videos/index/videos_list', {
     :title => 'Top Priority Videos',
     :title_link => videos_path,
     :videos => @priority_videos,
     :message_empty => 'No videos need to be translated quickly.'
+  } %>
+
+  <%= render 'videos/index/videos_list', {
+    :title => 'Recently Translated Videos',
+    :videos => @recently_translated_videos,
+    :message_empty => 'No videos translated recently.'
   } %>
 </div>
 
