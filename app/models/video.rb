@@ -74,7 +74,7 @@ class Video < ActiveRecord::Base
     unless youtube_values.empty?
       fields = [ 'description', 'title', 'duration' ]
       fields.each do |field|
-        write_attribute(field, youtube_values[field]) unless self[field]
+        write_attribute(field, youtube_values[field]) if self[field].blank?
       end
     end
 
