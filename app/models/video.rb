@@ -132,23 +132,38 @@ class Video < ActiveRecord::Base
     end
 
     CSV.foreach(file.path, headers: true) do |row|
-      if row['youtube_id'].nil?
-        raise ArgumentError, "Need <code>youtube_id</code> column in CSV file.".html_safe
+      # Prematurely skip already-created videos:
+      if Video.find_by_youtube_id(row['youtube_id'])
+        next
       end
 
-      keys = [ 'description', 'title', 'youtube_id', 'duration' ]
-      attributes = row.to_hash.slice(*keys)
+      Video.new_from_hash(row.to_hash)
+    end
+  end
 
-      video = Video.new(attributes)
-      video.subject_list.add(row['subject'])
+  def self.new_from_hash(video_hash)
+    if video_hash['youtube_id'].blank?
+      raise ArgumentError, 'New videos need <code>youtube_id</code>.'.html_safe
+    end
 
-      if video.save and row['translated?'] and row['translated?'].downcase != 'false'
+    keys = [ 'description', 'title', 'youtube_id']
+    attributes = video_hash.slice(*keys)
+
+    video = Video.new(attributes)
+    video.subject_list.add(video_hash['subject'])
+
+    if video.save
+      if video_hash['translated?'] and video_hash['translated?'].downcase != 'false'
         translation = Translation.new(:video => video)
 
         link = "http://www.amara.org/en/videos/#{video.amara_id}/my/"
         translation.upload_amara(link)
       end
+    else
+      raise ArgumentError, video.errors.full_messages.join(' ')
     end
+
+    video
   end
 
   def self.get_srt_link_from_amara(amara_link)
