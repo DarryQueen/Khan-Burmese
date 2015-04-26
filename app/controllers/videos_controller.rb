@@ -30,15 +30,35 @@ class VideosController < ApplicationController
   def import
     authorize! :import, :video
 
-    if request.post?
-      begin
-        Video.import(params[:file])
-        add_flash(:notice, 'Video(s) imported!')
-        redirect_to videos_path
-      rescue ArgumentError => e
-        add_flash(:alert, "#{e.message}")
-        redirect_to import_videos_path
-      end
+    return unless request.post?
+
+    begin
+      Video.import(params[:file])
+      add_flash(:notice, 'Video(s) imported!')
+      redirect_to videos_path
+    rescue ArgumentError => e
+      add_flash(:alert, "#{e.message}")
+      redirect_to import_videos_path
+    end
+  end
+
+  def new
+    authorize! :import, :video
+
+    @video = Video.new
+  end
+
+  def create
+    authorize! :import, :video
+
+    video_hash = params[:video]
+
+    begin
+      video = Video.new_from_hash(video_hash)
+      redirect_to videos_path
+    rescue ArgumentError => e
+      add_flash(:alert, e.message)
+      redirect_to new_video_path
     end
   end
 end
