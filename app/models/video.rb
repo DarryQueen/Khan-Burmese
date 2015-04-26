@@ -61,6 +61,22 @@ class Video < ActiveRecord::Base
     end
   end
 
+  def update_from_hash(video_hash)
+    keys = [ 'description', 'title' ]
+    self.update_attributes(video_hash.slice(*keys))
+
+    self.subject_list = video_hash['subject']
+
+    if self.save and video_hash['translated?'] and video_hash['translated?'].downcase != 'false'
+      translation = Translation.new(:video => self)
+
+      link = "http://www.amara.org/en/videos/#{self.amara_id}/my/"
+      translation.upload_amara(link)
+    end
+
+    self
+  end
+
   def fill_missing_fields
     youtube_values = {}
 
@@ -132,38 +148,19 @@ class Video < ActiveRecord::Base
     end
 
     CSV.foreach(file.path, headers: true) do |row|
+      if row['youtube_id'].blank?
+        raise ArgumentError, 'New videos need <code>youtube_id</code>.'.html_safe
+      end
+
       # Prematurely skip already-created videos:
       if Video.find_by_youtube_id(row['youtube_id'])
         next
       end
 
-      Video.new_from_hash(row.to_hash)
+      video = Video.new(:youtube_id => row['youtube_id']).update_from_hash(row.to_hash)
+
+      raise ArgumentError, video.errors.full_messages.join(' ') unless video.save
     end
-  end
-
-  def self.new_from_hash(video_hash)
-    if video_hash['youtube_id'].blank?
-      raise ArgumentError, 'New videos need <code>youtube_id</code>.'.html_safe
-    end
-
-    keys = [ 'description', 'title', 'youtube_id']
-    attributes = video_hash.slice(*keys)
-
-    video = Video.new(attributes)
-    video.subject_list.add(video_hash['subject'])
-
-    if video.save
-      if video_hash['translated?'] and video_hash['translated?'].downcase != 'false'
-        translation = Translation.new(:video => video)
-
-        link = "http://www.amara.org/en/videos/#{video.amara_id}/my/"
-        translation.upload_amara(link)
-      end
-    else
-      raise ArgumentError, video.errors.full_messages.join(' ')
-    end
-
-    video
   end
 
   def self.get_srt_link_from_amara(amara_link)

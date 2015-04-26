@@ -51,13 +51,11 @@ class VideosController < ApplicationController
   def create
     authorize! :import, :video
 
-    video_hash = params[:video]
-
-    begin
-      video = Video.new_from_hash(video_hash)
+    video = Video.new(:youtube_id => params[:video][:youtube_id]).update_from_hash(params[:video])
+    if video.save
       redirect_to videos_path
-    rescue ArgumentError => e
-      add_flash(:alert, e.message)
+    else
+      video.errors.full_messages.each { |error| add_flash(:alert, error) }
       redirect_to new_video_path
     end
   end
