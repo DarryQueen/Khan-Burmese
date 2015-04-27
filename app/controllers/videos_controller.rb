@@ -48,6 +48,11 @@ class VideosController < ApplicationController
     @video = Video.new
   end
 
+  def edit
+    @video = Video.find(params[:id])
+    authorize! :edit, @video
+  end
+
   def create
     authorize! :import, :video
 
@@ -56,6 +61,19 @@ class VideosController < ApplicationController
       redirect_to video_path(video)
     else
       video.errors.full_messages.each { |error| add_flash(:alert, error) }
+      redirect_to new_video_path
+    end
+  end
+
+  def update
+    @video = Video.find(params[:id])
+    authorize! :edit, @video
+
+    @video.update_from_hash(params[:video])
+    if @video.save
+      redirect_to video_path(@video)
+    else
+      @video.errors.full_messages.each { |error| add_flash(:alert, error) }
       redirect_to new_video_path
     end
   end

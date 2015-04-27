@@ -29,6 +29,7 @@ class Ability
 
     # Videos:
     can :star, Video
+    can :edit, Video
     can :import, :video
 
     can :manage, User
