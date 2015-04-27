@@ -6,7 +6,7 @@ class Video < ActiveRecord::Base
   acts_as_taggable
   acts_as_taggable_on :subject
 
-  has_many :translations
+  has_many :translations, :dependent => :destroy
   has_many :translators, :through => :translations, :source => :user
 
   validates_presence_of :youtube_id

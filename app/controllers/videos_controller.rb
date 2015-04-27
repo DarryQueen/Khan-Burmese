@@ -78,4 +78,12 @@ class VideosController < ApplicationController
       redirect_to new_video_path
     end
   end
+
+  def destroy
+    @video = Video.find(params[:id])
+    authorize! :destroy, @video
+
+    @video.destroy
+    redirect_to videos_path
+  end
 end
