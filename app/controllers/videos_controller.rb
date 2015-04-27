@@ -17,6 +17,7 @@ class VideosController < ApplicationController
     @completed_translations = @video.completed_translations
     @translators = @video.translators.take(4)
     @reviewers = (@video.reviewers - @video.translators).take(4)
+    @similar_videos = @video.similar.take(5)
   end
 
   def toggle_star
