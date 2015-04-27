@@ -1,7 +1,7 @@
 <div class="panel panel-default module">
   <div class="panel-heading">
     <b><%= video.title %></b>
-    <% if can? :edit, video %>
+    <% if can? :update, video %>
       <%= link_to edit_video_path(video), :class => 'link-edit-video' do %>
         <i class="fa fa-pencil"></i></i>
       <% end %>

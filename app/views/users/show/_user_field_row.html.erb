@@ -1,6 +1,6 @@
 <li class="list-group-item">
   <b><%= attribute.titleize %>:</b>
-  <% if can? :edit, user %>
+  <% if can? :update, user %>
     <div class="pull-right">
       <span class="user-field-row">
         <%= content_tag :span, content, {

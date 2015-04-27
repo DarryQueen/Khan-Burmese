@@ -1,13 +1,13 @@
 <div class="panel panel-default module">
   <div class="panel-heading">
     <b>About Me</b>
-    <% if can? :edit, user %>
+    <% if can? :update, user %>
       <a class="rip-edit rip-edit-inline pull-right" onclick="$('#user-bio').click();">
         <i class="fa fa-pencil"></i>
       </a>
     <% end %>
   </div>
-  <% if can? :edit, user %>
+  <% if can? :update, user %>
     <div class="panel-paragraphs">
       <%= content_tag :p, user.bio, {
         :id => 'user-bio',

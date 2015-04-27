@@ -51,7 +51,7 @@ class VideosController < ApplicationController
 
   def edit
     @video = Video.find(params[:id])
-    authorize! :edit, @video
+    authorize! :update, @video
   end
 
   def create
@@ -68,7 +68,7 @@ class VideosController < ApplicationController
 
   def update
     @video = Video.find(params[:id])
-    authorize! :edit, @video
+    authorize! :update, @video
 
     @video.update_from_hash(params[:video])
     if @video.save
