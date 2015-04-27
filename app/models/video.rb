@@ -97,6 +97,10 @@ class Video < ActiveRecord::Base
     write_attribute(:amara_id, YoutubeReader::amara_id(self.youtube_id))
   end
 
+  def similar
+    Video.search(nil, ['unassigned', 'assigned'], self.subject_list) - [self]
+  end
+
   def self.recently_translated_videos(time)
     Video.all.select do |video|
       recent = false

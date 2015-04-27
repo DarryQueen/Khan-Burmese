@@ -1,0 +1,27 @@
+<div class="panel panel-default module module-videos">
+  <div class="panel-heading">
+    <b>Similar Videos</b>
+  </div>
+  <div class="panel-content">
+    <% if videos.empty? %>
+      <div class="panel-empty">
+        Couldn't find any similar videos!
+      </div>
+    <% else %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render :partial => 'videos/show/similar_videos_row',
+            :collection => videos,
+            :as => :video
+          %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
