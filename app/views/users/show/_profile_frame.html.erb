@@ -32,7 +32,7 @@
       :empty_sub => '<i class="fa fa-rocket pull-right"></i>'.html_safe
     } %>
 
-    <% if can? :edit, user %>
+    <% if can? :update, user %>
       <li class="list-group-item">
         <b>Email:</b>
         <div class="pull-right profile-email"><%= mail_to user.email %></div>

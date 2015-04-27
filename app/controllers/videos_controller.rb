@@ -51,7 +51,7 @@ class VideosController < ApplicationController
 
   def edit
     @video = Video.find(params[:id])
-    authorize! :edit, @video
+    authorize! :update, @video
   end
 
   def create
@@ -68,7 +68,7 @@ class VideosController < ApplicationController
 
   def update
     @video = Video.find(params[:id])
-    authorize! :edit, @video
+    authorize! :update, @video
 
     @video.update_from_hash(params[:video])
     if @video.save
@@ -77,5 +77,13 @@ class VideosController < ApplicationController
       @video.errors.full_messages.each { |error| add_flash(:alert, error) }
       redirect_to new_video_path
     end
+  end
+
+  def destroy
+    @video = Video.find(params[:id])
+    authorize! :destroy, @video
+
+    @video.destroy
+    redirect_to videos_path
   end
 end

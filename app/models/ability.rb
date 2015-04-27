@@ -2,6 +2,8 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    alias_action :create, :read, :update, :destroy, :to => :crud
+
     @user = user || User.new
 
     # Administrator permissions:
@@ -29,7 +31,7 @@ class Ability
 
     # Videos:
     can :star, Video
-    can :edit, Video
+    can :crud, Video
     can :import, :video
 
     can :manage, User
@@ -46,6 +48,6 @@ class Ability
     end
 
     # User:
-    can :edit, User, :id => @user.id
+    can :update, User, :id => @user.id
   end
 end
