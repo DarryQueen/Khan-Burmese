@@ -1,6 +1,9 @@
 <div class="panel panel-default module">
   <div class="panel-heading">
     <b><%= video.title %></b>
+    <%= link_to edit_video_path(video), :class => 'link-edit-video' do %>
+      <i class="fa fa-pencil"></i></i>
+    <% end %>
     <div id="toggle-star-<%= @video.id %>" class="pull-right">
       <%= toggle_star_button(video) %>
     </div>

@@ -48,16 +48,32 @@ class VideosController < ApplicationController
     @video = Video.new
   end
 
+  def edit
+    @video = Video.find(params[:id])
+    authorize! :edit, @video
+  end
+
   def create
     authorize! :import, :video
 
-    video_hash = params[:video]
+    video = Video.new(:youtube_id => params[:video][:youtube_id]).update_from_hash(params[:video])
+    if video.save
+      redirect_to video_path(video)
+    else
+      video.errors.full_messages.each { |error| add_flash(:alert, error) }
+      redirect_to new_video_path
+    end
+  end
 
-    begin
-      video = Video.new_from_hash(video_hash)
-      redirect_to videos_path
-    rescue ArgumentError => e
-      add_flash(:alert, e.message)
+  def update
+    @video = Video.find(params[:id])
+    authorize! :edit, @video
+
+    @video.update_from_hash(params[:video])
+    if @video.save
+      redirect_to video_path(@video)
+    else
+      @video.errors.full_messages.each { |error| add_flash(:alert, error) }
       redirect_to new_video_path
     end
   end
