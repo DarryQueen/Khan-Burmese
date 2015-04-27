@@ -31,6 +31,11 @@ function starClick(element) {
 }
 
 function videoSearch() {
+  $('#video-results').removeClass().addClass('panel-empty');
+  $('#video-results').html(" \
+    <i class=\"fa fa-spinner fa-pulse fa-inline\"></i> \
+    Searching, please wait... \
+  ");
   $.get($('#video-search').attr('action'), $('#video-search').serialize(), null, 'script');
   return false;
 }
