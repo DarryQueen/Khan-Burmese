@@ -8,11 +8,11 @@
     <% end %>
   </div>
   <% if videos.empty? %>
-    <div class="panel-empty">
+    <div id="video-results" class="panel-empty">
       <%= message_empty %>
     </div>
   <% else %>
-    <div class="panel-content">
+    <div id="video-results" class="panel-content">
       <%= render 'videos/index/videos_table', :videos => videos, :star => (defined?(star) and star) %>
     </div>
   <% end %>
