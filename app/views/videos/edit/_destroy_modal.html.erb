@@ -1,0 +1,17 @@
+<div class="modal fade" id="destroyModal" tabindex="-1" role="dialog" aria-labelledby="destroyModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content module">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="destroyModalLabel">Delete Video</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to destroy this video? This video object and all of its translations will be deleted.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+        <%= link_to 'Confirm', video_path(video), :class => 'btn btn-danger', :'data-method' => :delete %>
+      </div>
+    </div>
+  </div>
+</div>

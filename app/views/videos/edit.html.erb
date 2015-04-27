@@ -18,9 +18,19 @@
             <%= f.text_area :description, :class => 'form-control', :placeholder => 'Description' %>
           </div>
 
-          <%= f.submit 'Update', :class => 'btn btn-info center-block' %>
+          <%= link_to('Destroy', '', {
+            :remote => true,
+            :class => 'btn btn-danger pull-left',
+            :data => {
+              :toggle => 'modal',
+              :target => '#destroyModal'
+            }
+          }) %>
+          <%= f.submit 'Update', :class => 'btn btn-info pull-right' %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
+<%= render 'videos/edit/destroy_modal', :video => @video %>
