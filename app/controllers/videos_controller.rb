@@ -53,7 +53,7 @@ class VideosController < ApplicationController
 
     video = Video.new(:youtube_id => params[:video][:youtube_id]).update_from_hash(params[:video])
     if video.save
-      redirect_to videos_path
+      redirect_to video_path(video)
     else
       video.errors.full_messages.each { |error| add_flash(:alert, error) }
       redirect_to new_video_path
