@@ -1,0 +1,11 @@
+<div class="media">
+  <div class="media-left media-middle">
+    <%= link_to leader do %>
+      <%= image_tag 'avatar.jpg', :class => 'img-circle media-object profile-pic' %>
+    <% end %>
+  </div>
+  <div class="media-body">
+    <p class="media-heading"><b><%= leader.name %></b></p>
+    <span class="badge"><%= pluralize(leader.points(after), 'Point') %></span>
+  </div>
+</div>

@@ -14,5 +14,7 @@ class HomeController < ApplicationController
     @recently_translated_videos = Video.recently_translated_videos(1.week.ago).take(5)
     @priority_videos = Video.priority_videos.take(5)
     @reviewed_videos = current_user.reviewed_videos
+    @after = 1.month.ago
+    @leaders = User.leaders(@after).take(3)
   end
 end
