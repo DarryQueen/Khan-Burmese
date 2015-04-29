@@ -1,7 +1,10 @@
 <div class="panel panel-default module">
-  <div class="panel-heading">
-    <b><%= link_to 'Leaderboard', leaderboard_users_path %></b>
-  </div>
+  <%= link_to leaderboard_users_path do %>
+    <div class="panel-heading">
+      <b>Leaderboard</b>
+      <i class="fa fa-caret-down pull-right"></i>
+    </div>
+  <% end %>
 
   <%= render :partial => 'home/dashboard/leader_row',
     :collection => leaders,

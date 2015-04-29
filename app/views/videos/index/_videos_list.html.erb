@@ -1,12 +1,17 @@
 <div class="panel panel-default module module-videos">
-  <div class="panel-heading">
-    <% title_link ||= nil %>
-    <% if title_link %>
-      <b><%= link_to title, title_link %></b>
-    <% else %>
-      <b><%= title %></b>
+  <% title_link ||= nil %>
+  <% if title_link %>
+    <%= link_to title_link do %>
+      <div class="panel-heading">
+        <b><%= title %></b>
+        <i class="fa fa-caret-down pull-right"></i>
+      </div>
     <% end %>
-  </div>
+  <% else %>
+    <div class="panel-heading">
+      <b><%= title %></b>
+    </div>
+  <% end %>
   <% if videos.empty? %>
     <div id="video-results" class="panel-empty">
       <%= message_empty %>

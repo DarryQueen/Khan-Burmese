@@ -15,6 +15,7 @@
 
   <%= render 'videos/index/videos_list', {
     :title => 'Recently Translated Videos',
+    :title_link => videos_path(:statuses => [ :translated ]),
     :videos => @recently_translated_videos,
     :message_empty => 'No videos translated recently.'
   } %>
