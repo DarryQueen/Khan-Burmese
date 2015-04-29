@@ -2,37 +2,10 @@
   <div class="panel-heading">
     <b><%= link_to 'Leaderboard', leaderboard_users_path %></b>
   </div>
-  <div class="media">
-    <div class="media-left media-middle">
-      <a href="#">
-        <%= image_tag 'avatar.jpg', :class => 'img-circle media-object profile-pic' %>
-      </a>
-    </div>
-    <div class="media-body">
-      <p class="media-heading">Edward Whang</p>
-      <span class="badge">31 Videos Translated</span>
-    </div>
-  </div>
-  <div class="media">
-    <div class="media-left media-middle">
-      <a href="#">
-        <%= image_tag 'avatar.jpg', :class => 'img-circle media-object profile-pic' %>
-      </a>
-    </div>
-    <div class="media-body">
-      <p class="media-heading">Darren Zhao</p>
-      <span class="badge">25 Videos Translated</span>
-    </div>
-  </div>
-  <div class="media">
-    <div class="media-left media-middle">
-      <a href="#">
-        <%= image_tag 'avatar.jpg', :class => 'img-circle media-object profile-pic' %>
-      </a>
-    </div>
-    <div class="media-body">
-      <p class="media-heading">Naseem Alnaji</p>
-      <span class="badge">21 Videos Translated</span>
-    </div>
-  </div>
+
+  <%= render :partial => 'home/dashboard/leader_row',
+    :collection => leaders,
+    :as => :leader,
+    :locals => { :after => after }
+  %>
 </div>
