@@ -20,9 +20,6 @@ $(function() {
       return false;
     }
   });
-  $('#search').bind('blur', function(e) {
-    this.focus();
-  });
 });
 
 function starClick(element) {
