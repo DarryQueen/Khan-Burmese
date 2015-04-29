@@ -2,7 +2,7 @@
   <%= form_tag videos_path, :method => 'get', :class => 'form-search', :id => 'video-search' do %>
     <div class="col-lg-6 col-md-5 no-padding">
       <%= text_field_tag :search, nil, {
-        :class => 'form-control', :placeholder => 'Search by video name.', :autocomplete => 'off'
+        :class => 'form-control', :placeholder => 'Search by video name.', :autofocus => true
       } %>
     </div>
 
