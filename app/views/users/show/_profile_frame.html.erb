@@ -1,10 +1,20 @@
 <div class="panel panel-default module module-videos">
   <div class="panel-heading">
+    <% if can? :destroy, user %>
+      <%= link_to('Delete', {
+        :remote => true,
+        :class => 'delete pull-right',
+        :data => {
+          :toggle => 'modal',
+          :target => '#destroyModal'
+        }
+      }) do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
+    <% end %>
     <b>Profile</b>
   </div>
-  <a href="#">
-    <%= image_tag 'avatar.jpg', :class => 'img-square' %>
-  </a>
+  <%= image_tag 'avatar.jpg', :class => 'img-square' %>
   <ul class="list-group">
     <%= render 'users/show/user_field_row', {
       :user => user,
