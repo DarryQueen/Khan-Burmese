@@ -25,6 +25,9 @@
         <span class="icon-bar"></span>
       </button>
       <ul class="nav navbar-nav navbar-right navbar-large">
+        <% if can? :access, :admin_dashboard %>
+          <li><%= link_to 'Admin', admin_dashboard_path %></li>
+        <% end %>
         <li><%= link_to 'Videos', videos_path %></li>
         <li><%= link_to 'Leaderboard', leaderboard_users_path %></li>
         <li class="dropdown">
@@ -46,6 +49,9 @@
     <% if user_signed_in? %>
       <div class="collapse navbar-collapse" id="collapse-to-nav-mini">
         <ul class="nav">
+          <% if can? :access, :admin_dashboard %>
+            <li class="nav-mini" role="presentation"><%= link_to 'Admin', admin_dashboard_path %></li>
+          <% end %>
           <li class="nav-mini" role="presentation"><%= link_to 'Videos', videos_path %></li>
           <li class="nav-mini" role="presentation"><%= link_to 'Leaderboard', leaderboard_users_path %></li>
           <li class="nav-mini" role="presentation"><%= link_to 'Profile', user_path(current_user) %></li>

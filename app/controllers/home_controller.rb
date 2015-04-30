@@ -8,6 +8,17 @@ class HomeController < ApplicationController
     end
   end
 
+  def admin_dashboard
+    authorize! :access, :admin_dashboard
+
+    @statistics = {
+      :members => User.count,
+      :untranslated_videos => Video.search(nil, [ 'unassigned', 'assigned' ]).length,
+      :translated_videos => Video.search(nil, [ 'translated', 'reviewed' ]).size,
+      :reviewed_videos => Video.search(nil, [ 'reviewed' ]).size,
+    }
+  end
+
   def dashboard
     @assigned_videos = current_user.assigned_videos
     @translated_videos = current_user.translated_videos
