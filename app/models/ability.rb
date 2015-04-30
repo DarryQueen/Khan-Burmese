@@ -26,6 +26,9 @@ class Ability
   def admin
     volunteer
 
+    # Administrator pages:
+    can :access, :admin_dashboard
+
     # Previews:
     can :read, :prototype
 

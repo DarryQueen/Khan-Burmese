@@ -1,0 +1,41 @@
+<div class="col-sm-4 no-padding">
+  <div class="panel panel-default module module-videos">
+    <div class="panel-heading">
+      <b>Add Videos</b>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <b><%= link_to 'Add a Single Video', new_video_path %></b>
+      </li>
+      <li class="list-group-item">
+        <b><%= link_to 'Import a List of Videos', import_videos_path %></b>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="col-sm-8 no-padding">
+  <div class="panel panel-default module">
+    <div class="panel-heading">
+      <b>Statistics</b>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <span class="badge"><%= @statistics[:members] %></span>
+        Members:
+      </li>
+      <li class="list-group-item">
+        <span class="badge"><%= @statistics[:untranslated_videos] %></span>
+        Untranslated Videos:
+      </li>
+      <li class="list-group-item">
+        <span class="badge"><%= @statistics[:translated_videos] %></span>
+        Translated Videos:
+      </li>
+      <li class="list-group-item">
+        <span class="badge"><%= @statistics[:reviewed_videos] %></span>
+        Reviewed Videos:
+      </li>
+    </div>
+  </div>
+</div>

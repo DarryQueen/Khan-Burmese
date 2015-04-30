@@ -6,6 +6,7 @@ KhanBurmese::Application.routes.draw do
   # Set home pages:
   root :to => 'home#index'
   get 'home' => 'home#dashboard', :as => :dashboard
+  get 'manage_dash' => 'home#admin_dashboard', :as => :admin_dashboard
 
   # For page prototypes:
   get 'preview' => 'preview#show', :as => :prototype
