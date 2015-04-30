@@ -72,16 +72,6 @@ class Translation < ActiveRecord::Base
     [ :complete_with_priority, :complete ].include? self.status_symbol
   end
 
-  def upload_srt(srt_file)
-    Translation.verify_file(srt_file)
-
-    self.srt = srt_file
-    self.save
-
-    update_time
-    complete
-  end
-
   def upload_amara(amara_link)
     amara_link = amara_link.gsub('https', 'http')
     Translation.verify_link(amara_link)

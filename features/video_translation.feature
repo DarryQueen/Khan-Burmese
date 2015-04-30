@@ -23,21 +23,3 @@ Scenario: Assign video and unassign video.
   Then I should see "Are you sure"
   When I press "Unassign"
   Then I should not see "Translate on Amara"
-
-Scenario: Translate a video offline.
-  When I press "Assign to Me"
-  And I press "Translate Offline"
-  Then I should see "If you want to translate offline"
-  When I upload the file "subtitle.srt" to "srt"
-  And I press "Upload"
-  Then I should not see "Unassign Me"
-  And I should not see "No translations yet."
-
-Scenario: Translate a video with faulty files.
-  When I press "Assign to Me"
-  And I press "Translate Offline"
-  And I press "Upload"
-  Then I should see "Missing file."
-  When I upload the file "non_srt.txt" to "srt"
-  And I press "Upload"
-  Then I should see "Invalid file type."
