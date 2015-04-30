@@ -1,15 +1,17 @@
-<h1>Import Videos</h1>
-
-<p>You can import a list of videos in CSV format. Make sure that the file you use is consistent with the following template:</p>
-<div class="download">
-  <%= link_to 'Download Template', download_path(:filename => 'public/video/template.csv'), :class => 'btn btn-default btn-download' %>
-</div>
-
-<p>Note that you only have to fill in the <code>youtube_id</code> column; the rest are optional.</p>
-
-<%= form_tag import_videos_path, :multipart => true do %>
-  <div class="form-group form-import">
-    <%= file_field_tag 'file', :class => 'filestyle', :'data-icon' => false %>
-  </div>
+<div class="col-xs-12 no-padding">
+  <div class="panel panel-default module module-videos">
+    <div class="panel-heading">
+    Import videos
+    </div>
+  <div class="panel-body">
+    <p>You can import a list of videos in CSV format. Make sure that the file you use is consistent with the following template:</p>
+    <div class="download">
+      <%= link_to 'Download Template', download_path(:filename => 'public/video/template.csv'), :class => 'btn btn-default btn-download' %>
+    </div>
+    <p>Note that you only have to fill in the <code>youtube_id</code> column; the rest are optional.</p>
+    <%= form_tag import_videos_path, :multipart => true do %>
+    <div class="form-group form-import">
+      <%= file_field_tag 'file', :class => 'filestyle', :'data-icon' => false %>
+    </div>
   <%= submit_tag 'Import', :class => 'btn btn-primary' %>
 <% end %>
