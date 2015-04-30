@@ -24,7 +24,7 @@ KhanBurmese::Application.routes.draw do
     # Star or unstar videos:
     put :toggle_star
     resources :translations do
-      post 'upload' => 'translations#upload'
+      # post 'upload' => 'translations#upload'
       post 'submit_amara' => 'translations#submit_amara'
       post 'vote' => 'translations#vote'
       post 'review_mail' => 'translations#review_mail'
