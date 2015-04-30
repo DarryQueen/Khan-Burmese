@@ -43,4 +43,13 @@ class UsersController < ApplicationController
 
     @leaders = User.leaders(@after).take(@@LEADERBOARD_LIMIT)
   end
+
+  def destroy
+    @user = User.find(params[:id])
+    authorize! :destroy, @user
+
+    @user.destroy
+    add_flash(:notice, 'User deleted!')
+    redirect_to leaderboard_users_path
+  end
 end

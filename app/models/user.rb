@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 
   after_create :assign_default_role
   before_save :capitalize_fields
+  before_destroy :nullify_translations
 
   has_many :translations
   has_many :translation_videos, :through => :translations, :source => :video
@@ -111,5 +112,16 @@ class User < ActiveRecord::Base
 
     write_attribute(:country, country.titleize) if country
     write_attribute(:city, city.titleize) if city
+  end
+
+  def nullify_translations
+    self.translations.each do |translation|
+      if translation.complete?
+        translation.user = nil
+        translation.save
+      else
+        translation.destroy
+      end
+    end
   end
 end

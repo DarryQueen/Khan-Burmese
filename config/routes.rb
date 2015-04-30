@@ -14,7 +14,7 @@ KhanBurmese::Application.routes.draw do
   # Download files:
   get 'download' => 'files#download'
 
-  resources :users, :only => [ :show, :update ] do
+  resources :users, :only => [ :show, :update, :destroy ] do
     collection do
       get 'leaderboard' => 'users#leaderboard'
     end
