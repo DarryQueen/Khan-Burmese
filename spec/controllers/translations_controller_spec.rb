@@ -58,12 +58,6 @@ describe TranslationsController do
       controller.stub(:redirect_to).and_return(nil)
     end
 
-    it "should raise an error if the uploading fails" do
-      @translation.stub(:upload_srt).and_raise('error')
-      post 'upload', :video_id => @video.id, :translation_id => @translation.id
-      expect(controller.flash[:alert]).to include 'Missing file.'
-    end
-
     it "should raise an error if the uploading to amara fails" do
       post 'submit_amara', :video_id => @video.id, :translation_id => @translation.id, :amara_link => 'bad_link'
       expect(controller.flash[:alert]).to include 'Invalid link format.'
