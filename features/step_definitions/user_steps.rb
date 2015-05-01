@@ -14,3 +14,18 @@ Then /^(?:|I )should( not)? see an edit button with parent "([^"]*)"$/ do |negat
     page.should have_css(css)
   end
 end
+
+Then /^(?:|I )should( not)? see the delete button$/ do |negate|
+  trash_class = '.fa.fa-trash'
+  css = "div.panel-heading #{trash_class}"
+
+  if negate
+    page.should_not have_css(css)
+  else
+    page.should have_css(css)
+  end
+end
+
+When /^(?:|I )click the delete button$/ do
+  find('i.fa.fa-trash').click
+end
