@@ -33,6 +33,8 @@ module NavigationHelpers
       user_path(user)
     when /^the previews page$/
       prototype_path
+    when /^the leaderboard page$/
+      leaderboard_users_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
