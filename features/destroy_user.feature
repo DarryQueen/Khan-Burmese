@@ -15,7 +15,7 @@ Scenario: Delete a user as an admin
   When I am on the leaderboard page
   Then I should see "Normal Norman"
   When I am on the user profile page for "regularman@email.com"
-  Then I should see the delete button
+  Then I should see a delete button with parent "div.panel-heading"
   When I click the delete button
   And I press "Confirm"
   Then I should see "User deleted!"
@@ -26,4 +26,4 @@ Scenario: Can't delete user as a volunteer
   When I am on the leaderboard page
   Then I should see "Bob Jones"
   When I am on the user profile page for "something@here.com"
-  Then I should not see the delete button
+  Then I should not see a delete button with parent "div.panel-heading"
