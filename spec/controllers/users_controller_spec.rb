@@ -54,4 +54,23 @@ describe UsersController do
       expect(assigns(:translated_videos)).not_to include @video
     end
   end
+
+  describe "delete user" do
+    login_admin
+
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      @video = FactoryGirl.create(:video)
+      @translation = Translation.create(:user => @user, :video => @video)
+    end
+
+    it "should delete a user with complete translation" do
+      @translation.stub(:complete?).and_return(false)
+      delete 'destroy', :id => @user.id
+      user = User.find_by_id(@user.id)
+      expect(user).to be_nil
+      translation = Translation.find_by_id(@translation.id)
+      expect(translation).to be_nil
+    end
+  end
 end

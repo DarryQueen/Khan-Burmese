@@ -28,6 +28,11 @@ describe Translation, :type => :model do
       translation2 = Translation.new(:video => @video, :user => @user)
       expect { translation2.save! }.to raise_error
     end
+
+    it "should have an anonymous user if has no owner" do
+      translation = Translation.new
+      expect(translation.user.name).to eq "Anonymous"
+    end
   end
 
   describe "translation points should be calculated correctly" do
