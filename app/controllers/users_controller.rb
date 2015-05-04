@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @assigned_videos = @user.assigned_videos
     @translated_videos = @user.translated_videos
     @reviewed_videos = @user.reviewed_videos
+    @roles = User.roles
   end
 
   def update
@@ -51,5 +52,21 @@ class UsersController < ApplicationController
     @user.destroy
     add_flash(:notice, 'User deleted!')
     redirect_to leaderboard_users_path
+  end
+
+  def change_role
+    @user = User.find(params[:user_id])
+    authorize! :promote, @user
+
+    @user.role = params[:role]
+    if @user.save
+      add_flash(:notice, 'Successfully changed role!')
+    else
+      @user.errors.full_messages.each do |error|
+        add_flash(:alert, error)
+      end
+    end
+
+    redirect_to user_path(@user)
   end
 end

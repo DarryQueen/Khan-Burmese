@@ -38,6 +38,9 @@ class Ability
     can :import, :video
 
     can :manage, User
+    cannot [ :destroy, :promote ], User do |promotee|
+      promotee > @user
+    end
   end
 
   def volunteer
