@@ -5,10 +5,10 @@ Feature: Allow an admin to destroy a user
 
 Background:
   Given the following users:
-    | email                | password  | role      | name         |
-    | admin@admin.com      | superpass | admin     | Diane        |
-    | regularman@email.com | normpass  | volunteer | Normal Norman|
-    | something@here.com   | password  | volunteer | Bob Jones    |
+    | email                | password  | role      | name          |
+    | admin@admin.com      | superpass | admin     | Diane         |
+    | regularman@email.com | normpass  | volunteer | Normal Norman |
+    | something@here.com   | password  | volunteer | Bob Jones     |
 
 Scenario: Delete a user as an admin
   Given I am logged in as "admin@admin.com" with password "superpass"
