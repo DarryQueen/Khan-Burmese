@@ -1,0 +1,26 @@
+<% if can? :promote, user %>
+  <div class="modal fade" id="rolesModal" tabindex="-1" role="dialog" aria-labelledby="rolesModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content module">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="rolesModalLabel">Role For "<%= user.name %>"</h4>
+        </div>
+        <%= form_tag user_change_role_path(user), :method => :put do %>
+          <div class="modal-body">
+            <p>What role should this user take?</p>
+            <select name="role" class="selectpicker" title="Role">
+              <% roles.each do |role| %>
+                <option<%= ' selected' if user.role == role %>><span><%= role %></span></option>
+              <% end %>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <%= submit_tag 'confirm', :class => 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
