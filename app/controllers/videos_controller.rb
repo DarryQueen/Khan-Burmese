@@ -34,13 +34,18 @@ class VideosController < ApplicationController
     return unless request.post?
 
     begin
-      Video.import(params[:file])
-      add_flash(:notice, 'Video(s) imported!')
-      redirect_to videos_path
+      Video.verify_csv(params[:file])
     rescue ArgumentError => e
-      add_flash(:alert, "#{e.message}")
+      add_flash(:alert, e.message)
       redirect_to import_videos_path
+      return
     end
+
+    errors = Video.import(params[:file])
+    errors.each do |error|
+      add_flash(:alert, error)
+    end
+    redirect_to videos_path
   end
 
   def new
