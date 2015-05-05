@@ -1,4 +1,26 @@
-<div class="col-xs-12 no-padding">
+<% if session[:import_errors] %>
+  <div class="col-md-5 no-padding">
+    <div class="panel panel-default module module-import">
+      <div class="panel-heading">
+        Previous Import
+      </div>
+      <div class="panel-body">
+        <% if session[:import_errors].any? %>
+          You previous import on <%= session[:last_import].strftime('%m/%d/%Y at %H:%M') %> had errors, listed below:
+          <ul>
+            <% session[:import_errors].each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          Your previous import on <%= session[:last_import].strftime('%m/%d/%Y at %H:%M') %> was successful!
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="<%= session[:import_errors] ? 'col-md-7' : 'col-xs-12' %> no-padding">
   <div class="panel panel-default module module-videos">
     <div class="panel-heading">
     Import videos
