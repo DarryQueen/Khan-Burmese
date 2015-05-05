@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Comparable
+
   ROLES = %w[superadmin admin volunteer]
 
   TEMP_EMAIL_PREFIX = 'change@me'
@@ -13,8 +15,9 @@ class User < ActiveRecord::Base
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
   validates_presence_of :name
+  validates_inclusion_of :role, :in => ROLES
 
-  after_create :assign_default_role
+  before_validation :assign_default_role, :on => :create
   before_save :capitalize_fields
   before_destroy :nullify_translations
 
@@ -54,11 +57,25 @@ class User < ActiveRecord::Base
 
   def assign_default_role
     self.role ||= 'volunteer'
-    self.save
   end
 
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
+  end
+
+  def <=>(other)
+    self.role_value <=> other.role_value
+  end
+  def role_value
+    case self.role
+    when 'superadmin' then 100
+    when 'admin' then 1
+    when 'volunteer' then 0
+    end
+  end
+
+  def self.roles
+    ROLES - [ 'superadmin' ]
   end
 
   def self.find_for_oauth(auth, signed_in_resource = nil)

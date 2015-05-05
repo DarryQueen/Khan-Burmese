@@ -18,6 +18,7 @@ KhanBurmese::Application.routes.draw do
     collection do
       get 'leaderboard' => 'users#leaderboard'
     end
+    put :change_role
   end
 
   resources :videos do

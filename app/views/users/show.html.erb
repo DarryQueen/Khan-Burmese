@@ -1,5 +1,16 @@
 <div class="col-sm-5 col-md-4 no-padding">
   <%= render 'users/show/profile_frame', :user => @user %>
+
+  <% if can? :promote, @user %>
+    <%= link_to('Change Role', '', {
+      :remote => true,
+      :class => 'btn btn-primary btn-roles',
+      :data => {
+        :toggle => 'modal',
+        :target => '#rolesModal'
+      }
+    }) %>
+  <% end %>
 </div>
 
 <div class="col-sm-7 col-md-8 no-padding">
@@ -13,3 +24,4 @@
 </div>
 
 <%= render 'users/edit/destroy_modal', :user => @user %>
+<%= render 'users/edit/roles_modal', :user => @user, :roles => @roles %>

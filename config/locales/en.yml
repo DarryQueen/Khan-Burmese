@@ -32,6 +32,8 @@ en:
                 other: "Password must contain at least %{count} characters."
             password_confirmation:
               blank: "Password Confirmation cannot be blank."
+            role:
+              inclusion: "The role %{value} is not valid."
   unauthorized:
     default: "Insufficient permissions."
     access:
