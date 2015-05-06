@@ -1,4 +1,5 @@
-title,youtube_id,description
-Welcome,eDijKSMoVwg,Make your videos in this format.
-Charlie bit my finger - again !,_OBlgSz8sSM,A heinous crime of assault and battery.
-Top Meryl Streep Performances,m5kjb8xtdho,Meryl Streep's best gigs.
+title,youtube_id,description,subject,translated?
+Welcome,eDijKSMoVwg,Make your videos in this format.,Math
+Charlie bit my finger - again !,_OBlgSz8sSM,A heinous crime of assault and battery.,English
+Top Meryl Streep Performances,m5kjb8xtdho,Meryl Streep's best gigs.,Programming
+Comparing Decimals 4,FwMYoK1QKso,A video that has already been translated.,Programming,true

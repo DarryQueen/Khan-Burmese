@@ -110,6 +110,14 @@ When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
   attach_file(field, File.expand_path(path))
 end
 
+When /^I wait (\d+) seconds?$/ do |s|
+  sleep s.to_i
+end
+
+When /^I refresh the page$/ do
+  visit current_path
+end
+
 Then /^(?:|I )should( not)? see "([^"]*)"$/ do |negate, text|
   if page.respond_to? :should
     if negate

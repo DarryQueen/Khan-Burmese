@@ -30,8 +30,13 @@ Scenario: Import a CSV file properly.
   And I am on the videos import page
   When I upload the file "doc.csv" to "file"
   And I press "Import"
-  Then I should be on the videos page
-  And I should see "Video(s) imported!"
+  Then I should be on the videos import page
+  When I wait 10 seconds
+  And I refresh the page
+  And I should see "Your previous import on"
+  When I go to the videos page
   And I should see "Charlie bit my finger - again !"
   And I should see "Meryl Streep's Best of Best"
   And I should not see "Top Meryl Streep Performances"
+  When I press "Comparing Decimals 4"
+  Then I should see "Anonymous"
