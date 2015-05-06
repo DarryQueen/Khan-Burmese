@@ -70,8 +70,12 @@ class Video < ActiveRecord::Base
     if self.save and video_hash['translated?'] and video_hash['translated?'].downcase != 'false'
       translation = Translation.new(:video => self)
 
-      link = "http://www.amara.org/en/videos/#{self.amara_id}/my/"
-      translation.upload_amara(link)
+      begin
+        link = "http://www.amara.org/en/videos/#{self.amara_id}/my/"
+        translation.upload_amara(link)
+      rescue ArgumentError => e
+        self.errors.add(:base, e.message)
+      end
     end
 
     self
@@ -143,17 +147,13 @@ class Video < ActiveRecord::Base
   end
 
   def self.import(file)
-    unless file
-      raise ArgumentError, 'Missing file.'
-    end
+    self.verify_csv(file)
 
-    if File.extname(file.original_filename) != ".csv"
-      raise ArgumentError, 'Invalid file type.'
-    end
-
+    errors = []
     CSV.foreach(file.path, headers: true) do |row|
       if row['youtube_id'].blank?
-        raise ArgumentError, 'New videos need <code>youtube_id</code>.'.html_safe
+        errors << 'New videos need <code>youtube_id</code>.'.html_safe
+        next
       end
 
       # Prematurely skip already-created videos:
@@ -163,7 +163,17 @@ class Video < ActiveRecord::Base
 
       video = Video.new(:youtube_id => row['youtube_id']).update_from_hash(row.to_hash)
 
-      raise ArgumentError, video.errors.full_messages.join(' ') unless video.save
+      errors += video.errors.full_messages
+    end
+    errors
+  end
+  def self.verify_csv(file)
+    unless file
+      raise ArgumentError, 'Missing file.'
+    end
+
+    if File.extname(file.original_filename) != ".csv"
+      raise ArgumentError, 'Invalid file type.'
     end
   end
 

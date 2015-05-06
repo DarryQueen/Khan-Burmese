@@ -34,13 +34,23 @@ class VideosController < ApplicationController
     return unless request.post?
 
     begin
-      Video.import(params[:file])
-      add_flash(:notice, 'Video(s) imported!')
-      redirect_to videos_path
+      Video.verify_csv(params[:file])
     rescue ArgumentError => e
-      add_flash(:alert, "#{e.message}")
+      add_flash(:alert, e.message)
       redirect_to import_videos_path
+      return
     end
+
+    thread = Thread.new do
+      @errors = Video.import(params[:file])
+    end
+
+    add_flash(:notice, 'Your videos are importing, which may take a while. Check back at this page for updates.')
+    redirect_to import_videos_path
+
+    thread.join
+    session[:import_errors] = @errors
+    session[:last_import] = Time.now
   end
 
   def new
