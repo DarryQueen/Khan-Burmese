@@ -1,12 +1,34 @@
 <div class="row">
   <center>
-    <div style="margin-top:100px;">
-      <%= image_tag 'khan-academy.png', :class => 'img-responsive' %>
+    <div class="module-images" style="margin-top:20px;">
+      <%= image_tag 'instagram-1.jpg', :class => 'large-image' %>
+      <%= image_tag 'instagram-2.jpg', :class => 'small-image' %>
+      <%= image_tag 'instagram-3.jpg', :class => 'small-image' %>
+      <%= image_tag 'instagram-4.jpg', :class => 'small-image' %>
+      <%= image_tag 'instagram-9.jpg', :class => 'small-image' %>
+      <%= image_tag 'instagram-6.jpg', :class => 'small-image' %>
+      <%= image_tag 'instagram-7.jpg', :class => 'small-image' %>
     </div>
-    <div style="margin-top:-25px;">
-      <h1>Contribute to Learning Today!</h1>
-      <h5>Join us in bringing free education to Myanmar by translating important videos from Khan Academy.</h5>
-      <%= link_to 'Get Started', new_user_registration_path, :class => 'btn btn-default', :style => 'margin-top:20px;' %>
+
+    <div class="module-images">
+      <iframe src="//www.youtube.com/embed/M01-TM92298" frameborder="0" class="pull-left video" allowfullscreen></iframe>
+      <div class="pull-left video-text" style="padding-top:40px;" >
+        <h1><b>Contribute to Learning Today!</b></h1>
+        <h4>Join us in bringing free education to Myanmar by translating important videos from Khan Academy.</h4>
+        <%= link_to 'Get Started', new_user_registration_path, :class => 'btn btn-success' %>
+      </div>
+    </div>
+
+    <div class="module-images">
+      <div class="pull-left text" style="padding-top:50px;" >
+        <h1><b>About Us</b></h1>
+        <h4>We are community of volunteers dedicated to provide resources and tools for the translation of Khan Academy videos into the Myanmar language. </h4>
+        <h4>For more information, please visit our official website: khanacademyburmese.org</h4>
+        <a class="btn btn-primary" href="http://www.khanacademyburmese.org">Learn More</a>
+      </div>
+      <%= image_tag 'instagram-5.jpg', :class => 'large-image' %>
+      <%= image_tag 'instagram-8.jpg', :class => 'small-image' %>
+      <%= image_tag 'instagram-10.jpg', :class => 'small-image' %>
     </div>
   </center>
 </div>
