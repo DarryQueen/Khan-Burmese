@@ -40,32 +40,62 @@
   margin-top: 12px
 
 .module-images
-  width: 1000px
-  height: 450px
+  padding-right: 15px
+  padding-left: 15px
+  float: left
   img
     float: left
   .small-image
-    width: 200px
+    width: 20%
   .large-image
-    width: 400px
-  .video
-    height: 400px
-    width: 711px
-  .video-text
-    height: 400px
-    width: 289px
-    background-color: #000000
+    width: 40%
+  .video-text, .text
     padding-left: 15px
     padding-right: 15px
+    padding-bottom: 30px
+  .video-text
+    background-color: #000000
     h1, h4
       color: white
   .text
     background-color: #f5f5f5
-    height: 400px
-    width: 400px
-    padding-left: 15px
-    padding-right: 15px
     h1, h4
       color: black
   .btn
     margin-top: 15px
+  .spacer
+    float: left
+    width: 100%
+    height: 20px
+  .video
+    iframe
+      width: 100%
+      height: 400px
+
+@media (max-width: 992px)
+  .module-images
+    .video
+      width: 100%
+    .video-text, .text
+      width: 100%
+      padding-top: 10px
+    .about-image
+      width: 33.3%
+
+@media (min-width: 992px)
+  .module-images
+    .video
+      width: 60%
+    .video-text
+      width: 40%
+      height: 400px
+      padding-top: 70px
+    .text
+      width: 40%
+      height: 376px
+
+@media (min-width: 1200px)
+  .module-images
+    .text
+      padding-top: 80px
+      height: 456px
