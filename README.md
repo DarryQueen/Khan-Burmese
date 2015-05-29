@@ -9,7 +9,7 @@ Heroku link: [here](http://khanburmese.herokuapp.com).
 Pivotal tracker link [here](https://www.pivotaltracker.com/n/projects/1286520).
 
 ## Application Preview
-![preview-1](https://cloud.githubusercontent.com/assets/3961167/7331753/c4293cbe-ead2-11e4-8b84-fd5ab10ff1c4.jpg)
+![preview-1](https://cloud.githubusercontent.com/assets/3961167/7874773/0c143cbc-0569-11e5-8d81-e1591e5521c0.jpg)
 
 ## About
 Created by Naseem Al-Naji, Jonathan Shum, Nishad Singh, Brendan Smith, Edward Whang, and Darren Zhao for CS169 Spring 2015.
