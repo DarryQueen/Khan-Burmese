@@ -11,6 +11,11 @@ dropbox_access_token_secret: 'INSERT_DROPBOX_ACCESS_TOKEN_SECRET'
 dropbox_user_id: 'INSERT_DROPBOX_USER_ID'
 dropbox_access_type: 'INSERT_DROPBOX_ACCESS_TYPE'
 
+amara_username: 'INSERT_AMARA_USERNAME'
+amara_api_key: 'INSERT_AMARA_API_KEY'
+
+youtube_api_key: 'INSERT_YOUTUBE_API_KEY'
+
 production:
   facebook_public_key: 'INSERT_FACEBOOK_APP_ID'
   facebook_private_key: 'INSERT_FACEBOOK_APP_SECRET'
