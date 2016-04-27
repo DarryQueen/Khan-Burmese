@@ -1,5 +1,5 @@
 class Video < ActiveRecord::Base
-  require 'YoutubeReader'
+  require 'youtube_reader'
   require 'net/http'
 
   attr_accessible :description, :title, :youtube_id, :starred, :duration
