@@ -1,9 +1,13 @@
 class ImportVideoWorker
   include Sidekiq::Worker
 
-  def perform(attributes)
+  def perform(import_id, attributes)
+    import = Import.find(import_id)
+
     if attributes['youtube_id'].blank?
-      # Add an error message here.
+      import.success = false
+      import.messages += 'New videos need the youtube_id field.'
+      import.save
 
       return
     end
@@ -14,7 +18,12 @@ class ImportVideoWorker
     end
 
     video = Video.new(:youtube_id => attributes['youtube_id']).update_from_hash(attributes)
+    if video.save
+      import.videos << video
+    else
+      import.messages += video.errors.full_messages
+    end
 
-    video.errors.full_messages
+    import.save
   end
 end

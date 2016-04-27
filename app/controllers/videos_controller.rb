@@ -41,8 +41,9 @@ class VideosController < ApplicationController
       return
     end
 
+    import = Import.create
     CSV.foreach(params[:file].path, :headers => true) do |row|
-      ImportVideoWorker.perform_async(row.to_hash)
+      ImportVideoWorker.perform_async(import.id, row.to_hash)
     end
 
     add_flash(:notice, 'Your videos are importing, which may take a while. Check back at this page for updates.')
