@@ -1,18 +1,17 @@
 require 'spec_helper'
+require 'factories'
 
 describe Identity, :type => :model do
+  include_context 'factories'
+
   describe "find or create identities" do
     it "should find an existing identity" do
-      facebook_id = FactoryGirl.create(:facebook_identity)
-
       auth = OpenStruct.new({
         :provider => facebook_id.provider,
         :uid => facebook_id.uid,
       })
 
-      identity = Identity.find_for_oauth(auth)
-
-      identity.should eq facebook_id
+      Identity.find_for_oauth(auth).should eq facebook_id
     end
 
     it "should create an identity if none exists corresponding to auth" do
