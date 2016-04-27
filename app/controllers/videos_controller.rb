@@ -31,7 +31,10 @@ class VideosController < ApplicationController
   def import
     authorize! :import, :video
 
-    return unless request.post?
+    unless request.post?
+      @last_import = Import.order(:time_imported).last
+      return
+    end
 
     begin
       Video.verify_csv(params[:file])
