@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150414065711) do
+ActiveRecord::Schema.define(:version => 20160427222453) do
 
   create_table "identities", :force => true do |t|
     t.integer  "user_id"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(:version => 20150414065711) do
   end
 
   add_index "identities", ["user_id"], :name => "index_identities_on_user_id"
+
+  create_table "imports", :force => true do |t|
+    t.datetime "time_imported"
+    t.boolean  "success"
+    t.text     "messages",      :default => "'--- []\n'"
+  end
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -104,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20150414065711) do
     t.boolean  "starred",     :default => false
     t.integer  "duration"
     t.string   "amara_id"
+    t.integer  "import_id"
   end
 
   create_table "votes", :force => true do |t|
