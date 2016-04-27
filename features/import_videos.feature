@@ -28,15 +28,13 @@ Scenario: Import incorrectly.
 Scenario: Import a CSV file properly.
   Given I am logged in as admin
   And I am on the videos import page
+  And I should not see "Last Import"
   When I upload the file "doc.csv" to "file"
   And I press "Import"
   Then I should be on the videos import page
   When I wait 10 seconds
   And I refresh the page
-  And I should see "Your previous import on"
+  And I should see "Your last import on"
   When I go to the videos page
-  And I should see "Charlie bit my finger - again !"
   And I should see "Meryl Streep's Best of Best"
   And I should not see "Top Meryl Streep Performances"
-  When I press "Comparing Decimals 4"
-  Then I should see "Anonymous"
