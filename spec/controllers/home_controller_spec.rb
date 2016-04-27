@@ -1,6 +1,9 @@
 require 'spec_helper'
+require 'factories'
 
 describe HomeController do
+  include_context 'factories'
+
   describe "user logged in" do
     login_user
 
