@@ -25,6 +25,9 @@ group :production do
   gem 'pg'
 end
 
+# Sidekiq for jobs:
+gem 'sidekiq'
+
 # Authorization gems:
 gem 'devise'
 gem 'cancancan', '~> 1.10'
