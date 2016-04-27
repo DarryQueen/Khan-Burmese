@@ -41,16 +41,12 @@ class VideosController < ApplicationController
       return
     end
 
-    thread = Thread.new do
-      @errors = Video.import(params[:file])
+    CSV.foreach(params[:file].path, :headers => true) do |row|
+      ImportVideoWorker.perform_async(row.to_hash)
     end
 
     add_flash(:notice, 'Your videos are importing, which may take a while. Check back at this page for updates.')
     redirect_to import_videos_path
-
-    thread.join
-    session[:import_errors] = @errors
-    session[:last_import] = Time.now
   end
 
   def new

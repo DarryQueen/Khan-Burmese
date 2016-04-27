@@ -146,27 +146,6 @@ class Video < ActiveRecord::Base
     videos
   end
 
-  def self.import(file)
-    self.verify_csv(file)
-
-    errors = []
-    CSV.foreach(file.path, headers: true) do |row|
-      if row['youtube_id'].blank?
-        errors << 'New videos need <code>youtube_id</code>.'.html_safe
-        next
-      end
-
-      # Prematurely skip already-created videos:
-      if Video.find_by_youtube_id(row['youtube_id'])
-        next
-      end
-
-      video = Video.new(:youtube_id => row['youtube_id']).update_from_hash(row.to_hash)
-
-      errors += video.errors.full_messages
-    end
-    errors
-  end
   def self.verify_csv(file)
     unless file
       raise ArgumentError, 'Missing file.'
