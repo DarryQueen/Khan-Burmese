@@ -115,7 +115,7 @@ describe Video, :type => :model do
     # Use an existing video. If video changes, update here.
     let(:youtube_id) { 'm5kjb8xtdho' }
 
-    let(:attributes) do
+    let(:youtube_attributes) do
       {
         'title' => 'Top 10 Meryl Streep Performances',
         'description' => "She\'s always been more than just a pretty face.  Join http://www.WatchMojo.com as we count down our picks for the top 10 best Meryl Streep performances. Check us out at http://www.Twitter.com/WatchMojo, http://instagram.com/watchmojo and http://www.Facebook.com/WatchMojo \n\nSpecial thanks to our users sarahjessicaparkerth, Frank Morelli, Dave Ibraim, Mara Steinhardt, ri35ons, Andrew A. Dennison, JJ Herkenhoff, Hector Daniel Lovera Bautista and Lamichael Kelly for submitting the idea on our Suggestions Page at http://www.WatchMojo.com/suggest\n\nCheck out the voting page here, \nhttp://watchmojo.com/suggest/Top%2010%20Meryl%20Streep%20Performances\n\nIf you want to suggest an idea for a WatchMojo video, check out our interactive Suggestion Tool at http://www.WatchMojo.com/suggest :)\n\nWe have T-Shirts!  Be sure to check out http://www.WatchMojo.com/store for more info.",
@@ -124,7 +124,7 @@ describe Video, :type => :model do
     end
 
     it "grabs necessary details" do
-      YoutubeReader::parse_video(youtube_id).should eq attributes
+      YoutubeReader::parse_video(youtube_id).should eq youtube_attributes
     end
   end
 end
