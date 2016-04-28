@@ -1,26 +1,27 @@
-<% if session[:import_errors] %>
+<% unless @last_import.nil? %>
   <div class="col-md-5 no-padding">
     <div class="panel panel-default module module-import">
       <div class="panel-heading">
-        Previous Import
+        Last Import
       </div>
       <div class="panel-body">
-        <% if session[:import_errors].any? %>
-          You previous import on <%= session[:last_import].strftime('%m/%d/%Y at %H:%M') %> had errors, listed below:
+        <p>Your last import on <%= @last_import.time_imported.strftime('%m/%d/%Y at %H:%M') %> was <%= @last_import.success ? '' : 'not ' %> successful.<br>
+        <%= @last_import.videos.size %> videos were imported.</p>
+
+        <% unless @last_import.success %>
+          <p>Below are listed some errors:</p>
           <ul>
-            <% session[:import_errors].each do |error| %>
-              <li><%= error %></li>
+            <% @last_import.messages.each do |message| %>
+              <li><%= message %></li>
             <% end %>
           </ul>
-        <% else %>
-          Your previous import on <%= session[:last_import].strftime('%m/%d/%Y at %H:%M') %> was successful!
         <% end %>
       </div>
     </div>
   </div>
 <% end %>
 
-<div class="<%= session[:import_errors] ? 'col-md-7' : 'col-xs-12' %> no-padding">
+<div class="<%= @last_import.nil? ? 'col-xs-12' : 'col-md-7' %> no-padding">
   <div class="panel panel-default module module-videos">
     <div class="panel-heading">
     Import videos
