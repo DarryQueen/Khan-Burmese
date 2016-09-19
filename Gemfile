@@ -12,8 +12,12 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false
   gem 'rspec-rails', '~> 2.14.0'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '2.53.0'
   gem 'simplecov'
+
+  # Shitty workarounds.
+  gem 'rubyzip', '>= 1.0.0'
+  gem 'zip-zip'
 end
 
 group :test do
